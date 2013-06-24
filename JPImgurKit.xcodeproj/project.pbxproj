@@ -44,6 +44,9 @@
 		1EB965FE17785ECE005AA1D5 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9659A17785ECD005AA1D5 /* UIImageView+AFNetworking.m */; };
 		1EB965FF17785ECE005AA1D5 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9659A17785ECD005AA1D5 /* UIImageView+AFNetworking.m */; };
 		1EB9664F17786FB3005AA1D5 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB9664E17786FB3005AA1D5 /* AppKit.framework */; };
+		1EB9665917789417005AA1D5 /* AFOAuth2Client.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9665717789417005AA1D5 /* AFOAuth2Client.h */; };
+		1EB9665A17789417005AA1D5 /* AFOAuth2Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9665817789417005AA1D5 /* AFOAuth2Client.m */; };
+		1EB9665B17789417005AA1D5 /* AFOAuth2Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9665817789417005AA1D5 /* AFOAuth2Client.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -91,6 +94,8 @@
 		1EB9659917785ECD005AA1D5 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		1EB9659A17785ECD005AA1D5 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		1EB9664E17786FB3005AA1D5 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		1EB9665717789417005AA1D5 /* AFOAuth2Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFOAuth2Client.h; sourceTree = "<group>"; };
+		1EB9665817789417005AA1D5 /* AFOAuth2Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFOAuth2Client.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				1EB9658717785ECD005AA1D5 /* AFNetworking */,
+				1EB9665617789417005AA1D5 /* AFOAuth2Client */,
 			);
 			path = Vendors;
 			sourceTree = "<group>";
@@ -204,6 +210,16 @@
 			path = AFNetworking/AFNetworking;
 			sourceTree = "<group>";
 		};
+		1EB9665617789417005AA1D5 /* AFOAuth2Client */ = {
+			isa = PBXGroup;
+			children = (
+				1EB9665717789417005AA1D5 /* AFOAuth2Client.h */,
+				1EB9665817789417005AA1D5 /* AFOAuth2Client.m */,
+			);
+			name = AFOAuth2Client;
+			path = AFOAuth2Client/AFOAuth2Client;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -222,6 +238,7 @@
 				1EB965F717785ECE005AA1D5 /* AFURLConnectionOperation.h in Headers */,
 				1EB965FA17785ECE005AA1D5 /* AFXMLRequestOperation.h in Headers */,
 				1EB965FD17785ECE005AA1D5 /* UIImageView+AFNetworking.h in Headers */,
+				1EB9665917789417005AA1D5 /* AFOAuth2Client.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +331,7 @@
 				1EB965F817785ECE005AA1D5 /* AFURLConnectionOperation.m in Sources */,
 				1EB965FB17785ECE005AA1D5 /* AFXMLRequestOperation.m in Sources */,
 				1EB965FE17785ECE005AA1D5 /* UIImageView+AFNetworking.m in Sources */,
+				1EB9665A17789417005AA1D5 /* AFOAuth2Client.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +348,7 @@
 				1EB965F917785ECE005AA1D5 /* AFURLConnectionOperation.m in Sources */,
 				1EB965FC17785ECE005AA1D5 /* AFXMLRequestOperation.m in Sources */,
 				1EB965FF17785ECE005AA1D5 /* UIImageView+AFNetworking.m in Sources */,
+				1EB9665B17789417005AA1D5 /* AFOAuth2Client.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
