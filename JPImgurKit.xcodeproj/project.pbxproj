@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1EB963AB1778341A005AA1D5 /* JPImgurKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB963AA1778341A005AA1D5 /* JPImgurKit.m */; };
 		1EB963B817783D08005AA1D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB963B717783D08005AA1D5 /* Foundation.framework */; };
 		1EB963C317783D99005AA1D5 /* JPImgurKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EB963A91778341A005AA1D5 /* JPImgurKit.h */; };
 		1EB963C417783DA2005AA1D5 /* JPImgurKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB963A91778341A005AA1D5 /* JPImgurKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1EB963C517783DA5005AA1D5 /* JPImgurKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB963AA1778341A005AA1D5 /* JPImgurKit.m */; };
 		1EB963C617783EE6005AA1D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB963B717783D08005AA1D5 /* Foundation.framework */; };
-		1EB963D817784DD2005AA1D5 /* JPImgurKit-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 1EB963D617784DD2005AA1D5 /* JPImgurKit-Prefix.pch */; };
+		1EB9657717785743005AA1D5 /* JPImgurKitFramework-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9657517785743005AA1D5 /* JPImgurKitFramework-Prefix.pch */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,11 +30,11 @@
 /* Begin PBXFileReference section */
 		1EB963991778341A005AA1D5 /* JPImgurKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JPImgurKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EB963A91778341A005AA1D5 /* JPImgurKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JPImgurKit.h; sourceTree = "<group>"; };
-		1EB963AA1778341A005AA1D5 /* JPImgurKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JPImgurKit.m; sourceTree = "<group>"; };
 		1EB963B617783D08005AA1D5 /* libJPImgurKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJPImgurKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EB963B717783D08005AA1D5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1EB963D517784DD2005AA1D5 /* JPImgurKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "JPImgurKit-Info.plist"; sourceTree = "<group>"; };
-		1EB963D617784DD2005AA1D5 /* JPImgurKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JPImgurKit-Prefix.pch"; sourceTree = "<group>"; };
+		1EB9657517785743005AA1D5 /* JPImgurKitFramework-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JPImgurKitFramework-Prefix.pch"; sourceTree = "<group>"; };
+		1EB9657617785743005AA1D5 /* libJPImgurKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "libJPImgurKit-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				1EB963A91778341A005AA1D5 /* JPImgurKit.h */,
-				1EB963AA1778341A005AA1D5 /* JPImgurKit.m */,
 			);
 			path = JPImgurKit;
 			sourceTree = "<group>";
@@ -99,7 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				1EB963D517784DD2005AA1D5 /* JPImgurKit-Info.plist */,
-				1EB963D617784DD2005AA1D5 /* JPImgurKit-Prefix.pch */,
+				1EB9657517785743005AA1D5 /* JPImgurKitFramework-Prefix.pch */,
+				1EB9657617785743005AA1D5 /* libJPImgurKit-Prefix.pch */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -112,7 +110,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EB963C417783DA2005AA1D5 /* JPImgurKit.h in Headers */,
-				1EB963D817784DD2005AA1D5 /* JPImgurKit-Prefix.pch in Headers */,
+				1EB9657717785743005AA1D5 /* JPImgurKitFramework-Prefix.pch in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,7 +194,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EB963AB1778341A005AA1D5 /* JPImgurKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,7 +201,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EB963C517783DA5005AA1D5 /* JPImgurKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +274,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Resources/JPImgurKit-Prefix.pch";
+				GCC_PREFIX_HEADER = "Resources/JPImgurKitFramework-Prefix.pch";
 				INFOPLIST_FILE = "Resources/JPImgurKit-Info.plist";
 				PRODUCT_NAME = JPImgurKit;
 				WRAPPER_EXTENSION = framework;
@@ -293,7 +289,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Resources/JPImgurKit-Prefix.pch";
+				GCC_PREFIX_HEADER = "Resources/JPImgurKitFramework-Prefix.pch";
 				INFOPLIST_FILE = "Resources/JPImgurKit-Info.plist";
 				PRODUCT_NAME = JPImgurKit;
 				WRAPPER_EXTENSION = framework;
@@ -306,7 +302,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/JPImgurKit.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Resources/JPImgurKit-Prefix.pch";
+				GCC_PREFIX_HEADER = "Resources/libJPImgurKit-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = JPImgurKit;
@@ -321,7 +317,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/JPImgurKit.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Resources/JPImgurKit-Prefix.pch";
+				GCC_PREFIX_HEADER = "Resources/libJPImgurKit-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = JPImgurKit;
