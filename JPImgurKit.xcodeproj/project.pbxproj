@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1EB9639D1778341A005AA1D5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB9639C1778341A005AA1D5 /* Cocoa.framework */; };
-		1EB963A71778341A005AA1D5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1EB963A51778341A005AA1D5 /* InfoPlist.strings */; };
 		1EB963AB1778341A005AA1D5 /* JPImgurKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB963AA1778341A005AA1D5 /* JPImgurKit.m */; };
 /* End PBXBuildFile section */
 
@@ -19,7 +18,6 @@
 		1EB963A01778341A005AA1D5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		1EB963A11778341A005AA1D5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1EB963A41778341A005AA1D5 /* JPImgurKit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JPImgurKit-Info.plist"; sourceTree = "<group>"; };
-		1EB963A61778341A005AA1D5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1EB963A81778341A005AA1D5 /* JPImgurKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JPImgurKit-Prefix.pch"; sourceTree = "<group>"; };
 		1EB963A91778341A005AA1D5 /* JPImgurKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JPImgurKit.h; sourceTree = "<group>"; };
 		1EB963AA1778341A005AA1D5 /* JPImgurKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JPImgurKit.m; sourceTree = "<group>"; };
@@ -87,7 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				1EB963A41778341A005AA1D5 /* JPImgurKit-Info.plist */,
-				1EB963A51778341A005AA1D5 /* InfoPlist.strings */,
 				1EB963A81778341A005AA1D5 /* JPImgurKit-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -155,7 +152,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EB963A71778341A005AA1D5 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,17 +167,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		1EB963A51778341A005AA1D5 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1EB963A61778341A005AA1D5 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1EB963AC1778341A005AA1D5 /* Debug */ = {
