@@ -103,9 +103,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1EB963981778341A005AA1D5 /* JPImgurKit */ = {
+		1EB963981778341A005AA1D5 /* JPImgurKit.framework */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1EB963AE1778341A005AA1D5 /* Build configuration list for PBXNativeTarget "JPImgurKit" */;
+			buildConfigurationList = 1EB963AE1778341A005AA1D5 /* Build configuration list for PBXNativeTarget "JPImgurKit.framework" */;
 			buildPhases = (
 				1EB963941778341A005AA1D5 /* Sources */,
 				1EB963951778341A005AA1D5 /* Frameworks */,
@@ -116,7 +116,7 @@
 			);
 			dependencies = (
 			);
-			name = JPImgurKit;
+			name = JPImgurKit.framework;
 			productName = JPImgurKit;
 			productReference = 1EB963991778341A005AA1D5 /* JPImgurKit.framework */;
 			productType = "com.apple.product-type.framework";
@@ -142,7 +142,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1EB963981778341A005AA1D5 /* JPImgurKit */,
+				1EB963981778341A005AA1D5 /* JPImgurKit.framework */,
 			);
 		};
 /* End PBXProject section */
@@ -238,7 +238,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JPImgurKit/JPImgurKit-Prefix.pch";
 				INFOPLIST_FILE = "JPImgurKit/JPImgurKit-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = JPImgurKit;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -253,7 +253,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JPImgurKit/JPImgurKit-Prefix.pch";
 				INFOPLIST_FILE = "JPImgurKit/JPImgurKit-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = JPImgurKit;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
@@ -270,7 +270,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1EB963AE1778341A005AA1D5 /* Build configuration list for PBXNativeTarget "JPImgurKit" */ = {
+		1EB963AE1778341A005AA1D5 /* Build configuration list for PBXNativeTarget "JPImgurKit.framework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1EB963AF1778341A005AA1D5 /* Debug */,
