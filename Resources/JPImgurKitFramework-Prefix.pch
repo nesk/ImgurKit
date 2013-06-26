@@ -7,4 +7,5 @@
     #import <AppKit/AppKit.h>
     #import <SystemConfiguration/SystemConfiguration.h>
     #import <CoreServices/CoreServices.h>
+    #import <Security/Security.h>
 #endif
