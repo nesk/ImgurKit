@@ -34,6 +34,10 @@
 		1E3E515B177BB8AF007E85A2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9A834F177BA83A00F01B05 /* Security.framework */; };
 		1E3E515C177BB8AF007E85A2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB9658117785DC8005AA1D5 /* SystemConfiguration.framework */; };
 		1E3E515D177BB8B9007E85A2 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB9657D17785CEE005AA1D5 /* MobileCoreServices.framework */; };
+		1E3E515F177BB964007E85A2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3E515E177BB963007E85A2 /* UIKit.framework */; };
+		1E3E5161177BB96C007E85A2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3E5160177BB96C007E85A2 /* CoreGraphics.framework */; };
+		1E3E5162177BB972007E85A2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3E515E177BB963007E85A2 /* UIKit.framework */; };
+		1E3E5163177BB979007E85A2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3E5160177BB96C007E85A2 /* CoreGraphics.framework */; };
 		1E9A834E177BA83200F01B05 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9A834D177BA83200F01B05 /* Security.framework */; };
 		1E9A8350177BA83A00F01B05 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9A834F177BA83A00F01B05 /* Security.framework */; };
 		1E9A8387177BAA9300F01B05 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB9664E17786FB3005AA1D5 /* AppKit.framework */; };
@@ -102,6 +106,8 @@
 		1E3E50D5177BB4F0007E85A2 /* JPImgurKitFrameworkTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImgurKitFrameworkTests.m; sourceTree = "<group>"; };
 		1E3E50D8177BB4FB007E85A2 /* libJPImgurKitTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libJPImgurKitTests.h; sourceTree = "<group>"; };
 		1E3E50D9177BB4FB007E85A2 /* libJPImgurKitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = libJPImgurKitTests.m; sourceTree = "<group>"; };
+		1E3E515E177BB963007E85A2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		1E3E5160177BB96C007E85A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		1E9A834D177BA83200F01B05 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1E9A834F177BA83A00F01B05 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		1E9A8356177BA96800F01B05 /* JPImgurKitFrameworkTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JPImgurKitFrameworkTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,6 +167,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E3E5161177BB96C007E85A2 /* CoreGraphics.framework in Frameworks */,
+				1E3E515F177BB964007E85A2 /* UIKit.framework in Frameworks */,
 				1E3E515D177BB8B9007E85A2 /* MobileCoreServices.framework in Frameworks */,
 				1E3E515A177BB8AF007E85A2 /* Foundation.framework in Frameworks */,
 				1E3E515B177BB8AF007E85A2 /* Security.framework in Frameworks */,
@@ -185,6 +193,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E3E5163177BB979007E85A2 /* CoreGraphics.framework in Frameworks */,
+				1E3E5162177BB972007E85A2 /* UIKit.framework in Frameworks */,
 				1E9A8350177BA83A00F01B05 /* Security.framework in Frameworks */,
 				1EB963B817783D08005AA1D5 /* Foundation.framework in Frameworks */,
 				1EB9658217785DC8005AA1D5 /* SystemConfiguration.framework in Frameworks */,
@@ -250,6 +260,8 @@
 		1EB9639B1778341A005AA1D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1E3E5160177BB96C007E85A2 /* CoreGraphics.framework */,
+				1E3E515E177BB963007E85A2 /* UIKit.framework */,
 				1E9A8390177BAAE200F01B05 /* Foundation.framework */,
 				1E9A838C177BAAAC00F01B05 /* SenTestingKit.framework */,
 				1E9A834F177BA83A00F01B05 /* Security.framework */,
