@@ -7,8 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E3E50D6177BB4F0007E85A2 /* JPImgurKitFrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3E50D5177BB4F0007E85A2 /* JPImgurKitFrameworkTests.m */; };
+		1E3E50DA177BB4FB007E85A2 /* libJPImgurKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3E50D9177BB4FB007E85A2 /* libJPImgurKitTests.m */; };
+		1E3E50DB177BB58F007E85A2 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658917785ECD005AA1D5 /* AFHTTPClient.m */; };
+		1E3E50DC177BB58F007E85A2 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658B17785ECD005AA1D5 /* AFHTTPRequestOperation.m */; };
+		1E3E50DD177BB58F007E85A2 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658D17785ECD005AA1D5 /* AFImageRequestOperation.m */; };
+		1E3E50DE177BB58F007E85A2 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658F17785ECD005AA1D5 /* AFJSONRequestOperation.m */; };
+		1E3E50DF177BB58F007E85A2 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9659117785ECD005AA1D5 /* AFNetworkActivityIndicatorManager.m */; };
+		1E3E50E0177BB58F007E85A2 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9659417785ECD005AA1D5 /* AFPropertyListRequestOperation.m */; };
+		1E3E50E1177BB58F007E85A2 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9659617785ECD005AA1D5 /* AFURLConnectionOperation.m */; };
+		1E3E50E2177BB58F007E85A2 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9659817785ECD005AA1D5 /* AFXMLRequestOperation.m */; };
+		1E3E50E3177BB58F007E85A2 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9659A17785ECD005AA1D5 /* UIImageView+AFNetworking.m */; };
+		1E3E50E4177BB58F007E85A2 /* AFOAuth2Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9665817789417005AA1D5 /* AFOAuth2Client.m */; };
+		1E3E50E5177BB58F007E85A2 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658917785ECD005AA1D5 /* AFHTTPClient.m */; };
+		1E3E50E6177BB58F007E85A2 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658B17785ECD005AA1D5 /* AFHTTPRequestOperation.m */; };
+		1E3E50E7177BB58F007E85A2 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658D17785ECD005AA1D5 /* AFImageRequestOperation.m */; };
+		1E3E50E8177BB58F007E85A2 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658F17785ECD005AA1D5 /* AFJSONRequestOperation.m */; };
+		1E3E50E9177BB58F007E85A2 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9659117785ECD005AA1D5 /* AFNetworkActivityIndicatorManager.m */; };
+		1E3E50EA177BB58F007E85A2 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9659417785ECD005AA1D5 /* AFPropertyListRequestOperation.m */; };
+		1E3E50EB177BB58F007E85A2 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9659617785ECD005AA1D5 /* AFURLConnectionOperation.m */; };
+		1E3E50EC177BB58F007E85A2 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9659817785ECD005AA1D5 /* AFXMLRequestOperation.m */; };
+		1E3E50ED177BB58F007E85A2 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9659A17785ECD005AA1D5 /* UIImageView+AFNetworking.m */; };
+		1E3E50EE177BB58F007E85A2 /* AFOAuth2Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9665817789417005AA1D5 /* AFOAuth2Client.m */; };
+		1E3E5156177BB822007E85A2 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9A838C177BAAAC00F01B05 /* SenTestingKit.framework */; };
+		1E3E515A177BB8AF007E85A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9A8390177BAAE200F01B05 /* Foundation.framework */; };
+		1E3E515B177BB8AF007E85A2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9A834F177BA83A00F01B05 /* Security.framework */; };
+		1E3E515C177BB8AF007E85A2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB9658117785DC8005AA1D5 /* SystemConfiguration.framework */; };
+		1E3E515D177BB8B9007E85A2 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB9657D17785CEE005AA1D5 /* MobileCoreServices.framework */; };
 		1E9A834E177BA83200F01B05 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9A834D177BA83200F01B05 /* Security.framework */; };
 		1E9A8350177BA83A00F01B05 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9A834F177BA83A00F01B05 /* Security.framework */; };
+		1E9A8387177BAA9300F01B05 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB9664E17786FB3005AA1D5 /* AppKit.framework */; };
+		1E9A8388177BAA9300F01B05 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB9657917785CC1005AA1D5 /* CoreServices.framework */; };
+		1E9A8389177BAA9300F01B05 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9A834D177BA83200F01B05 /* Security.framework */; };
+		1E9A838A177BAAA700F01B05 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB963B717783D08005AA1D5 /* Foundation.framework */; };
+		1E9A838B177BAAA700F01B05 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB9657A17785CC1005AA1D5 /* SystemConfiguration.framework */; };
+		1E9A838D177BAAAC00F01B05 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9A838C177BAAAC00F01B05 /* SenTestingKit.framework */; };
 		1EB963B817783D08005AA1D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB963B717783D08005AA1D5 /* Foundation.framework */; };
 		1EB963C317783D99005AA1D5 /* JPImgurKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EB963A91778341A005AA1D5 /* JPImgurKit.h */; };
 		1EB963C417783DA2005AA1D5 /* JPImgurKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB963A91778341A005AA1D5 /* JPImgurKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -65,8 +98,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1E3E50D4177BB4F0007E85A2 /* JPImgurKitFrameworkTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImgurKitFrameworkTests.h; sourceTree = "<group>"; };
+		1E3E50D5177BB4F0007E85A2 /* JPImgurKitFrameworkTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImgurKitFrameworkTests.m; sourceTree = "<group>"; };
+		1E3E50D8177BB4FB007E85A2 /* libJPImgurKitTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libJPImgurKitTests.h; sourceTree = "<group>"; };
+		1E3E50D9177BB4FB007E85A2 /* libJPImgurKitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = libJPImgurKitTests.m; sourceTree = "<group>"; };
 		1E9A834D177BA83200F01B05 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1E9A834F177BA83A00F01B05 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		1E9A8356177BA96800F01B05 /* JPImgurKitFrameworkTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JPImgurKitFrameworkTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E9A8371177BA97D00F01B05 /* libJPImgurKitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = libJPImgurKitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E9A838C177BAAAC00F01B05 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		1E9A8390177BAAE200F01B05 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		1EB963991778341A005AA1D5 /* JPImgurKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JPImgurKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EB963A91778341A005AA1D5 /* JPImgurKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JPImgurKit.h; sourceTree = "<group>"; };
 		1EB963B617783D08005AA1D5 /* libJPImgurKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJPImgurKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +144,31 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1E9A8352177BA96800F01B05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E9A838D177BAAAC00F01B05 /* SenTestingKit.framework in Frameworks */,
+				1E9A838A177BAAA700F01B05 /* Foundation.framework in Frameworks */,
+				1E9A838B177BAAA700F01B05 /* SystemConfiguration.framework in Frameworks */,
+				1E9A8387177BAA9300F01B05 /* AppKit.framework in Frameworks */,
+				1E9A8388177BAA9300F01B05 /* CoreServices.framework in Frameworks */,
+				1E9A8389177BAA9300F01B05 /* Security.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E9A836D177BA97D00F01B05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E3E515D177BB8B9007E85A2 /* MobileCoreServices.framework in Frameworks */,
+				1E3E515A177BB8AF007E85A2 /* Foundation.framework in Frameworks */,
+				1E3E515B177BB8AF007E85A2 /* Security.framework in Frameworks */,
+				1E3E515C177BB8AF007E85A2 /* SystemConfiguration.framework in Frameworks */,
+				1E3E5156177BB822007E85A2 /* SenTestingKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1EB963951778341A005AA1D5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -129,11 +195,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E3E50D2177BB4DA007E85A2 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				1E3E50D3177BB4F0007E85A2 /* JPImgurKitFrameworkTests */,
+				1E3E50D7177BB4FB007E85A2 /* libJPImgurKitTests */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+		1E3E50D3177BB4F0007E85A2 /* JPImgurKitFrameworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				1E3E50D4177BB4F0007E85A2 /* JPImgurKitFrameworkTests.h */,
+				1E3E50D5177BB4F0007E85A2 /* JPImgurKitFrameworkTests.m */,
+			);
+			name = JPImgurKitFrameworkTests;
+			path = Tests/JPImgurKitFrameworkTests;
+			sourceTree = "<group>";
+		};
+		1E3E50D7177BB4FB007E85A2 /* libJPImgurKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				1E3E50D8177BB4FB007E85A2 /* libJPImgurKitTests.h */,
+				1E3E50D9177BB4FB007E85A2 /* libJPImgurKitTests.m */,
+			);
+			name = libJPImgurKitTests;
+			path = Tests/libJPImgurKitTests;
+			sourceTree = "<group>";
+		};
 		1EB9638F1778341A005AA1D5 = {
 			isa = PBXGroup;
 			children = (
 				1EB963A21778341A005AA1D5 /* JPImgurKit */,
 				1EB963D417784DD2005AA1D5 /* Resources */,
+				1E3E50D2177BB4DA007E85A2 /* Tests */,
 				1EB9658317785ECD005AA1D5 /* Vendors */,
 				1EB9639B1778341A005AA1D5 /* Frameworks */,
 				1EB9639A1778341A005AA1D5 /* Products */,
@@ -145,6 +241,8 @@
 			children = (
 				1EB963991778341A005AA1D5 /* JPImgurKit.framework */,
 				1EB963B617783D08005AA1D5 /* libJPImgurKit.a */,
+				1E9A8356177BA96800F01B05 /* JPImgurKitFrameworkTests.octest */,
+				1E9A8371177BA97D00F01B05 /* libJPImgurKitTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -152,6 +250,8 @@
 		1EB9639B1778341A005AA1D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1E9A8390177BAAE200F01B05 /* Foundation.framework */,
+				1E9A838C177BAAAC00F01B05 /* SenTestingKit.framework */,
 				1E9A834F177BA83A00F01B05 /* Security.framework */,
 				1E9A834D177BA83200F01B05 /* Security.framework */,
 				1EB9664E17786FB3005AA1D5 /* AppKit.framework */,
@@ -253,6 +353,42 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		1E9A8355177BA96800F01B05 /* JPImgurKitFrameworkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1E9A8369177BA96800F01B05 /* Build configuration list for PBXNativeTarget "JPImgurKitFrameworkTests" */;
+			buildPhases = (
+				1E9A8351177BA96800F01B05 /* Sources */,
+				1E9A8352177BA96800F01B05 /* Frameworks */,
+				1E9A8353177BA96800F01B05 /* Resources */,
+				1E9A8354177BA96800F01B05 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JPImgurKitFrameworkTests;
+			productName = JPImgurKitFrameworkTests;
+			productReference = 1E9A8356177BA96800F01B05 /* JPImgurKitFrameworkTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+		1E9A8370177BA97D00F01B05 /* libJPImgurKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1E9A8380177BA97D00F01B05 /* Build configuration list for PBXNativeTarget "libJPImgurKitTests" */;
+			buildPhases = (
+				1E9A836C177BA97D00F01B05 /* Sources */,
+				1E9A836D177BA97D00F01B05 /* Frameworks */,
+				1E9A836E177BA97D00F01B05 /* Resources */,
+				1E9A836F177BA97D00F01B05 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libJPImgurKitTests;
+			productName = libJPImgurKitTests;
+			productReference = 1E9A8371177BA97D00F01B05 /* libJPImgurKitTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		1EB963981778341A005AA1D5 /* JPImgurKit.framework */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1EB963AE1778341A005AA1D5 /* Build configuration list for PBXNativeTarget "JPImgurKit.framework" */;
@@ -310,12 +446,28 @@
 			projectRoot = "";
 			targets = (
 				1EB963981778341A005AA1D5 /* JPImgurKit.framework */,
+				1E9A8355177BA96800F01B05 /* JPImgurKitFrameworkTests */,
 				1EB963B517783D08005AA1D5 /* libJPImgurKit.a */,
+				1E9A8370177BA97D00F01B05 /* libJPImgurKitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1E9A8353177BA96800F01B05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E9A836E177BA97D00F01B05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1EB963971778341A005AA1D5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -325,7 +477,72 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1E9A8354177BA96800F01B05 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		1E9A836F177BA97D00F01B05 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		1E9A8351177BA96800F01B05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E3E50D6177BB4F0007E85A2 /* JPImgurKitFrameworkTests.m in Sources */,
+				1E3E50DB177BB58F007E85A2 /* AFHTTPClient.m in Sources */,
+				1E3E50DC177BB58F007E85A2 /* AFHTTPRequestOperation.m in Sources */,
+				1E3E50DD177BB58F007E85A2 /* AFImageRequestOperation.m in Sources */,
+				1E3E50DE177BB58F007E85A2 /* AFJSONRequestOperation.m in Sources */,
+				1E3E50DF177BB58F007E85A2 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				1E3E50E0177BB58F007E85A2 /* AFPropertyListRequestOperation.m in Sources */,
+				1E3E50E1177BB58F007E85A2 /* AFURLConnectionOperation.m in Sources */,
+				1E3E50E2177BB58F007E85A2 /* AFXMLRequestOperation.m in Sources */,
+				1E3E50E3177BB58F007E85A2 /* UIImageView+AFNetworking.m in Sources */,
+				1E3E50E4177BB58F007E85A2 /* AFOAuth2Client.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E9A836C177BA97D00F01B05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E3E50DA177BB4FB007E85A2 /* libJPImgurKitTests.m in Sources */,
+				1E3E50E5177BB58F007E85A2 /* AFHTTPClient.m in Sources */,
+				1E3E50E6177BB58F007E85A2 /* AFHTTPRequestOperation.m in Sources */,
+				1E3E50E7177BB58F007E85A2 /* AFImageRequestOperation.m in Sources */,
+				1E3E50E8177BB58F007E85A2 /* AFJSONRequestOperation.m in Sources */,
+				1E3E50E9177BB58F007E85A2 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				1E3E50EA177BB58F007E85A2 /* AFPropertyListRequestOperation.m in Sources */,
+				1E3E50EB177BB58F007E85A2 /* AFURLConnectionOperation.m in Sources */,
+				1E3E50EC177BB58F007E85A2 /* AFXMLRequestOperation.m in Sources */,
+				1E3E50ED177BB58F007E85A2 /* UIImageView+AFNetworking.m in Sources */,
+				1E3E50EE177BB58F007E85A2 /* AFOAuth2Client.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1EB963941778341A005AA1D5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -363,6 +580,69 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		1E9A836A177BA96800F01B05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Resources/JPImgurKitFramework-Prefix.pch";
+				INFOPLIST_FILE = "Resources/JPImgurKitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		1E9A836B177BA96800F01B05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Resources/JPImgurKitFramework-Prefix.pch";
+				INFOPLIST_FILE = "Resources/JPImgurKitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+		1E9A8381177BA97D00F01B05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Resources/libJPImgurKit-Prefix.pch";
+				INFOPLIST_FILE = "Resources/JPImgurKitTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		1E9A8382177BA97D00F01B05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Resources/libJPImgurKit-Prefix.pch";
+				INFOPLIST_FILE = "Resources/JPImgurKitTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 		1EB963AC1778341A005AA1D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -486,6 +766,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1E9A8369177BA96800F01B05 /* Build configuration list for PBXNativeTarget "JPImgurKitFrameworkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E9A836A177BA96800F01B05 /* Debug */,
+				1E9A836B177BA96800F01B05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1E9A8380177BA97D00F01B05 /* Build configuration list for PBXNativeTarget "libJPImgurKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E9A8381177BA97D00F01B05 /* Debug */,
+				1E9A8382177BA97D00F01B05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1EB963931778341A005AA1D5 /* Build configuration list for PBXProject "JPImgurKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
