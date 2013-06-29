@@ -6,4 +6,4 @@
 //  Distributed under the MIT license.
 //
 
-#import <Foundation/Foundation.h>
+#import "JPImgurClient.h"
