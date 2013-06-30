@@ -9,14 +9,14 @@
 #import "JPImgurClient.h"
 #import "AFOAuth2Client.h"
 
-NSString * const BASE_URL = @"https://api.imgur.com/3/";
-NSString * const OAUTH_BASE_URL = @"https://api.imgur.com/oauth/";
+NSString * const JPBaseURL = @"https://api.imgur.com/3/";
+NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth/";
 
 @implementation JPImgurClient
 
 - (id)init
 {
-    return [super initWithBaseURL:[NSURL URLWithString:BASE_URL]];
+    return [super initWithBaseURL:[NSURL URLWithString:JPBaseURL]];
 }
 
 - (instancetype)initWithClientID:(NSString *)clientID secret:(NSString *)secret
@@ -49,7 +49,7 @@ NSString * const OAUTH_BASE_URL = @"https://api.imgur.com/oauth/";
         @throw [NSException exceptionWithName:@"MissingResourceException" reason:@"The OAuth module must initialized to use this method" userInfo:nil];
     
     NSString *path = [NSString stringWithFormat:@"authorize?response_type=pin&client_id=%@", oauthModule.clientID];
-    return [NSURL URLWithString:path relativeToURL:[NSURL URLWithString:OAUTH_BASE_URL]];
+    return [NSURL URLWithString:path relativeToURL:[NSURL URLWithString:JPOAuthBaseURL]];
 }
 
 - (void)authenticateUsingOAuthWithPIN:(NSString *)pin success:(void (^)(AFOAuthCredential *))success failure:(void (^)(NSError *))failure
