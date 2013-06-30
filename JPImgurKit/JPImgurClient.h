@@ -7,12 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AFOAuth2Client.h"
+#import "AFHTTPClient.h"
 
-@interface JPImgurClient : AFOAuth2Client
+@class AFOAuth2Client, AFOAuthCredential;
 
-+ (instancetype)sharedInstanceWithBaseURL:(NSURL *)url ClientID:(NSString *)clientID secret:(NSString *)secret;
-+ (instancetype)sharedInstanceWithClientID:(NSString *)clientID secret:(NSString *)secret;
+@interface JPImgurClient : AFHTTPClient
+{
+    AFOAuth2Client *oauthModule;
+}
+
+- (instancetype)initWithClientID:(NSString *)clientID secret:(NSString *)secret;
+- (instancetype)initWithBaseURL:(NSURL *)url clientID:(NSString *)clientID secret:(NSString *)secret;
+
+- (void)initializeOAuthModuleWithClientID:(NSString *)clientID secret:(NSString *)secret;
 
 - (NSURL *)getAuthorizationURLUsingPIN;
 - (void)authenticateUsingOAuthWithPIN:(NSString *)pin success:(void (^)(AFOAuthCredential *))success failure:(void (^)(NSError *))failure;

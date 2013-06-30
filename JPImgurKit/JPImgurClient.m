@@ -10,34 +10,49 @@
 #import "AFOAuth2Client.h"
 
 NSString * const BASE_URL = @"https://api.imgur.com/3/";
-
-// This constant is necessary to avoid each path to start with `3/` and to allow OAuth requests to work, see overidden `authenticateUsingOAuthWithPath:parameters:success:failure:` method
 NSString * const OAUTH_BASE_URL = @"https://api.imgur.com/oauth/";
 
 @implementation JPImgurClient
 
-+ (instancetype)sharedInstanceWithBaseURL:(NSURL *)url ClientID:(NSString *)clientID secret:(NSString *)secret
+- (id)init
 {
-    static dispatch_once_t onceToken;
-    static JPImgurClient *sharedInstance = nil;
-    dispatch_once(&onceToken, ^{
-        sharedInstance = [[self alloc] initWithBaseURL:url clientID:clientID secret:secret];
-    });
-    return sharedInstance;
+    return [super initWithBaseURL:[NSURL URLWithString:BASE_URL]];
 }
 
-+ (instancetype)sharedInstanceWithClientID:(NSString *)clientID secret:(NSString *)secret
+- (instancetype)initWithClientID:(NSString *)clientID secret:(NSString *)secret
 {
-    return [self sharedInstanceWithBaseURL:[NSURL URLWithString:BASE_URL] ClientID:clientID secret:secret];
+    self = [self init];
+    
+    [self initializeOAuthModuleWithClientID:clientID secret:secret];
+    
+    return self;
+}
+
+- (instancetype)initWithBaseURL:(NSURL *)url clientID:(NSString *)clientID secret:(NSString *)secret
+{
+    self = [self initWithBaseURL:url];
+    
+    [self initializeOAuthModuleWithClientID:clientID secret:secret];
+    
+    return self;
+}
+
+- (void)initializeOAuthModuleWithClientID:(NSString *)clientID secret:(NSString *)secret
+{
+    if(!oauthModule)
+        oauthModule = [[AFOAuth2Client alloc] initWithBaseURL:[self baseURL] clientID:clientID secret:secret];
 }
 
 - (NSURL *)getAuthorizationURLUsingPIN
 {
-    NSString *path = [NSString stringWithFormat:@"authorize?response_type=pin&client_id=%@", self.clientID];
+    if(!oauthModule)
+        @throw [NSException exceptionWithName:@"MissingResourceException" reason:@"The OAuth module must initialized to use this method" userInfo:nil];
+    
+    NSString *path = [NSString stringWithFormat:@"authorize?response_type=pin&client_id=%@", oauthModule.clientID];
     return [NSURL URLWithString:path relativeToURL:[NSURL URLWithString:OAUTH_BASE_URL]];
 }
 
--(void)authenticateUsingOAuthWithPIN:(NSString *)pin success:(void (^)(AFOAuthCredential *))success failure:(void (^)(NSError *))failure
+- (void)authenticateUsingOAuthWithPIN:(NSString *)pin success:(void (^)(AFOAuthCredential *))success failure:(void (^)(NSError *))failure
 {
     @throw [NSException exceptionWithName:@"NotImplementedException" reason:@"This method is currently not implemented" userInfo:nil];
 }
