@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E3E50D6177BB4F0007E85A2 /* JPImgurKitFrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3E50D5177BB4F0007E85A2 /* JPImgurKitFrameworkTests.m */; };
-		1E3E50DA177BB4FB007E85A2 /* libJPImgurKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3E50D9177BB4FB007E85A2 /* libJPImgurKitTests.m */; };
+		1E203C8E1780773D0086E992 /* JPImgurKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E203C8D1780773D0086E992 /* JPImgurKitTests.m */; };
+		1E203C8F1780773D0086E992 /* JPImgurKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E203C8D1780773D0086E992 /* JPImgurKitTests.m */; };
 		1E3E50DB177BB58F007E85A2 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658917785ECD005AA1D5 /* AFHTTPClient.m */; };
 		1E3E50DC177BB58F007E85A2 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658B17785ECD005AA1D5 /* AFHTTPRequestOperation.m */; };
 		1E3E50DD177BB58F007E85A2 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658D17785ECD005AA1D5 /* AFImageRequestOperation.m */; };
@@ -109,10 +109,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1E3E50D4177BB4F0007E85A2 /* JPImgurKitFrameworkTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImgurKitFrameworkTests.h; sourceTree = "<group>"; };
-		1E3E50D5177BB4F0007E85A2 /* JPImgurKitFrameworkTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImgurKitFrameworkTests.m; sourceTree = "<group>"; };
-		1E3E50D8177BB4FB007E85A2 /* libJPImgurKitTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libJPImgurKitTests.h; sourceTree = "<group>"; };
-		1E3E50D9177BB4FB007E85A2 /* libJPImgurKitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = libJPImgurKitTests.m; sourceTree = "<group>"; };
+		1E203C8C1780773D0086E992 /* JPImgurKitTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImgurKitTests.h; sourceTree = "<group>"; };
+		1E203C8D1780773D0086E992 /* JPImgurKitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImgurKitTests.m; sourceTree = "<group>"; };
 		1E3E515E177BB963007E85A2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		1E3E5160177BB96C007E85A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		1E8C72C1177F3B7D00DEE26C /* JPImgurClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImgurClient.h; sourceTree = "<group>"; };
@@ -214,33 +212,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E203C8B1780773D0086E992 /* JPImgurKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				1E203C8C1780773D0086E992 /* JPImgurKitTests.h */,
+				1E203C8D1780773D0086E992 /* JPImgurKitTests.m */,
+			);
+			name = JPImgurKitTests;
+			path = Tests/JPImgurKitTests;
+			sourceTree = "<group>";
+		};
 		1E3E50D2177BB4DA007E85A2 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				1E3E50D3177BB4F0007E85A2 /* JPImgurKitFrameworkTests */,
-				1E3E50D7177BB4FB007E85A2 /* libJPImgurKitTests */,
+				1E203C8B1780773D0086E992 /* JPImgurKitTests */,
 			);
 			name = Tests;
-			sourceTree = "<group>";
-		};
-		1E3E50D3177BB4F0007E85A2 /* JPImgurKitFrameworkTests */ = {
-			isa = PBXGroup;
-			children = (
-				1E3E50D4177BB4F0007E85A2 /* JPImgurKitFrameworkTests.h */,
-				1E3E50D5177BB4F0007E85A2 /* JPImgurKitFrameworkTests.m */,
-			);
-			name = JPImgurKitFrameworkTests;
-			path = Tests/JPImgurKitFrameworkTests;
-			sourceTree = "<group>";
-		};
-		1E3E50D7177BB4FB007E85A2 /* libJPImgurKitTests */ = {
-			isa = PBXGroup;
-			children = (
-				1E3E50D8177BB4FB007E85A2 /* libJPImgurKitTests.h */,
-				1E3E50D9177BB4FB007E85A2 /* libJPImgurKitTests.m */,
-			);
-			name = libJPImgurKitTests;
-			path = Tests/libJPImgurKitTests;
 			sourceTree = "<group>";
 		};
 		1EB9638F1778341A005AA1D5 = {
@@ -535,7 +522,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E3E50D6177BB4F0007E85A2 /* JPImgurKitFrameworkTests.m in Sources */,
 				1E3E50DB177BB58F007E85A2 /* AFHTTPClient.m in Sources */,
 				1E3E50DC177BB58F007E85A2 /* AFHTTPRequestOperation.m in Sources */,
 				1E3E50DD177BB58F007E85A2 /* AFImageRequestOperation.m in Sources */,
@@ -547,6 +533,7 @@
 				1E3E50E3177BB58F007E85A2 /* UIImageView+AFNetworking.m in Sources */,
 				1E3E50E4177BB58F007E85A2 /* AFOAuth2Client.m in Sources */,
 				1E8C72C5177F3B7D00DEE26C /* JPImgurClient.m in Sources */,
+				1E203C8E1780773D0086E992 /* JPImgurKitTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -554,7 +541,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E3E50DA177BB4FB007E85A2 /* libJPImgurKitTests.m in Sources */,
 				1E3E50E5177BB58F007E85A2 /* AFHTTPClient.m in Sources */,
 				1E3E50E6177BB58F007E85A2 /* AFHTTPRequestOperation.m in Sources */,
 				1E3E50E7177BB58F007E85A2 /* AFImageRequestOperation.m in Sources */,
@@ -566,6 +552,7 @@
 				1E3E50ED177BB58F007E85A2 /* UIImageView+AFNetworking.m in Sources */,
 				1E3E50EE177BB58F007E85A2 /* AFOAuth2Client.m in Sources */,
 				1E8C72C7177F3B7D00DEE26C /* JPImgurClient.m in Sources */,
+				1E203C8F1780773D0086E992 /* JPImgurKitTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

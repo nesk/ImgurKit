@@ -1,14 +1,14 @@
 //
-//  libJPImgurKitTests.m
-//  libJPImgurKitTests
+//  JPImgurKitFrameworkTests.m
+//  JPImgurKitFrameworkTests
 //
 //  Created by Johann Pardanaud on 27/06/13.
 //  Copyright (c) 2013 Johann PARDANAUD. All rights reserved.
 //
 
-#import "libJPImgurKitTests.h"
+#import "JPImgurKitTests.h"
 
-@implementation libJPImgurKitTests
+@implementation JPImgurKitTests
 
 - (void)setUp
 {
@@ -26,7 +26,7 @@
 
 - (void)testExample
 {
-    STFail(@"Unit tests are not implemented yet in libJPImgurKitTests");
+    STFail(@"Unit tests are not implemented yet in JPImgurKitTests");
 }
 
 @end

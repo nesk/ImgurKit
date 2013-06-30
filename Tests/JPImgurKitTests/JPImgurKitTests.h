@@ -8,6 +8,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface JPImgurKitFrameworkTests : SenTestCase
+@interface JPImgurKitTests : SenTestCase
 
 @end
