@@ -54,7 +54,12 @@ NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth/";
 
 - (void)authenticateUsingOAuthWithPIN:(NSString *)pin success:(void (^)(AFOAuthCredential *))success failure:(void (^)(NSError *))failure
 {
-    @throw [NSException exceptionWithName:@"NotImplementedException" reason:@"This method is currently not implemented" userInfo:nil];
+    NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionary];
+    [mutableParameters setObject:@"pin" forKey:@"grant_type"];
+    [mutableParameters setValue:pin forKey:@"pin"];
+    NSDictionary *parameters = [NSDictionary dictionaryWithDictionary:mutableParameters];
+    
+    [oauthModule authenticateUsingOAuthWithPath:@"token" parameters:parameters success:success failure:failure];
 }
 
 @end
