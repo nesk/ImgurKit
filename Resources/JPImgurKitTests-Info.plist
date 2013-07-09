@@ -18,5 +18,9 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>clientID</key>
+	<string>client-id</string>
+	<key>clientSecret</key>
+	<string>client-secret</string>
 </dict>
 </plist>

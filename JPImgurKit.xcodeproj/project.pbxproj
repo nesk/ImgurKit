@@ -109,6 +109,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1E0392EB178C8A3E00C13A3B /* JPImgurKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JPImgurKitTests-Info.plist"; sourceTree = "<group>"; };
 		1E203C8C1780773D0086E992 /* JPImgurKitTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImgurKitTests.h; sourceTree = "<group>"; };
 		1E203C8D1780773D0086E992 /* JPImgurKitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImgurKitTests.m; sourceTree = "<group>"; };
 		1E3E515E177BB963007E85A2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -286,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				1EB963D517784DD2005AA1D5 /* JPImgurKit-Info.plist */,
+				1E0392EB178C8A3E00C13A3B /* JPImgurKitTests-Info.plist */,
 				1EB9657517785743005AA1D5 /* JPImgurKitFramework-Prefix.pch */,
 				1EB9657617785743005AA1D5 /* libJPImgurKit-Prefix.pch */,
 			);
