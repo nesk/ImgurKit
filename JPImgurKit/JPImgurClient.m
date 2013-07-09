@@ -10,7 +10,7 @@
 #import "AFOAuth2Client.h"
 
 NSString * const JPBaseURL = @"https://api.imgur.com/3/";
-NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth/";
+NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
 
 @implementation JPImgurClient
 
@@ -40,7 +40,7 @@ NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth/";
 - (void)initializeOAuthModuleWithClientID:(NSString *)clientID secret:(NSString *)secret
 {
     if(!oauthModule)
-        oauthModule = [[AFOAuth2Client alloc] initWithBaseURL:[self baseURL] clientID:clientID secret:secret];
+        oauthModule = [[AFOAuth2Client alloc] initWithBaseURL:[NSURL URLWithString:JPOAuthBaseURL] clientID:clientID secret:secret];
 }
 
 - (NSURL *)getAuthorizationURLUsingPIN
