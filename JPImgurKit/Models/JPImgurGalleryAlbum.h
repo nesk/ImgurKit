@@ -10,10 +10,10 @@
 
 @interface JPImgurGalleryAlbum : JPImgurAlbum
 
-@property (readonly) NSInteger ups;
-@property (readonly) NSInteger downs;
-@property (readonly) NSInteger score;
+@property (nonatomic, readonly) NSInteger ups;
+@property (nonatomic, readonly) NSInteger downs;
+@property (nonatomic, readonly) NSInteger score;
 
-@property NSInteger vote; // -1 = downvote, +1 = upvote, 0 = user hasn't vote yet
+@property (nonatomic) NSInteger vote; // -1 = downvote, +1 = upvote, 0 = user hasn't vote yet
 
 @end

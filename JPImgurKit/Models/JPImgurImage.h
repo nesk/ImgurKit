@@ -10,23 +10,23 @@
 
 @interface JPImgurImage : NSObject
 
-@property (readonly) NSString *imageID;
+@property (nonatomic, readonly) NSString *imageID;
 
-@property NSString *title;
-@property NSString *description;
-@property (readonly) NSDate *datetime;
+@property (nonatomic) NSString *title;
+@property (nonatomic) NSString *description;
+@property (nonatomic, readonly) NSDate *datetime;
 
-@property (readonly) NSString *type;
-@property (readonly) BOOL animated;
+@property (nonatomic, readonly) NSString *type;
+@property (nonatomic, readonly) BOOL animated;
 
-@property (readonly) NSInteger width;
-@property (readonly) NSInteger height;
-@property (readonly) NSInteger size;
+@property (nonatomic, readonly) NSInteger width;
+@property (nonatomic, readonly) NSInteger height;
+@property (nonatomic, readonly) NSInteger size;
 
-@property (readonly) NSInteger views;
-@property (readonly) NSInteger bandwidth;
+@property (nonatomic, readonly) NSInteger views;
+@property (nonatomic, readonly) NSInteger bandwidth;
 
-@property (readonly) NSString *deletehash;
-@property (readonly) NSString *link;
+@property (nonatomic, readonly) NSString *deletehash;
+@property (nonatomic, readonly) NSString *link;
 
 @end

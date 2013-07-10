@@ -10,22 +10,22 @@
 
 @interface JPImgurAlbum : NSObject
 
-@property (readonly) NSString* albumID;
+@property (nonatomic, readonly) NSString* albumID;
 
-@property NSString *title;
-@property NSString *description;
-@property (readonly) NSDate *datetime;
-@property NSString *cover;
+@property (nonatomic) NSString *title;
+@property (nonatomic) NSString *description;
+@property (nonatomic, readonly) NSDate *datetime;
+@property (nonatomic) NSString *cover;
 
-@property (readonly) NSString *accountURL;
+@property (nonatomic, readonly) NSString *accountURL;
 
-@property NSString *privacy;
-@property NSString *layout;
+@property (nonatomic) NSString *privacy;
+@property (nonatomic) NSString *layout;
 
-@property (readonly) NSInteger views;
-@property (readonly) NSString *link;
+@property (nonatomic, readonly) NSInteger views;
+@property (nonatomic, readonly) NSString *link;
 
-@property (readonly) NSInteger imagesCount; // Optional: can be set to NSNotFound
-@property NSArray *images; // Optional: can be set to nil
+@property (nonatomic, readonly) NSInteger imagesCount; // Optional: can be set to NSNotFound
+@property (nonatomic) NSArray *images; // Optional: can be set to nil
 
 @end

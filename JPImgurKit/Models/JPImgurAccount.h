@@ -10,12 +10,12 @@
 
 @interface JPImgurAccount : NSObject
 
-@property (readonly) NSUInteger accountID;
+@property (nonatomic, readonly) NSUInteger accountID;
 
-@property (readonly) NSString *url;
-@property NSString *bio;
+@property (nonatomic, readonly) NSString *url;
+@property (nonatomic) NSString *bio;
 
-@property (readonly) float reputation;
-@property (readonly) NSString *created;
+@property (nonatomic, readonly) float reputation;
+@property (nonatomic, readonly) NSString *created;
 
 @end
