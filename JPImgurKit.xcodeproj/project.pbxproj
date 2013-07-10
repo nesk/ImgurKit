@@ -56,6 +56,12 @@
 		1E8C72C6177F3B7D00DEE26C /* JPImgurClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8C72C2177F3B7D00DEE26C /* JPImgurClient.m */; };
 		1E8C72C7177F3B7D00DEE26C /* JPImgurClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8C72C2177F3B7D00DEE26C /* JPImgurClient.m */; };
 		1E8C72C8177F3BAD00DEE26C /* JPImgurClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1E8C72C1177F3B7D00DEE26C /* JPImgurClient.h */; };
+		1E929E2A178E11E800D8CFD3 /* JPImgurAlbum.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E929E28178E11E800D8CFD3 /* JPImgurAlbum.h */; };
+		1E929E2B178E11E800D8CFD3 /* JPImgurAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E929E29178E11E800D8CFD3 /* JPImgurAlbum.m */; };
+		1E929E2C178E11E800D8CFD3 /* JPImgurAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E929E29178E11E800D8CFD3 /* JPImgurAlbum.m */; };
+		1E929E2D178E11E800D8CFD3 /* JPImgurAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E929E29178E11E800D8CFD3 /* JPImgurAlbum.m */; };
+		1E929E2E178E11E800D8CFD3 /* JPImgurAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E929E29178E11E800D8CFD3 /* JPImgurAlbum.m */; };
+		1E929E2F178E11F600D8CFD3 /* JPImgurAlbum.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1E929E28178E11E800D8CFD3 /* JPImgurAlbum.h */; };
 		1E9A834E177BA83200F01B05 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9A834D177BA83200F01B05 /* Security.framework */; };
 		1E9A8350177BA83A00F01B05 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9A834F177BA83A00F01B05 /* Security.framework */; };
 		1E9A8387177BAA9300F01B05 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB9664E17786FB3005AA1D5 /* AppKit.framework */; };
@@ -113,6 +119,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				1E929E2F178E11F600D8CFD3 /* JPImgurAlbum.h in CopyFiles */,
 				1E187BEB178E015B0031D85B /* JPImgurImage.h in CopyFiles */,
 				1E187BDC178DF5920031D85B /* JPImgurAccount.h in CopyFiles */,
 				1E8C72C8177F3BAD00DEE26C /* JPImgurClient.h in CopyFiles */,
@@ -134,6 +141,8 @@
 		1E3E5160177BB96C007E85A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		1E8C72C1177F3B7D00DEE26C /* JPImgurClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImgurClient.h; sourceTree = "<group>"; };
 		1E8C72C2177F3B7D00DEE26C /* JPImgurClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImgurClient.m; sourceTree = "<group>"; };
+		1E929E28178E11E800D8CFD3 /* JPImgurAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImgurAlbum.h; sourceTree = "<group>"; };
+		1E929E29178E11E800D8CFD3 /* JPImgurAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImgurAlbum.m; sourceTree = "<group>"; };
 		1E9A834D177BA83200F01B05 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1E9A834F177BA83A00F01B05 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		1E9A8356177BA96800F01B05 /* JPImgurKitFrameworkTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JPImgurKitFrameworkTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,6 +247,8 @@
 				1E187BD6178DF5850031D85B /* JPImgurAccount.m */,
 				1E187BE4178DFBA10031D85B /* JPImgurImage.h */,
 				1E187BE5178DFBA10031D85B /* JPImgurImage.m */,
+				1E929E28178E11E800D8CFD3 /* JPImgurAlbum.h */,
+				1E929E29178E11E800D8CFD3 /* JPImgurAlbum.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -392,6 +403,7 @@
 				1E8C72C3177F3B7D00DEE26C /* JPImgurClient.h in Headers */,
 				1E187BD7178DF5850031D85B /* JPImgurAccount.h in Headers */,
 				1E187BE6178DFBA10031D85B /* JPImgurImage.h in Headers */,
+				1E929E2A178E11E800D8CFD3 /* JPImgurAlbum.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,6 +582,7 @@
 				1E203C8E1780773D0086E992 /* JPImgurKitTests.m in Sources */,
 				1E187BD9178DF5850031D85B /* JPImgurAccount.m in Sources */,
 				1E187BE8178DFBA10031D85B /* JPImgurImage.m in Sources */,
+				1E929E2C178E11E800D8CFD3 /* JPImgurAlbum.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,6 +604,7 @@
 				1E203C8F1780773D0086E992 /* JPImgurKitTests.m in Sources */,
 				1E187BDB178DF5850031D85B /* JPImgurAccount.m in Sources */,
 				1E187BEA178DFBA10031D85B /* JPImgurImage.m in Sources */,
+				1E929E2E178E11E800D8CFD3 /* JPImgurAlbum.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,6 +625,7 @@
 				1E8C72C4177F3B7D00DEE26C /* JPImgurClient.m in Sources */,
 				1E187BD8178DF5850031D85B /* JPImgurAccount.m in Sources */,
 				1E187BE7178DFBA10031D85B /* JPImgurImage.m in Sources */,
+				1E929E2B178E11E800D8CFD3 /* JPImgurAlbum.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,6 +646,7 @@
 				1E8C72C6177F3B7D00DEE26C /* JPImgurClient.m in Sources */,
 				1E187BDA178DF5850031D85B /* JPImgurAccount.m in Sources */,
 				1E187BE9178DFBA10031D85B /* JPImgurImage.m in Sources */,
+				1E929E2D178E11E800D8CFD3 /* JPImgurAlbum.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
