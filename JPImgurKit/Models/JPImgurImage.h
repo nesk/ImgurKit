@@ -10,7 +10,7 @@
 
 @interface JPImgurImage : NSObject
 
-@property (readonly) NSString *imageId;
+@property (readonly) NSString *imageID;
 
 @property NSString *title;
 @property NSString *description;

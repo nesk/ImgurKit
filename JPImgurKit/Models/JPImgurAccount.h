@@ -10,7 +10,7 @@
 
 @interface JPImgurAccount : NSObject
 
-@property (readonly) NSInteger accountId;
+@property (readonly) NSUInteger accountID;
 
 @property (readonly) NSString *url;
 @property NSString *bio;
