@@ -172,8 +172,7 @@
 		1EB963B617783D08005AA1D5 /* libJPImgurKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJPImgurKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EB963B717783D08005AA1D5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1EB963D517784DD2005AA1D5 /* JPImgurKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "JPImgurKit-Info.plist"; sourceTree = "<group>"; };
-		1EB9657517785743005AA1D5 /* JPImgurKitFramework-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JPImgurKitFramework-Prefix.pch"; sourceTree = "<group>"; };
-		1EB9657617785743005AA1D5 /* libJPImgurKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "libJPImgurKit-Prefix.pch"; sourceTree = "<group>"; };
+		1EB9657517785743005AA1D5 /* JPImgurKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JPImgurKit-Prefix.pch"; sourceTree = "<group>"; };
 		1EB9657917785CC1005AA1D5 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		1EB9657A17785CC1005AA1D5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		1EB9657D17785CEE005AA1D5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
@@ -351,8 +350,7 @@
 			children = (
 				1EB963D517784DD2005AA1D5 /* JPImgurKit-Info.plist */,
 				1E0392EB178C8A3E00C13A3B /* JPImgurKitTests-Info.plist */,
-				1EB9657517785743005AA1D5 /* JPImgurKitFramework-Prefix.pch */,
-				1EB9657617785743005AA1D5 /* libJPImgurKit-Prefix.pch */,
+				1EB9657517785743005AA1D5 /* JPImgurKit-Prefix.pch */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -691,7 +689,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Resources/JPImgurKitFramework-Prefix.pch";
+				GCC_PREFIX_HEADER = "Resources/JPImgurKit-Prefix.pch";
 				INFOPLIST_FILE = "Resources/JPImgurKitTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
@@ -704,7 +702,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Resources/JPImgurKitFramework-Prefix.pch";
+				GCC_PREFIX_HEADER = "Resources/JPImgurKit-Prefix.pch";
 				INFOPLIST_FILE = "Resources/JPImgurKitTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
@@ -720,7 +718,7 @@
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Resources/libJPImgurKit-Prefix.pch";
+				GCC_PREFIX_HEADER = "Resources/JPImgurKit-Prefix.pch";
 				INFOPLIST_FILE = "Resources/JPImgurKitTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -738,7 +736,7 @@
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Resources/libJPImgurKit-Prefix.pch";
+				GCC_PREFIX_HEADER = "Resources/JPImgurKit-Prefix.pch";
 				INFOPLIST_FILE = "Resources/JPImgurKitTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -815,7 +813,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Resources/JPImgurKitFramework-Prefix.pch";
+				GCC_PREFIX_HEADER = "Resources/JPImgurKit-Prefix.pch";
 				INFOPLIST_FILE = "Resources/JPImgurKit-Info.plist";
 				PRODUCT_NAME = JPImgurKit;
 				WRAPPER_EXTENSION = framework;
@@ -830,7 +828,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Resources/JPImgurKitFramework-Prefix.pch";
+				GCC_PREFIX_HEADER = "Resources/JPImgurKit-Prefix.pch";
 				INFOPLIST_FILE = "Resources/JPImgurKit-Info.plist";
 				PRODUCT_NAME = JPImgurKit;
 				WRAPPER_EXTENSION = framework;
@@ -843,7 +841,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/JPImgurKit.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Resources/libJPImgurKit-Prefix.pch";
+				GCC_PREFIX_HEADER = "Resources/JPImgurKit-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = JPImgurKit;
@@ -858,7 +856,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/JPImgurKit.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Resources/libJPImgurKit-Prefix.pch";
+				GCC_PREFIX_HEADER = "Resources/JPImgurKit-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = JPImgurKit;
