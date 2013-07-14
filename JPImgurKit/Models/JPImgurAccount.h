@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JPImgurBasicModel.h"
 
-@interface JPImgurAccount : NSObject
+@interface JPImgurAccount : JPImgurBasicModel
 
 @property (nonatomic, readonly) NSUInteger accountID;
 
