@@ -16,6 +16,7 @@
     AFOAuth2Client *oauthClient;
 }
 
+- (id)initWithBaseURL:(NSURL *)url;
 - (instancetype)initWithClientID:(NSString *)clientID secret:(NSString *)secret;
 - (instancetype)initWithBaseURL:(NSURL *)url clientID:(NSString *)clientID secret:(NSString *)secret;
 
