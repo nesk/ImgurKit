@@ -23,7 +23,7 @@ NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
 {
     self = [self init];
     
-    [self initializeOAuthModuleWithClientID:clientID secret:secret];
+    [self initializeOAuthWithClientID:clientID secret:secret];
     
     return self;
 }
@@ -32,23 +32,23 @@ NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
 {
     self = [self initWithBaseURL:url];
     
-    [self initializeOAuthModuleWithClientID:clientID secret:secret];
+    [self initializeOAuthWithClientID:clientID secret:secret];
     
     return self;
 }
 
-- (void)initializeOAuthModuleWithClientID:(NSString *)clientID secret:(NSString *)secret
+- (void)initializeOAuthWithClientID:(NSString *)clientID secret:(NSString *)secret
 {
-    if(!oauthModule)
-        oauthModule = [[AFOAuth2Client alloc] initWithBaseURL:[NSURL URLWithString:JPOAuthBaseURL] clientID:clientID secret:secret];
+    if(!oauthClient)
+        oauthClient = [[AFOAuth2Client alloc] initWithBaseURL:[NSURL URLWithString:JPOAuthBaseURL] clientID:clientID secret:secret];
 }
 
 - (NSURL *)getAuthorizationURLUsingPIN
 {
-    if(!oauthModule)
-        @throw [NSException exceptionWithName:@"MissingResourceException" reason:@"The OAuth module must initialized to use this method" userInfo:nil];
+    if(!oauthClient)
+        @throw [NSException exceptionWithName:@"MissingResourceException" reason:@"The OAuth Client must be initialized to use this method" userInfo:nil];
     
-    NSString *path = [NSString stringWithFormat:@"authorize?response_type=pin&client_id=%@", oauthModule.clientID];
+    NSString *path = [NSString stringWithFormat:@"authorize?response_type=pin&client_id=%@", oauthClient.clientID];
     return [NSURL URLWithString:path relativeToURL:[NSURL URLWithString:JPOAuthBaseURL]];
 }
 
@@ -59,7 +59,7 @@ NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
     [mutableParameters setValue:pin forKey:@"pin"];
     NSDictionary *parameters = [NSDictionary dictionaryWithDictionary:mutableParameters];
     
-    [oauthModule authenticateUsingOAuthWithPath:@"token" parameters:parameters success:success failure:failure];
+    [oauthClient authenticateUsingOAuthWithPath:@"token" parameters:parameters success:success failure:failure];
 }
 
 @end

@@ -13,13 +13,13 @@
 
 @interface JPImgurClient : AFHTTPClient
 {
-    AFOAuth2Client *oauthModule;
+    AFOAuth2Client *oauthClient;
 }
 
 - (instancetype)initWithClientID:(NSString *)clientID secret:(NSString *)secret;
 - (instancetype)initWithBaseURL:(NSURL *)url clientID:(NSString *)clientID secret:(NSString *)secret;
 
-- (void)initializeOAuthModuleWithClientID:(NSString *)clientID secret:(NSString *)secret;
+- (void)initializeOAuthWithClientID:(NSString *)clientID secret:(NSString *)secret;
 
 - (NSURL *)getAuthorizationURLUsingPIN;
 - (void)authenticateUsingOAuthWithPIN:(NSString *)pin success:(void (^)(AFOAuthCredential *))success failure:(void (^)(NSError *))failure;
