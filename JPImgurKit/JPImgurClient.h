@@ -24,4 +24,6 @@
 - (NSURL *)getAuthorizationURLUsingPIN;
 - (void)authenticateUsingOAuthWithPIN:(NSString *)pin success:(void (^)(AFOAuthCredential *))success failure:(void (^)(NSError *))failure;
 
+- (void)setAuthorizationHeaderWithToken:(NSString *)token;
+
 @end

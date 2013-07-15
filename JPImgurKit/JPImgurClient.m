@@ -73,9 +73,14 @@ NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
     
     [oauthClient authenticateUsingOAuthWithPath:@"token" parameters:parameters success:^(AFOAuthCredential *credential) {
         // Here we specify the authorization header for the API client and call afterwards the success block
-        [self setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", [credential accessToken]]];
+        [self setAuthorizationHeaderWithToken:[credential accessToken]];
         success(credential);
     } failure:failure];
+}
+
+- (void)setAuthorizationHeaderWithToken:(NSString *)token
+{
+    [self setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", token]];
 }
 
 @end
