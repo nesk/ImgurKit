@@ -19,8 +19,10 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>clientID</key>
-	<string>client-id</string>
+	<string>your-client-id</string>
 	<key>clientSecret</key>
-	<string>client-secret</string>
+	<string>your-client-secret</string>
+	<key>accessToken</key>
+	<string>your-access-token</string>
 </dict>
 </plist>
