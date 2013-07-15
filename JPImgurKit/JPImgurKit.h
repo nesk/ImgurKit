@@ -7,3 +7,9 @@
 //
 
 #import "JPImgurClient.h"
+
+#import "JPImgurAccount.h"
+#import "JPImgurImage.h"
+#import "JPImgurGalleryImage.h"
+#import "JPImgurAlbum.h"
+#import "JPImgurGalleryAlbum.h"
