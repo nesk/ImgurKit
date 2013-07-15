@@ -8,6 +8,7 @@
 
 #import "JPImgurClient.h"
 #import "AFOAuth2Client.h"
+#import "AFJSONRequestOperation.h"
 
 NSString * const JPBaseURL = @"https://api.imgur.com/3/";
 NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
@@ -16,7 +17,18 @@ NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
 
 - (id)init
 {
-    return [super initWithBaseURL:[NSURL URLWithString:JPBaseURL]];
+    return [self initWithBaseURL:[NSURL URLWithString:JPBaseURL]];
+}
+
+- (id)initWithBaseURL:(NSURL *)url
+{
+    self = [super initWithBaseURL:url];
+    
+    // See https://github.com/AFNetworking/AFNetworking/wiki/AFNetworking-FAQ#why-dont-i-get-json--xml--property-list-in-my-http-client-callbacks
+    [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
+    [self setDefaultHeader:@"Accept" value:@"application/json"];
+    
+    return self;
 }
 
 - (instancetype)initWithClientID:(NSString *)clientID secret:(NSString *)secret
