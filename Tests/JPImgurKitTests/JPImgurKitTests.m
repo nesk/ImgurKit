@@ -22,9 +22,12 @@
     
     NSString *clientID = [infos objectForKey:@"clientID"];
     NSString *clientSecret = [infos objectForKey:@"clientSecret"];
+    NSString *accessToken = [infos objectForKey:@"accessToken"];
     
     client = [[JPImgurClient alloc] initWithClientID:clientID secret:clientSecret];
     STAssertNotNil(client, @"Cannot initialize the client object");
+    
+    [client setAuthorizationHeaderWithToken:accessToken];
 }
 
 - (dispatch_semaphore_t)enableAsyncTestingFirstStep
