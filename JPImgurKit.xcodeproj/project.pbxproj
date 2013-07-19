@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E187BD7178DF5850031D85B /* JPImgurAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E187BD5178DF5850031D85B /* JPImgurAccount.h */; };
+		1E187BD7178DF5850031D85B /* JPImgurAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E187BD5178DF5850031D85B /* JPImgurAccount.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1E187BD8178DF5850031D85B /* JPImgurAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E187BD6178DF5850031D85B /* JPImgurAccount.m */; };
 		1E187BD9178DF5850031D85B /* JPImgurAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E187BD6178DF5850031D85B /* JPImgurAccount.m */; };
 		1E187BDA178DF5850031D85B /* JPImgurAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E187BD6178DF5850031D85B /* JPImgurAccount.m */; };
 		1E187BDB178DF5850031D85B /* JPImgurAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E187BD6178DF5850031D85B /* JPImgurAccount.m */; };
 		1E187BDC178DF5920031D85B /* JPImgurAccount.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1E187BD5178DF5850031D85B /* JPImgurAccount.h */; };
-		1E187BE6178DFBA10031D85B /* JPImgurImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E187BE4178DFBA10031D85B /* JPImgurImage.h */; };
+		1E187BE6178DFBA10031D85B /* JPImgurImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E187BE4178DFBA10031D85B /* JPImgurImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1E187BE7178DFBA10031D85B /* JPImgurImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E187BE5178DFBA10031D85B /* JPImgurImage.m */; };
 		1E187BE8178DFBA10031D85B /* JPImgurImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E187BE5178DFBA10031D85B /* JPImgurImage.m */; };
 		1E187BE9178DFBA10031D85B /* JPImgurImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E187BE5178DFBA10031D85B /* JPImgurImage.m */; };
@@ -50,36 +50,46 @@
 		1E3E5161177BB96C007E85A2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3E5160177BB96C007E85A2 /* CoreGraphics.framework */; };
 		1E3E5162177BB972007E85A2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3E515E177BB963007E85A2 /* UIKit.framework */; };
 		1E3E5163177BB979007E85A2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3E5160177BB96C007E85A2 /* CoreGraphics.framework */; };
-		1E8C72C3177F3B7D00DEE26C /* JPImgurClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E8C72C1177F3B7D00DEE26C /* JPImgurClient.h */; };
+		1E8C72C3177F3B7D00DEE26C /* JPImgurClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E8C72C1177F3B7D00DEE26C /* JPImgurClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1E8C72C4177F3B7D00DEE26C /* JPImgurClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8C72C2177F3B7D00DEE26C /* JPImgurClient.m */; };
 		1E8C72C5177F3B7D00DEE26C /* JPImgurClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8C72C2177F3B7D00DEE26C /* JPImgurClient.m */; };
 		1E8C72C6177F3B7D00DEE26C /* JPImgurClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8C72C2177F3B7D00DEE26C /* JPImgurClient.m */; };
 		1E8C72C7177F3B7D00DEE26C /* JPImgurClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8C72C2177F3B7D00DEE26C /* JPImgurClient.m */; };
 		1E8C72C8177F3BAD00DEE26C /* JPImgurClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1E8C72C1177F3B7D00DEE26C /* JPImgurClient.h */; };
-		1E929E2A178E11E800D8CFD3 /* JPImgurAlbum.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E929E28178E11E800D8CFD3 /* JPImgurAlbum.h */; };
+		1E929E2A178E11E800D8CFD3 /* JPImgurAlbum.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E929E28178E11E800D8CFD3 /* JPImgurAlbum.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1E929E2B178E11E800D8CFD3 /* JPImgurAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E929E29178E11E800D8CFD3 /* JPImgurAlbum.m */; };
 		1E929E2C178E11E800D8CFD3 /* JPImgurAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E929E29178E11E800D8CFD3 /* JPImgurAlbum.m */; };
 		1E929E2D178E11E800D8CFD3 /* JPImgurAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E929E29178E11E800D8CFD3 /* JPImgurAlbum.m */; };
 		1E929E2E178E11E800D8CFD3 /* JPImgurAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E929E29178E11E800D8CFD3 /* JPImgurAlbum.m */; };
 		1E929E2F178E11F600D8CFD3 /* JPImgurAlbum.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1E929E28178E11E800D8CFD3 /* JPImgurAlbum.h */; };
-		1E929E32178E170800D8CFD3 /* JPImgurGalleryImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E929E30178E170800D8CFD3 /* JPImgurGalleryImage.h */; };
+		1E929E32178E170800D8CFD3 /* JPImgurGalleryImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E929E30178E170800D8CFD3 /* JPImgurGalleryImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1E929E33178E170800D8CFD3 /* JPImgurGalleryImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E929E31178E170800D8CFD3 /* JPImgurGalleryImage.m */; };
 		1E929E34178E170800D8CFD3 /* JPImgurGalleryImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E929E31178E170800D8CFD3 /* JPImgurGalleryImage.m */; };
 		1E929E35178E170800D8CFD3 /* JPImgurGalleryImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E929E31178E170800D8CFD3 /* JPImgurGalleryImage.m */; };
 		1E929E36178E170800D8CFD3 /* JPImgurGalleryImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E929E31178E170800D8CFD3 /* JPImgurGalleryImage.m */; };
 		1E929E37178E1AE500D8CFD3 /* JPImgurGalleryImage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1E929E30178E170800D8CFD3 /* JPImgurGalleryImage.h */; };
-		1E929E41178E1B5800D8CFD3 /* JPImgurGalleryAlbum.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E929E3F178E1B5800D8CFD3 /* JPImgurGalleryAlbum.h */; };
+		1E929E41178E1B5800D8CFD3 /* JPImgurGalleryAlbum.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E929E3F178E1B5800D8CFD3 /* JPImgurGalleryAlbum.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1E929E42178E1B5800D8CFD3 /* JPImgurGalleryAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E929E40178E1B5800D8CFD3 /* JPImgurGalleryAlbum.m */; };
 		1E929E43178E1B5800D8CFD3 /* JPImgurGalleryAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E929E40178E1B5800D8CFD3 /* JPImgurGalleryAlbum.m */; };
 		1E929E44178E1B5800D8CFD3 /* JPImgurGalleryAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E929E40178E1B5800D8CFD3 /* JPImgurGalleryAlbum.m */; };
 		1E929E45178E1B5800D8CFD3 /* JPImgurGalleryAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E929E40178E1B5800D8CFD3 /* JPImgurGalleryAlbum.m */; };
 		1E929E46178E1B5D00D8CFD3 /* JPImgurGalleryAlbum.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1E929E3F178E1B5800D8CFD3 /* JPImgurGalleryAlbum.h */; };
-		1E929E4917934F2C00D8CFD3 /* JPImgurBasicModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E929E4717934F2C00D8CFD3 /* JPImgurBasicModel.h */; };
+		1E929E4917934F2C00D8CFD3 /* JPImgurBasicModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E929E4717934F2C00D8CFD3 /* JPImgurBasicModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1E929E4A17934F2C00D8CFD3 /* JPImgurBasicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E929E4817934F2C00D8CFD3 /* JPImgurBasicModel.m */; };
 		1E929E4B17934F2C00D8CFD3 /* JPImgurBasicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E929E4817934F2C00D8CFD3 /* JPImgurBasicModel.m */; };
 		1E929E4C17934F2C00D8CFD3 /* JPImgurBasicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E929E4817934F2C00D8CFD3 /* JPImgurBasicModel.m */; };
 		1E929E4D17934F2C00D8CFD3 /* JPImgurBasicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E929E4817934F2C00D8CFD3 /* JPImgurBasicModel.m */; };
 		1E929E4E1793517500D8CFD3 /* JPImgurBasicModel.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1E929E4717934F2C00D8CFD3 /* JPImgurBasicModel.h */; };
+		1E929ECA1799D73900D8CFD3 /* AFHTTPClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EB9658817785ECD005AA1D5 /* AFHTTPClient.h */; };
+		1E929ECB1799D73900D8CFD3 /* AFHTTPRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EB9658A17785ECD005AA1D5 /* AFHTTPRequestOperation.h */; };
+		1E929ECC1799D73900D8CFD3 /* AFImageRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EB9658C17785ECD005AA1D5 /* AFImageRequestOperation.h */; };
+		1E929ECD1799D73900D8CFD3 /* AFJSONRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EB9658E17785ECD005AA1D5 /* AFJSONRequestOperation.h */; };
+		1E929ECE1799D73900D8CFD3 /* AFNetworkActivityIndicatorManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EB9659017785ECD005AA1D5 /* AFNetworkActivityIndicatorManager.h */; };
+		1E929ECF1799D73900D8CFD3 /* AFNetworking.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EB9659217785ECD005AA1D5 /* AFNetworking.h */; };
+		1E929ED01799D73900D8CFD3 /* AFPropertyListRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EB9659317785ECD005AA1D5 /* AFPropertyListRequestOperation.h */; };
+		1E929ED11799D73900D8CFD3 /* AFURLConnectionOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EB9659517785ECD005AA1D5 /* AFURLConnectionOperation.h */; };
+		1E929ED21799D73900D8CFD3 /* AFXMLRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EB9659717785ECD005AA1D5 /* AFXMLRequestOperation.h */; };
+		1E929ED31799D73900D8CFD3 /* UIImageView+AFNetworking.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EB9659917785ECD005AA1D5 /* UIImageView+AFNetworking.h */; };
 		1E9A834E177BA83200F01B05 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9A834D177BA83200F01B05 /* Security.framework */; };
 		1E9A8350177BA83A00F01B05 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9A834F177BA83A00F01B05 /* Security.framework */; };
 		1E9A8387177BAA9300F01B05 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB9664E17786FB3005AA1D5 /* AppKit.framework */; };
@@ -96,36 +106,36 @@
 		1EB9657C17785CC1005AA1D5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB9657A17785CC1005AA1D5 /* SystemConfiguration.framework */; };
 		1EB9657F17785CEE005AA1D5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB9657D17785CEE005AA1D5 /* MobileCoreServices.framework */; };
 		1EB9658217785DC8005AA1D5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB9658117785DC8005AA1D5 /* SystemConfiguration.framework */; };
-		1EB965E417785ECE005AA1D5 /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9658817785ECD005AA1D5 /* AFHTTPClient.h */; };
+		1EB965E417785ECE005AA1D5 /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9658817785ECD005AA1D5 /* AFHTTPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1EB965E517785ECE005AA1D5 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658917785ECD005AA1D5 /* AFHTTPClient.m */; };
 		1EB965E617785ECE005AA1D5 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658917785ECD005AA1D5 /* AFHTTPClient.m */; };
-		1EB965E717785ECE005AA1D5 /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9658A17785ECD005AA1D5 /* AFHTTPRequestOperation.h */; };
+		1EB965E717785ECE005AA1D5 /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9658A17785ECD005AA1D5 /* AFHTTPRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1EB965E817785ECE005AA1D5 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658B17785ECD005AA1D5 /* AFHTTPRequestOperation.m */; };
 		1EB965E917785ECE005AA1D5 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658B17785ECD005AA1D5 /* AFHTTPRequestOperation.m */; };
-		1EB965EA17785ECE005AA1D5 /* AFImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9658C17785ECD005AA1D5 /* AFImageRequestOperation.h */; };
+		1EB965EA17785ECE005AA1D5 /* AFImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9658C17785ECD005AA1D5 /* AFImageRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1EB965EB17785ECE005AA1D5 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658D17785ECD005AA1D5 /* AFImageRequestOperation.m */; };
 		1EB965EC17785ECE005AA1D5 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658D17785ECD005AA1D5 /* AFImageRequestOperation.m */; };
-		1EB965ED17785ECE005AA1D5 /* AFJSONRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9658E17785ECD005AA1D5 /* AFJSONRequestOperation.h */; };
+		1EB965ED17785ECE005AA1D5 /* AFJSONRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9658E17785ECD005AA1D5 /* AFJSONRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1EB965EE17785ECE005AA1D5 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658F17785ECD005AA1D5 /* AFJSONRequestOperation.m */; };
 		1EB965EF17785ECE005AA1D5 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658F17785ECD005AA1D5 /* AFJSONRequestOperation.m */; };
-		1EB965F017785ECE005AA1D5 /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9659017785ECD005AA1D5 /* AFNetworkActivityIndicatorManager.h */; };
+		1EB965F017785ECE005AA1D5 /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9659017785ECD005AA1D5 /* AFNetworkActivityIndicatorManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1EB965F117785ECE005AA1D5 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9659117785ECD005AA1D5 /* AFNetworkActivityIndicatorManager.m */; };
 		1EB965F217785ECE005AA1D5 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9659117785ECD005AA1D5 /* AFNetworkActivityIndicatorManager.m */; };
-		1EB965F317785ECE005AA1D5 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9659217785ECD005AA1D5 /* AFNetworking.h */; };
-		1EB965F417785ECE005AA1D5 /* AFPropertyListRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9659317785ECD005AA1D5 /* AFPropertyListRequestOperation.h */; };
+		1EB965F317785ECE005AA1D5 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9659217785ECD005AA1D5 /* AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1EB965F417785ECE005AA1D5 /* AFPropertyListRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9659317785ECD005AA1D5 /* AFPropertyListRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1EB965F517785ECE005AA1D5 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9659417785ECD005AA1D5 /* AFPropertyListRequestOperation.m */; };
 		1EB965F617785ECE005AA1D5 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9659417785ECD005AA1D5 /* AFPropertyListRequestOperation.m */; };
-		1EB965F717785ECE005AA1D5 /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9659517785ECD005AA1D5 /* AFURLConnectionOperation.h */; };
+		1EB965F717785ECE005AA1D5 /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9659517785ECD005AA1D5 /* AFURLConnectionOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1EB965F817785ECE005AA1D5 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9659617785ECD005AA1D5 /* AFURLConnectionOperation.m */; };
 		1EB965F917785ECE005AA1D5 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9659617785ECD005AA1D5 /* AFURLConnectionOperation.m */; };
-		1EB965FA17785ECE005AA1D5 /* AFXMLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9659717785ECD005AA1D5 /* AFXMLRequestOperation.h */; };
+		1EB965FA17785ECE005AA1D5 /* AFXMLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9659717785ECD005AA1D5 /* AFXMLRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1EB965FB17785ECE005AA1D5 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9659817785ECD005AA1D5 /* AFXMLRequestOperation.m */; };
 		1EB965FC17785ECE005AA1D5 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9659817785ECD005AA1D5 /* AFXMLRequestOperation.m */; };
-		1EB965FD17785ECE005AA1D5 /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9659917785ECD005AA1D5 /* UIImageView+AFNetworking.h */; };
+		1EB965FD17785ECE005AA1D5 /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9659917785ECD005AA1D5 /* UIImageView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1EB965FE17785ECE005AA1D5 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9659A17785ECD005AA1D5 /* UIImageView+AFNetworking.m */; };
 		1EB965FF17785ECE005AA1D5 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9659A17785ECD005AA1D5 /* UIImageView+AFNetworking.m */; };
 		1EB9664F17786FB3005AA1D5 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB9664E17786FB3005AA1D5 /* AppKit.framework */; };
-		1EB9665917789417005AA1D5 /* AFOAuth2Client.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9665717789417005AA1D5 /* AFOAuth2Client.h */; };
+		1EB9665917789417005AA1D5 /* AFOAuth2Client.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9665717789417005AA1D5 /* AFOAuth2Client.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1EB9665A17789417005AA1D5 /* AFOAuth2Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9665817789417005AA1D5 /* AFOAuth2Client.m */; };
 		1EB9665B17789417005AA1D5 /* AFOAuth2Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9665817789417005AA1D5 /* AFOAuth2Client.m */; };
 /* End PBXBuildFile section */
@@ -137,6 +147,16 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				1E929ECA1799D73900D8CFD3 /* AFHTTPClient.h in CopyFiles */,
+				1E929ECB1799D73900D8CFD3 /* AFHTTPRequestOperation.h in CopyFiles */,
+				1E929ECC1799D73900D8CFD3 /* AFImageRequestOperation.h in CopyFiles */,
+				1E929ECD1799D73900D8CFD3 /* AFJSONRequestOperation.h in CopyFiles */,
+				1E929ECE1799D73900D8CFD3 /* AFNetworkActivityIndicatorManager.h in CopyFiles */,
+				1E929ECF1799D73900D8CFD3 /* AFNetworking.h in CopyFiles */,
+				1E929ED01799D73900D8CFD3 /* AFPropertyListRequestOperation.h in CopyFiles */,
+				1E929ED11799D73900D8CFD3 /* AFURLConnectionOperation.h in CopyFiles */,
+				1E929ED21799D73900D8CFD3 /* AFXMLRequestOperation.h in CopyFiles */,
+				1E929ED31799D73900D8CFD3 /* UIImageView+AFNetworking.h in CopyFiles */,
 				1E929E4E1793517500D8CFD3 /* JPImgurBasicModel.h in CopyFiles */,
 				1E929E46178E1B5D00D8CFD3 /* JPImgurGalleryAlbum.h in CopyFiles */,
 				1E929E37178E1AE500D8CFD3 /* JPImgurGalleryImage.h in CopyFiles */,
@@ -420,6 +440,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EB963C417783DA2005AA1D5 /* JPImgurKit.h in Headers */,
+				1E8C72C3177F3B7D00DEE26C /* JPImgurClient.h in Headers */,
+				1E187BD7178DF5850031D85B /* JPImgurAccount.h in Headers */,
+				1E187BE6178DFBA10031D85B /* JPImgurImage.h in Headers */,
+				1E929E2A178E11E800D8CFD3 /* JPImgurAlbum.h in Headers */,
+				1E929E32178E170800D8CFD3 /* JPImgurGalleryImage.h in Headers */,
+				1E929E41178E1B5800D8CFD3 /* JPImgurGalleryAlbum.h in Headers */,
+				1E929E4917934F2C00D8CFD3 /* JPImgurBasicModel.h in Headers */,
 				1EB965E417785ECE005AA1D5 /* AFHTTPClient.h in Headers */,
 				1EB965E717785ECE005AA1D5 /* AFHTTPRequestOperation.h in Headers */,
 				1EB965EA17785ECE005AA1D5 /* AFImageRequestOperation.h in Headers */,
@@ -431,13 +458,6 @@
 				1EB965FA17785ECE005AA1D5 /* AFXMLRequestOperation.h in Headers */,
 				1EB965FD17785ECE005AA1D5 /* UIImageView+AFNetworking.h in Headers */,
 				1EB9665917789417005AA1D5 /* AFOAuth2Client.h in Headers */,
-				1E8C72C3177F3B7D00DEE26C /* JPImgurClient.h in Headers */,
-				1E187BD7178DF5850031D85B /* JPImgurAccount.h in Headers */,
-				1E187BE6178DFBA10031D85B /* JPImgurImage.h in Headers */,
-				1E929E2A178E11E800D8CFD3 /* JPImgurAlbum.h in Headers */,
-				1E929E32178E170800D8CFD3 /* JPImgurGalleryImage.h in Headers */,
-				1E929E41178E1B5800D8CFD3 /* JPImgurGalleryAlbum.h in Headers */,
-				1E929E4917934F2C00D8CFD3 /* JPImgurBasicModel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -830,8 +850,13 @@
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resources/JPImgurKit-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"JPImgurKit/**",
+					"Vendors/**",
+				);
 				INFOPLIST_FILE = "Resources/JPImgurKit-Info.plist";
 				PRODUCT_NAME = JPImgurKit;
+				USER_HEADER_SEARCH_PATHS = "JPImgurKit/** Vendors/**";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -845,8 +870,13 @@
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resources/JPImgurKit-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"JPImgurKit/**",
+					"Vendors/**",
+				);
 				INFOPLIST_FILE = "Resources/JPImgurKit-Info.plist";
 				PRODUCT_NAME = JPImgurKit;
+				USER_HEADER_SEARCH_PATHS = "JPImgurKit/** Vendors/**";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
