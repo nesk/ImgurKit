@@ -82,4 +82,18 @@
     [self enableAsyncTestingSecondStep:semaphore];
 }
 
+- (void)testAccountLoading
+{
+    dispatch_semaphore_t semaphore = [self enableAsyncTestingFirstStep];
+    
+    [JPImgurAccount accountWithClient:client username:@"me" success:^(JPImgurAccount *account) {
+        [self enableAsyncTestingThirdStep:semaphore];
+    } failure:^(NSError *error) {
+        STFail(@"%@", error.localizedRecoverySuggestion);
+        [self enableAsyncTestingThirdStep:semaphore];
+    }];
+    
+    [self enableAsyncTestingSecondStep:semaphore];
+}
+
 @end

@@ -19,4 +19,8 @@
 @property (nonatomic, readonly) float reputation;
 @property (nonatomic, readonly) NSString *created;
 
++ (void)accountWithClient:(JPImgurClient *)client username:(NSString *)username success:(void (^)(JPImgurAccount *))success failure:(void (^)(NSError *))failure;
+- (void)loadAccountWithUsername:(NSString *)username success:(void (^)(JPImgurAccount *))success failure:(void (^)(NSError *))failure;
+- (void)setAccountPropertiesWithJSONObject:(NSData *)data;
+
 @end
