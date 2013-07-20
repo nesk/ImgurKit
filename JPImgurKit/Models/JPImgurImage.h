@@ -30,4 +30,8 @@
 @property (nonatomic, readonly) NSString *deletehash;
 @property (nonatomic, readonly) NSString *link;
 
++ (void)imageWithClient:(JPImgurClient *)client imageID:(NSString *)imageID success:(void (^)(JPImgurImage *))success failure:(void (^)(NSError *))failure;
+- (void)loadImageWithID:(NSString *)imageID success:(void (^)(JPImgurImage *))success failure:(void (^)(NSError *))failure;
+- (void)setImagePropertiesWithJSONObject:(NSData *)object;
+
 @end

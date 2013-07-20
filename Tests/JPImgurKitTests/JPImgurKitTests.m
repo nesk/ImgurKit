@@ -96,4 +96,20 @@
     [self enableAsyncTestingSecondStep:semaphore];
 }
 
+- (void)testImageLoading
+{
+    dispatch_semaphore_t semaphore = [self enableAsyncTestingFirstStep];
+    
+    NSString *imageID = [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"imageID"];
+    
+    [JPImgurImage imageWithClient:client imageID:imageID success:^(JPImgurImage *account) {
+        [self enableAsyncTestingThirdStep:semaphore];
+    } failure:^(NSError *error) {
+        STFail(@"%@", error.localizedRecoverySuggestion);
+        [self enableAsyncTestingThirdStep:semaphore];
+    }];
+    
+    [self enableAsyncTestingSecondStep:semaphore];
+}
+
 @end

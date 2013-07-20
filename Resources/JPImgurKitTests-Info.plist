@@ -24,5 +24,7 @@
 	<string>your-client-secret</string>
 	<key>accessToken</key>
 	<string>your-access-token</string>
+    <key>imageID</key>
+    <string>szDQB6Q</string>
 </dict>
 </plist>
