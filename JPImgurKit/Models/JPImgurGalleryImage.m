@@ -7,7 +7,57 @@
 //
 
 #import "JPImgurGalleryImage.h"
+#import "JPImgurClient.h"
 
 @implementation JPImgurGalleryImage
+
++ (void)imageWithClient:(JPImgurClient *)client imageID:(NSString *)imageID success:(void (^)(JPImgurGalleryImage *))success failure:(void (^)(NSError *))failure
+{
+    JPImgurGalleryImage *image = [JPImgurGalleryImage new];
+    image.client = client;
+    [image loadImageWithID:imageID success:success failure:failure];
+}
+
+- (void)loadImageWithID:(NSString *)imageID success:(void (^)(JPImgurGalleryImage *))success failure:(void (^)(NSError *))failure
+{
+    [self checkForUndefinedClient];
+    
+    NSString *path = [NSString stringWithFormat:@"gallery/image/%@", imageID];
+    
+    [self.client getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self setImagePropertiesWithJSONObject:responseObject];
+        success(self);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        failure(error);
+    }];
+}
+
+- (void)setImagePropertiesWithJSONObject:(NSData *)object
+{
+    [super setImagePropertiesWithJSONObject:object];
+    
+    NSDictionary *data = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
+    data = (NSDictionary *)[data objectForKey:@"data"];
+    
+    _accountURL = (NSString *)[data objectForKey:@"account_url"];
+    _ups = [[data objectForKey:@"ups"] integerValue];
+    _downs = [[data objectForKey:@"downs"] integerValue];
+    _score = [[data objectForKey:@"score"] integerValue];
+
+    NSString *vote = (NSString *)[data objectForKey:@"vote"];
+    if([vote isEqualToString: @"up"])
+        _vote = 1;
+    else if ([vote isEqualToString:@"down"])
+        _vote = -1;
+    else
+        _vote = 0;
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:
+            @"%@; accountURL: \"%@\"; ups: %ld; downs: %ld; score: %ld; vote: %ld",
+            [super description], _accountURL, (long)_ups, (long)_downs, (long)_score, (long)_vote];
+}
 
 @end

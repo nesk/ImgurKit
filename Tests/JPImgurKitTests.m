@@ -117,6 +117,23 @@
     [self enableAsyncTestingSecondStep:semaphore];
 }
 
+- (void)testGalleryImageLoading
+{
+    dispatch_semaphore_t semaphore = [self enableAsyncTestingFirstStep];
+    
+    NSString *imageID = [imgurIDExamples objectForKey:@"imageID"];
+    
+    [JPImgurGalleryImage imageWithClient:client imageID:imageID success:^(JPImgurGalleryImage *image) {
+        NSLog(@"%@", image);
+        [self enableAsyncTestingThirdStep:semaphore];
+    } failure:^(NSError *error) {
+        STFail(@"%@", error.localizedRecoverySuggestion);
+        [self enableAsyncTestingThirdStep:semaphore];
+    }];
+    
+    [self enableAsyncTestingSecondStep:semaphore];
+}
+
 - (void)testAlbumLoading
 {
     dispatch_semaphore_t semaphore = [self enableAsyncTestingFirstStep];
