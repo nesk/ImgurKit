@@ -44,4 +44,11 @@
     _created = (NSString *)[data objectForKey:@"created"];
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:
+            @"accountID: %lu; url: \"%@\"; bio: \"%@\"; reputation: %.2f; created: %@",
+            _accountID, _url, _bio, _reputation, _created];
+}
+
 @end

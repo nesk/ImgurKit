@@ -87,6 +87,7 @@
     dispatch_semaphore_t semaphore = [self enableAsyncTestingFirstStep];
     
     [JPImgurAccount accountWithClient:client username:@"me" success:^(JPImgurAccount *account) {
+        NSLog(@"%@", account);
         [self enableAsyncTestingThirdStep:semaphore];
     } failure:^(NSError *error) {
         STFail(@"%@", error.localizedRecoverySuggestion);
@@ -102,7 +103,8 @@
     
     NSString *imageID = [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"imageID"];
     
-    [JPImgurImage imageWithClient:client imageID:imageID success:^(JPImgurImage *account) {
+    [JPImgurImage imageWithClient:client imageID:imageID success:^(JPImgurImage *image) {
+        NSLog(@"%@", image);
         [self enableAsyncTestingThirdStep:semaphore];
     } failure:^(NSError *error) {
         STFail(@"%@", error.localizedRecoverySuggestion);

@@ -52,4 +52,11 @@
     _link = (NSString *)[data objectForKey:@"link"];
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:
+            @"imageID: %@; title: \"%@\"; description: \"%@\"; datetime: %@; type: %@; animated: %d; width: %ld; height: %ld; size: %ld; views: %ld; bandwidth: %ld; deletehash: %@; link: %@; ",
+            _imageID, _title, _description, _datetime, _type, _animated, (long)_width, (long)_height, (long)_size, (long)_views, (long)_bandwidth, _deletehash, _link];
+}
+
 @end
