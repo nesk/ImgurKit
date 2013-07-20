@@ -37,7 +37,7 @@
     NSDictionary *data = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
     data = (NSDictionary *)[data objectForKey:@"data"];
 
-    _accountID = (NSUInteger)[data objectForKey:@"id"];
+    _accountID = [[data objectForKey:@"id"] integerValue];
     _url = (NSString *)[data objectForKey:@"url"];
     _bio = (NSString *)[data objectForKey:@"bio"];
     _reputation = [[data objectForKey:@"reputation"] floatValue];

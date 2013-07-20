@@ -42,12 +42,12 @@
     _description = (NSString *)[data objectForKey:@"description"];
     _datetime = [NSDate dateWithTimeIntervalSince1970:[[data objectForKey:@"datetime"] integerValue]];
     _type = (NSString *)[data objectForKey:@"type"];
-    _animated = (BOOL)[data objectForKey:@"animated"];
-    _width = (NSInteger)[data objectForKey:@"width"];
-    _height = (NSInteger)[data objectForKey:@"height"];
-    _size = (NSInteger)[data objectForKey:@"size"];
-    _views = (NSInteger)[data objectForKey:@"views"];
-    _bandwidth = (NSInteger)[data objectForKey:@"bandwidth"];
+    _animated = [[data objectForKey:@"animated"] boolValue];
+    _width = [[data objectForKey:@"width"] integerValue];
+    _height = [[data objectForKey:@"height"] integerValue];
+    _size = [[data objectForKey:@"size"] integerValue];
+    _views = [[data objectForKey:@"views"] integerValue];
+    _bandwidth = [[data objectForKey:@"bandwidth"] integerValue];
     _deletehash = (NSString *)[data objectForKey:@"deletehash"];
     _link = (NSString *)[data objectForKey:@"link"];
 }
@@ -55,7 +55,7 @@
 - (NSString *)description
 {
     return [NSString stringWithFormat:
-            @"imageID: %@; title: \"%@\"; description: \"%@\"; datetime: %@; type: %@; animated: %d; width: %ld; height: %ld; size: %ld; views: %ld; bandwidth: %ld; deletehash: %@; link: %@; ",
+            @"imageID: %@; title: \"%@\"; description: \"%@\"; datetime: %@; type: %@; animated: %d; width: %ld; height: %ld; size: %ld; views: %ld; bandwidth: %ld; deletehash: %@; link: %@",
             _imageID, _title, _description, _datetime, _type, _animated, (long)_width, (long)_height, (long)_size, (long)_views, (long)_bandwidth, _deletehash, _link];
 }
 
