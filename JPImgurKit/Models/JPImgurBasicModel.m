@@ -10,4 +10,10 @@
 
 @implementation JPImgurBasicModel
 
+- (void)checkForUndefinedClient
+{
+    if(![self client])
+        @throw [NSException exceptionWithName:@"ClientUndefined" reason:@"You must specify a client before using requests" userInfo:nil];
+}
+
 @end

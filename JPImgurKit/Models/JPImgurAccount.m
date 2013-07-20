@@ -20,8 +20,7 @@
 
 - (void)loadAccountWithUsername:(NSString *)username success:(void (^)(JPImgurAccount *))success failure:(void (^)(NSError *))failure
 {
-    if(![self client])
-        @throw [NSException exceptionWithName:@"ClientUndefined" reason:@"You must specify a client before using requests" userInfo:nil];
+    [self checkForUndefinedClient];
     
     NSString *path = [NSString stringWithFormat:@"account/%@", username];
     

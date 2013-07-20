@@ -14,4 +14,6 @@
 
 @property (nonatomic) JPImgurClient *client;
 
+- (void)checkForUndefinedClient;
+
 @end
