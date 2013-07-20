@@ -36,15 +36,15 @@
 {
     [super setImagePropertiesWithJSONObject:object];
     
-    NSDictionary *data = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
-    data = (NSDictionary *)[data objectForKey:@"data"];
+    NSDictionary *data = [NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
+    data = [data objectForKey:@"data"];
     
-    _accountURL = (NSString *)[data objectForKey:@"account_url"];
+    _accountURL = [data objectForKey:@"account_url"];
     _ups = [[data objectForKey:@"ups"] integerValue];
     _downs = [[data objectForKey:@"downs"] integerValue];
     _score = [[data objectForKey:@"score"] integerValue];
 
-    NSString *vote = (NSString *)[data objectForKey:@"vote"];
+    NSString *vote = [data objectForKey:@"vote"];
     if([vote isEqualToString: @"up"])
         _vote = 1;
     else if ([vote isEqualToString:@"down"])

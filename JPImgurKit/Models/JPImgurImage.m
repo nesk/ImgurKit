@@ -34,22 +34,22 @@
 
 - (void)setImagePropertiesWithJSONObject:(NSData *)object
 {
-    NSDictionary *data = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
-    data = (NSDictionary *)[data objectForKey:@"data"];
+    NSDictionary *data = [NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
+    data = [data objectForKey:@"data"];
     
-    _imageID = (NSString *)[data objectForKey:@"id"];
-    _title = (NSString *)[data objectForKey:@"title"];
-    _description = (NSString *)[data objectForKey:@"description"];
+    _imageID = [data objectForKey:@"id"];
+    _title = [data objectForKey:@"title"];
+    _description = [data objectForKey:@"description"];
     _datetime = [NSDate dateWithTimeIntervalSince1970:[[data objectForKey:@"datetime"] integerValue]];
-    _type = (NSString *)[data objectForKey:@"type"];
+    _type = [data objectForKey:@"type"];
     _animated = [[data objectForKey:@"animated"] boolValue];
     _width = [[data objectForKey:@"width"] integerValue];
     _height = [[data objectForKey:@"height"] integerValue];
     _size = [[data objectForKey:@"size"] integerValue];
     _views = [[data objectForKey:@"views"] integerValue];
     _bandwidth = [[data objectForKey:@"bandwidth"] integerValue];
-    _deletehash = (NSString *)[data objectForKey:@"deletehash"];
-    _link = (NSString *)[data objectForKey:@"link"];
+    _deletehash = [data objectForKey:@"deletehash"];
+    _link = [data objectForKey:@"link"];
 }
 
 - (NSString *)description

@@ -34,12 +34,12 @@
 
 - (void)setAccountPropertiesWithJSONObject:(NSData *)object
 {
-    NSDictionary *data = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
-    data = (NSDictionary *)[data objectForKey:@"data"];
+    NSDictionary *data = [NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
+    data = [data objectForKey:@"data"];
 
     _accountID = [[data objectForKey:@"id"] integerValue];
-    _url = (NSString *)[data objectForKey:@"url"];
-    _bio = (NSString *)[data objectForKey:@"bio"];
+    _url = [data objectForKey:@"url"];
+    _bio = [data objectForKey:@"bio"];
     _reputation = [[data objectForKey:@"reputation"] floatValue];
     _created = [NSDate dateWithTimeIntervalSince1970:[[data objectForKey:@"created"] integerValue]];
 }

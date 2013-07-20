@@ -34,21 +34,21 @@
 
 - (void)setAlbumPropertiesWithJSONObject:(NSData *)object
 {
-    NSDictionary *data = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
-    data = (NSDictionary *)[data objectForKey:@"data"];
+    NSDictionary *data = [NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
+    data = [data objectForKey:@"data"];
     
-    _albumID = (NSString *)[data objectForKey:@"id"];
-    _title = (NSString *)[data objectForKey:@"title"];
-    _description = (NSString *)[data objectForKey:@"description"];
+    _albumID = [data objectForKey:@"id"];
+    _title = [data objectForKey:@"title"];
+    _description = [data objectForKey:@"description"];
     _datetime = [NSDate dateWithTimeIntervalSince1970:[[data objectForKey:@"datetime"] integerValue]];
-    _cover = (NSString *)[data objectForKey:@"cover"];
-    _accountURL = (NSString *)[data objectForKey:@"account_url"];
-    _privacy = (NSString *)[data objectForKey:@"privacy"];
-    _layout = (NSString *)[data objectForKey:@"layout"];
+    _cover = [data objectForKey:@"cover"];
+    _accountURL = [data objectForKey:@"account_url"];
+    _privacy = [data objectForKey:@"privacy"];
+    _layout = [data objectForKey:@"layout"];
     _views = [[data objectForKey:@"views"] integerValue];
-    _link = (NSString *)[data objectForKey:@"link"];
+    _link = [data objectForKey:@"link"];
     _imagesCount = [[data objectForKey:@"images_count"] integerValue];
-    _images = (NSArray *)[data objectForKey:@"images"];
+    _images = [data objectForKey:@"images"];
 }
 
 - (NSString *)description
