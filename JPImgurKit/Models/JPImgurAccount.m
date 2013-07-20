@@ -41,7 +41,7 @@
     _url = (NSString *)[data objectForKey:@"url"];
     _bio = (NSString *)[data objectForKey:@"bio"];
     _reputation = [[data objectForKey:@"reputation"] floatValue];
-    _created = (NSString *)[data objectForKey:@"created"];
+    _created = [NSDate dateWithTimeIntervalSince1970:[[data objectForKey:@"created"] integerValue]];
 }
 
 - (NSString *)description
