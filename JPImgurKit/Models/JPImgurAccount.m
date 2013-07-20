@@ -35,6 +35,7 @@
 - (void)setAccountPropertiesWithJSONObject:(NSData *)object
 {
     NSDictionary *data = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
+    data = (NSDictionary *)[data objectForKey:@"data"];
 
     _accountID = (NSUInteger)[data objectForKey:@"id"];
     _url = (NSString *)[data objectForKey:@"url"];
