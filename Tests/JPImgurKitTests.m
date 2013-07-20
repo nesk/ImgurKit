@@ -151,4 +151,21 @@
     [self enableAsyncTestingSecondStep:semaphore];
 }
 
+- (void)testGalleryAlbumLoading
+{
+    dispatch_semaphore_t semaphore = [self enableAsyncTestingFirstStep];
+    
+    NSString *albumID = [imgurIDExamples objectForKey:@"albumID"];
+    
+    [JPImgurGalleryAlbum albumWithClient:client albumID:albumID success:^(JPImgurGalleryAlbum *album) {
+        NSLog(@"%@", album);
+        [self enableAsyncTestingThirdStep:semaphore];
+    } failure:^(NSError *error) {
+        STFail(@"%@", error.localizedRecoverySuggestion);
+        [self enableAsyncTestingThirdStep:semaphore];
+    }];
+    
+    [self enableAsyncTestingSecondStep:semaphore];
+}
+
 @end
