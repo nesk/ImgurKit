@@ -18,15 +18,24 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>clientID</key>
-	<string>your-client-id</string>
-	<key>clientSecret</key>
-	<string>your-client-secret</string>
-	<key>accessToken</key>
-	<string>your-access-token</string>
-    <key>imageID</key>
-    <string>szDQB6Q</string>
-    <key>albumID</key>
-    <string>JHLbM</string>
+	<key>imgurClient</key>
+	<dict>
+		<key>id</key>
+		<string>your-client-id</string>
+		<key>secret</key>
+		<string>your-client-secret</string>
+	</dict>
+	<key>imgurUser</key>
+	<dict>
+		<key>accessToken</key>
+		<string>your-access-token</string>
+	</dict>
+	<key>imgurIDExamples</key>
+	<dict>
+		<key>imageID</key>
+		<string>szDQB6Q</string>
+		<key>albumID</key>
+		<string>JHLbM</string>
+	</dict>
 </dict>
 </plist>

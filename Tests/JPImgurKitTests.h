@@ -13,6 +13,7 @@
 @interface JPImgurKitTests : SenTestCase
 {
     JPImgurClient *client;
+    NSDictionary *imgurIDExamples;
 }
 
 - (dispatch_semaphore_t)enableAsyncTestingFirstStep;

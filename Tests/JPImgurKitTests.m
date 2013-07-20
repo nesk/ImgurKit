@@ -19,10 +19,13 @@
     [super setUp];
     
     NSDictionary *infos = [[NSBundle bundleForClass:[self class]] infoDictionary];
+    imgurIDExamples = [infos objectForKey:@"imgurIDExamples"];
     
-    NSString *clientID = [infos objectForKey:@"clientID"];
-    NSString *clientSecret = [infos objectForKey:@"clientSecret"];
-    NSString *accessToken = [infos objectForKey:@"accessToken"];
+    NSDictionary *imgurClient = [infos objectForKey:@"imgurClient"];
+    NSString *clientID = [imgurClient objectForKey:@"id"];
+    NSString *clientSecret = [imgurClient objectForKey:@"Secret"];
+
+    NSString *accessToken = [[infos objectForKey:@"imgurUser"] objectForKey:@"accessToken"];
     
     client = [[JPImgurClient alloc] initWithClientID:clientID secret:clientSecret];
     STAssertNotNil(client, @"Cannot initialize the client object");
@@ -101,7 +104,7 @@
 {
     dispatch_semaphore_t semaphore = [self enableAsyncTestingFirstStep];
     
-    NSString *imageID = [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"imageID"];
+    NSString *imageID = [imgurIDExamples objectForKey:@"imageID"];
     
     [JPImgurImage imageWithClient:client imageID:imageID success:^(JPImgurImage *image) {
         NSLog(@"%@", image);
@@ -118,7 +121,7 @@
 {
     dispatch_semaphore_t semaphore = [self enableAsyncTestingFirstStep];
     
-    NSString *albumID = [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"albumID"];
+    NSString *albumID = [imgurIDExamples objectForKey:@"albumID"];
     
     [JPImgurAlbum albumWithClient:client albumID:albumID success:^(JPImgurAlbum *album) {
         NSLog(@"%@", album);
