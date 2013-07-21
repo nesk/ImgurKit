@@ -6,7 +6,6 @@
 //  Distributed under the MIT license.
 //
 
-#import <Foundation/Foundation.h>
 #import "AFHTTPClient.h"
 
 @class AFOAuth2Client, AFOAuthCredential;
@@ -16,14 +15,23 @@
     AFOAuth2Client *oauthClient;
 }
 
-- (instancetype)initWithClientID:(NSString *)clientID secret:(NSString *)secret;
++ (instancetype)sharedInstance;
++ (instancetype)sharedInstanceWithBaseURL:(NSURL *)url;
++ (instancetype)sharedInstanceWithClientID:(NSString *)clientID secret:(NSString *)secret;
++ (instancetype)sharedInstanceWithBaseURL:(NSURL *)url clientID:(NSString *)clientID secret:(NSString *)secret;
+
+#pragma mark -
+
 - (instancetype)initWithBaseURL:(NSURL *)url clientID:(NSString *)clientID secret:(NSString *)secret;
+
+#pragma mark -
 
 - (void)initializeOAuthWithClientID:(NSString *)clientID secret:(NSString *)secret;
 
+#pragma mark -
+
 - (NSURL *)getAuthorizationURLUsingPIN;
 - (void)authenticateUsingOAuthWithPIN:(NSString *)pin success:(void (^)(AFOAuthCredential *))success failure:(void (^)(NSError *))failure;
-
 - (void)setAuthorizationHeaderWithToken:(NSString *)token;
 
 @end

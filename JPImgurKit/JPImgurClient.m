@@ -15,34 +15,53 @@ NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
 
 @implementation JPImgurClient
 
-- (id)init
++ (instancetype)sharedInstance
 {
-    return [self initWithBaseURL:[NSURL URLWithString:JPBaseURL]];
+    return [self sharedInstanceWithBaseURL:nil clientID:nil secret:nil];
 }
 
-- (instancetype)initWithClientID:(NSString *)clientID secret:(NSString *)secret
++(instancetype)sharedInstanceWithBaseURL:(NSURL *)url
 {
-    self = [self init];
-    
-    [self initializeOAuthWithClientID:clientID secret:secret];
-    
-    return self;
+    return [self sharedInstanceWithBaseURL:url clientID:nil secret:nil];
 }
+
++(instancetype)sharedInstanceWithClientID:(NSString *)clientID secret:(NSString *)secret
+{
+    return [self sharedInstanceWithBaseURL:nil clientID:clientID secret:secret];
+}
+
++ (instancetype)sharedInstanceWithBaseURL:(NSURL *)url clientID:(NSString *)clientID secret:(NSString *)secret
+{
+    static dispatch_once_t onceToken;
+    static JPImgurClient *sharedInstance = nil;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[JPImgurClient alloc] initWithBaseURL:url clientID:clientID secret:secret];
+    });
+    return sharedInstance;
+}
+
+#pragma mark -
 
 - (instancetype)initWithBaseURL:(NSURL *)url clientID:(NSString *)clientID secret:(NSString *)secret
 {
+    url = (url == nil) ? [NSURL URLWithString:JPBaseURL] : url;
     self = [self initWithBaseURL:url];
     
-    [self initializeOAuthWithClientID:clientID secret:secret];
+    if(clientID != nil || secret != nil)
+        [self initializeOAuthWithClientID:clientID secret:secret];
     
     return self;
 }
+
+#pragma mark -
 
 - (void)initializeOAuthWithClientID:(NSString *)clientID secret:(NSString *)secret
 {
     if(!oauthClient)
         oauthClient = [[AFOAuth2Client alloc] initWithBaseURL:[NSURL URLWithString:JPOAuthBaseURL] clientID:clientID secret:secret];
 }
+
+#pragma mark -
 
 - (NSURL *)getAuthorizationURLUsingPIN
 {
