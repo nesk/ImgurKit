@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "JPImgurBasicModel.h"
 
-@interface JPImgurAlbum : JPImgurBasicModel
+@interface JPImgurAlbum : NSObject
 
 @property (nonatomic, readonly) NSString* albumID;
 
