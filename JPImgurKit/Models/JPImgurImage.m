@@ -11,20 +11,16 @@
 
 @implementation JPImgurImage
 
-+ (void)imageWithClient:(JPImgurClient *)client imageID:(NSString *)imageID success:(void (^)(JPImgurImage *))success failure:(void (^)(NSError *))failure
++ (void)imageWithID:(NSString *)imageID success:(void (^)(JPImgurImage *))success failure:(void (^)(NSError *))failure
 {
-    JPImgurImage *image = [JPImgurImage new];
-    image.client = client;
-    [image loadImageWithID:imageID success:success failure:failure];
+    [[JPImgurImage alloc] loadImageWithID:imageID success:success failure:failure];
 }
 
 - (void)loadImageWithID:(NSString *)imageID success:(void (^)(JPImgurImage *))success failure:(void (^)(NSError *))failure
 {
-    [self checkForUndefinedClient];
-    
     NSString *path = [NSString stringWithFormat:@"image/%@", imageID];
     
-    [self.client getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[JPImgurClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self setImagePropertiesWithJSONObject:responseObject];
         success(self);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

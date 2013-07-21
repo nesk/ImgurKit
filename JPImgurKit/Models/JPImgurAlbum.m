@@ -11,20 +11,16 @@
 
 @implementation JPImgurAlbum
 
-+ (void)albumWithClient:(JPImgurClient *)client albumID:(NSString *)albumID success:(void (^)(JPImgurAlbum *))success failure:(void (^)(NSError *))failure
++ (void)albumWithID:(NSString *)albumID success:(void (^)(JPImgurAlbum *))success failure:(void (^)(NSError *))failure
 {
-    JPImgurAlbum *album = [JPImgurAlbum new];
-    album.client = client;
-    [album loadAlbumWithID:albumID success:success failure:failure];
+    [[JPImgurAlbum alloc] loadAlbumWithID:albumID success:success failure:failure];
 }
 
 - (void)loadAlbumWithID:(NSString *)albumID success:(void (^)(JPImgurAlbum *))success failure:(void (^)(NSError *))failure
 {
-    [self checkForUndefinedClient];
-    
     NSString *path = [NSString stringWithFormat:@"album/%@", albumID];
     
-    [self.client getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[JPImgurClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self setAlbumPropertiesWithJSONObject:responseObject];
         success(self);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

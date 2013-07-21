@@ -11,20 +11,16 @@
 
 @implementation JPImgurAccount
 
-+ (void)accountWithClient:(JPImgurClient *)client username:(NSString *)username success:(void (^)(JPImgurAccount *))success failure:(void (^)(NSError *))failure
++ (void)accountWithUsername:(NSString *)username success:(void (^)(JPImgurAccount *))success failure:(void (^)(NSError *))failure
 {
-    JPImgurAccount *account = [JPImgurAccount new];
-    account.client = client;
-    [account loadAccountWithUsername:username success:success failure:failure];
+    [[JPImgurAccount alloc] loadAccountWithUsername:username success:success failure:failure];
 }
 
 - (void)loadAccountWithUsername:(NSString *)username success:(void (^)(JPImgurAccount *))success failure:(void (^)(NSError *))failure
 {
-    [self checkForUndefinedClient];
-    
     NSString *path = [NSString stringWithFormat:@"account/%@", username];
     
-    [self.client getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[JPImgurClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self setAccountPropertiesWithJSONObject:responseObject];
         success(self);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
