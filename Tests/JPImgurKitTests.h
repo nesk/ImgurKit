@@ -12,7 +12,6 @@
 
 @interface JPImgurKitTests : SenTestCase
 {
-    JPImgurClient *client;
     NSDictionary *imgurIDExamples;
 }
 

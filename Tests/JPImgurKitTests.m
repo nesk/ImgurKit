@@ -27,11 +27,10 @@
 
     NSString *accessToken = [[infos objectForKey:@"imgurUser"] objectForKey:@"accessToken"];
     
-    client = [[JPImgurClient alloc] initWithClientID:clientID secret:clientSecret];
-    STAssertNotNil(client, @"Cannot initialize the client object");
-    
-    [client setAuthorizationHeaderWithToken:accessToken];
+    [[JPImgurClient sharedInstanceWithClientID:clientID secret:clientSecret] setAuthorizationHeaderWithToken:accessToken];
 }
+
+#pragma mark -
 
 - (dispatch_semaphore_t)enableAsyncTestingFirstStep
 {
@@ -49,9 +48,11 @@
     dispatch_semaphore_signal(semaphore);
 }
 
+#pragma mark -
+
 - (void)testAuthorizationURLWithPIN
 {
-    NSURL *url = [client getAuthorizationURLUsingPIN];
+    NSURL *url = [[JPImgurClient sharedInstance] getAuthorizationURLUsingPIN];
     AFHTTPRequestOperation *request = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:url]];
     
     [request start];
@@ -66,6 +67,8 @@
 - (void)testAuthenticateUsingOAuthWithPIN
 {
     dispatch_semaphore_t semaphore = [self enableAsyncTestingFirstStep];
+    
+    JPImgurClient *client = [JPImgurClient sharedInstance];
     
     [[NSWorkspace sharedWorkspace] openURL:[client getAuthorizationURLUsingPIN]];
     
@@ -85,11 +88,13 @@
     [self enableAsyncTestingSecondStep:semaphore];
 }
 
+#pragma mark -
+
 - (void)testAccountLoading
 {
     dispatch_semaphore_t semaphore = [self enableAsyncTestingFirstStep];
     
-    [JPImgurAccount accountWithClient:client username:@"me" success:^(JPImgurAccount *account) {
+    [JPImgurAccount accountWithUsername:@"me" success:^(JPImgurAccount *account) {
         NSLog(@"%@", account);
         [self enableAsyncTestingThirdStep:semaphore];
     } failure:^(NSError *error) {
@@ -100,13 +105,15 @@
     [self enableAsyncTestingSecondStep:semaphore];
 }
 
+#pragma mark -
+
 - (void)testImageLoading
 {
     dispatch_semaphore_t semaphore = [self enableAsyncTestingFirstStep];
     
     NSString *imageID = [imgurIDExamples objectForKey:@"imageID"];
     
-    [JPImgurImage imageWithClient:client imageID:imageID success:^(JPImgurImage *image) {
+    [JPImgurImage imageWithID:imageID success:^(JPImgurImage *image) {
         NSLog(@"%@", image);
         [self enableAsyncTestingThirdStep:semaphore];
     } failure:^(NSError *error) {
@@ -123,7 +130,7 @@
     
     NSString *imageID = [imgurIDExamples objectForKey:@"imageID"];
     
-    [JPImgurGalleryImage imageWithClient:client imageID:imageID success:^(JPImgurGalleryImage *image) {
+    [JPImgurGalleryImage imageWithID:imageID success:^(JPImgurGalleryImage *image) {
         NSLog(@"%@", image);
         [self enableAsyncTestingThirdStep:semaphore];
     } failure:^(NSError *error) {
@@ -134,13 +141,15 @@
     [self enableAsyncTestingSecondStep:semaphore];
 }
 
+#pragma mark -
+
 - (void)testAlbumLoading
 {
     dispatch_semaphore_t semaphore = [self enableAsyncTestingFirstStep];
     
     NSString *albumID = [imgurIDExamples objectForKey:@"albumID"];
     
-    [JPImgurAlbum albumWithClient:client albumID:albumID success:^(JPImgurAlbum *album) {
+    [JPImgurAlbum albumWithID:albumID success:^(JPImgurAlbum *album) {
         NSLog(@"%@", album);
         [self enableAsyncTestingThirdStep:semaphore];
     } failure:^(NSError *error) {
@@ -157,7 +166,7 @@
     
     NSString *albumID = [imgurIDExamples objectForKey:@"albumID"];
     
-    [JPImgurGalleryAlbum albumWithClient:client albumID:albumID success:^(JPImgurGalleryAlbum *album) {
+    [JPImgurGalleryAlbum albumWithID:albumID success:^(JPImgurGalleryAlbum *album) {
         NSLog(@"%@", album);
         [self enableAsyncTestingThirdStep:semaphore];
     } failure:^(NSError *error) {
