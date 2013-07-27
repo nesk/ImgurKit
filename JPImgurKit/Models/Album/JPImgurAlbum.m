@@ -30,10 +30,11 @@
 
 - (void)setAlbumPropertiesWithJSONObject:(NSData *)object
 {
+    [super setAlbumPropertiesWithJSONObject:object];
+    
     NSDictionary *data = [NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
     data = [data objectForKey:@"data"];
-    
-    _albumID = [data objectForKey:@"id"];
+
     _title = [data objectForKey:@"title"];
     _description = [data objectForKey:@"description"];
     _datetime = [NSDate dateWithTimeIntervalSince1970:[[data objectForKey:@"datetime"] integerValue]];
@@ -50,8 +51,8 @@
 - (NSString *)description
 {
     return [NSString stringWithFormat:
-            @"albumID: %@; title: \"%@\"; description: \"%@\"; datetime: %@; cover: %@; accountURL: \"%@\"; privacy: %@; layout: %@; views: %ld; link: %@; imagesCount: %ld",
-            _albumID, _title, _description, _datetime, _cover, _accountURL, _privacy, _layout, (long)_views, _link, (long)_imagesCount];
+            @"%@; title: \"%@\"; description: \"%@\"; datetime: %@; cover: %@; accountURL: \"%@\"; privacy: %@; layout: %@; views: %ld; link: %@; imagesCount: %ld",
+            [super description], _title, _description, _datetime, _cover, _accountURL, _privacy, _layout, (long)_views, _link, (long)_imagesCount];
 }
 
 @end

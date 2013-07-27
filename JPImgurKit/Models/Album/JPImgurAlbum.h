@@ -6,11 +6,9 @@
 //  Distributed under the MIT license.
 //
 
-#import <Foundation/Foundation.h>
+#import "JPImgurBasicAlbum.h"
 
-@interface JPImgurAlbum : NSObject
-
-@property (nonatomic, readonly) NSString* albumID;
+@interface JPImgurAlbum : JPImgurBasicAlbum
 
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSString *description;

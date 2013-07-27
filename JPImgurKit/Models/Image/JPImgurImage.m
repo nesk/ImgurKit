@@ -30,10 +30,11 @@
 
 - (void)setImagePropertiesWithJSONObject:(NSData *)object
 {
+    [super setImagePropertiesWithJSONObject:object];
+    
     NSDictionary *data = [NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
     data = [data objectForKey:@"data"];
     
-    _imageID = [data objectForKey:@"id"];
     _title = [data objectForKey:@"title"];
     _description = [data objectForKey:@"description"];
     _datetime = [NSDate dateWithTimeIntervalSince1970:[[data objectForKey:@"datetime"] integerValue]];
@@ -44,15 +45,13 @@
     _size = [[data objectForKey:@"size"] integerValue];
     _views = [[data objectForKey:@"views"] integerValue];
     _bandwidth = [[data objectForKey:@"bandwidth"] integerValue];
-    _deletehash = [data objectForKey:@"deletehash"];
-    _link = [data objectForKey:@"link"];
 }
 
 - (NSString *)description
 {
     return [NSString stringWithFormat:
-            @"imageID: %@; title: \"%@\"; description: \"%@\"; datetime: %@; type: %@; animated: %d; width: %ld; height: %ld; size: %ld; views: %ld; bandwidth: %ld; deletehash: %@; link: %@",
-            _imageID, _title, _description, _datetime, _type, _animated, (long)_width, (long)_height, (long)_size, (long)_views, (long)_bandwidth, _deletehash, _link];
+            @"%@; title: \"%@\"; description: \"%@\"; datetime: %@; type: %@; animated: %d; width: %ld; height: %ld; size: %ld; views: %ld; bandwidth: %ld",
+            [super description], _title, _description, _datetime, _type, _animated, (long)_width, (long)_height, (long)_size, (long)_views, (long)_bandwidth];
 }
 
 @end

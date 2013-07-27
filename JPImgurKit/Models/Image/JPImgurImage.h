@@ -6,11 +6,9 @@
 //  Distributed under the MIT license.
 //
 
-#import <Foundation/Foundation.h>
+#import "JPImgurBasicImage.h"
 
-@interface JPImgurImage : NSObject
-
-@property (nonatomic, readonly) NSString *imageID;
+@interface JPImgurImage : JPImgurBasicImage
 
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSString *description;
@@ -25,9 +23,6 @@
 
 @property (nonatomic, readonly) NSInteger views;
 @property (nonatomic, readonly) NSInteger bandwidth;
-
-@property (nonatomic, readonly) NSString *deletehash;
-@property (nonatomic, readonly) NSString *link;
 
 + (void)imageWithID:(NSString *)imageID success:(void (^)(JPImgurImage *))success failure:(void (^)(NSError *))failure;
 - (void)loadImageWithID:(NSString *)imageID success:(void (^)(JPImgurImage *))success failure:(void (^)(NSError *))failure;
