@@ -20,11 +20,6 @@ static NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
     return [self sharedInstanceWithBaseURL:nil clientID:nil secret:nil];
 }
 
-+(instancetype)sharedInstanceWithBaseURL:(NSURL *)url
-{
-    return [self sharedInstanceWithBaseURL:url clientID:nil secret:nil];
-}
-
 +(instancetype)sharedInstanceWithClientID:(NSString *)clientID secret:(NSString *)secret
 {
     return [self sharedInstanceWithBaseURL:nil clientID:clientID secret:secret];

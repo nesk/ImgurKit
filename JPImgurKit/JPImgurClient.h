@@ -16,7 +16,6 @@
 }
 
 + (instancetype)sharedInstance;
-+ (instancetype)sharedInstanceWithBaseURL:(NSURL *)url;
 + (instancetype)sharedInstanceWithClientID:(NSString *)clientID secret:(NSString *)secret;
 + (instancetype)sharedInstanceWithBaseURL:(NSURL *)url clientID:(NSString *)clientID secret:(NSString *)secret;
 
