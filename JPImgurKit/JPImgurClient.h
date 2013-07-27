@@ -11,9 +11,10 @@
 @class AFOAuth2Client, AFOAuthCredential;
 
 @interface JPImgurClient : AFHTTPClient
-{
-    AFOAuth2Client *oauthClient;
-}
+
+@property (readonly, nonatomic) AFOAuth2Client *oauthClient;
+@property (readonly, nonatomic) NSString *clientID;
+@property (readonly, nonatomic) NSString *secret;
 
 + (instancetype)sharedInstance;
 + (instancetype)sharedInstanceWithClientID:(NSString *)clientID secret:(NSString *)secret;
@@ -22,10 +23,6 @@
 #pragma mark -
 
 - (instancetype)initWithBaseURL:(NSURL *)url clientID:(NSString *)clientID secret:(NSString *)secret;
-
-#pragma mark -
-
-- (void)initializeOAuthWithClientID:(NSString *)clientID secret:(NSString *)secret;
 
 #pragma mark -
 

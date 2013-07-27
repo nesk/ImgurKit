@@ -42,28 +42,29 @@ static NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
     url = (url == nil) ? [NSURL URLWithString:JPBaseURL] : url;
     self = [self initWithBaseURL:url];
     
-    if(clientID != nil || secret != nil)
-        [self initializeOAuthWithClientID:clientID secret:secret];
+    _clientID = clientID;
+    _secret = secret;
     
     return self;
 }
 
 #pragma mark -
 
-- (void)initializeOAuthWithClientID:(NSString *)clientID secret:(NSString *)secret
+@synthesize oauthClient=_oauthClient;
+
+- (AFOAuth2Client *)oauthClient
 {
-    if(!oauthClient)
-        oauthClient = [[AFOAuth2Client alloc] initWithBaseURL:[NSURL URLWithString:JPOAuthBaseURL] clientID:clientID secret:secret];
+    if(!_oauthClient)
+        _oauthClient = [[AFOAuth2Client alloc] initWithBaseURL:[NSURL URLWithString:JPOAuthBaseURL] clientID:_clientID secret:_secret];
+    
+    return _oauthClient;
 }
 
 #pragma mark -
 
 - (NSURL *)getAuthorizationURLUsingPIN
 {
-    if(!oauthClient)
-        @throw [NSException exceptionWithName:@"MissingResourceException" reason:@"The OAuth Client must be initialized to use this method" userInfo:nil];
-    
-    NSString *path = [NSString stringWithFormat:@"authorize?response_type=pin&client_id=%@", oauthClient.clientID];
+    NSString *path = [NSString stringWithFormat:@"authorize?response_type=pin&client_id=%@", self.oauthClient.clientID];
     return [NSURL URLWithString:path relativeToURL:[NSURL URLWithString:JPOAuthBaseURL]];
 }
 
@@ -74,7 +75,7 @@ static NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
     [mutableParameters setValue:pin forKey:@"pin"];
     NSDictionary *parameters = [NSDictionary dictionaryWithDictionary:mutableParameters];
     
-    [oauthClient authenticateUsingOAuthWithPath:@"token" parameters:parameters success:^(AFOAuthCredential *credential) {
+    [self.oauthClient authenticateUsingOAuthWithPath:@"token" parameters:parameters success:^(AFOAuthCredential *credential) {
         // Here we specify the authorization header for the API client and call afterwards the success block
         [self setAuthorizationHeaderWithToken:[credential accessToken]];
         success(credential);
