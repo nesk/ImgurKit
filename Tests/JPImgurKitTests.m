@@ -141,6 +141,23 @@
     [self enableAsyncTestingSecondStep:semaphore];
 }
 
+- (void)testImageUploadingWithFile
+{
+    dispatch_semaphore_t semaphore = [self enableAsyncTestingFirstStep];
+    
+    NSURL *imageURL = [NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"image-example" ofType:@"png"]];
+
+    [JPImgurImage uploadImageWithFileURL:imageURL success:^(JPImgurBasicImage *image) {
+        NSLog(@"%@", image);
+        [self enableAsyncTestingThirdStep:semaphore];
+    } failure:^(NSError *error) {
+        STFail(@"%@", error.localizedRecoverySuggestion);
+        [self enableAsyncTestingThirdStep:semaphore];
+    }];
+    
+    [self enableAsyncTestingSecondStep:semaphore];
+}
+
 #pragma mark - Album tests
 
 - (void)testAlbumLoading

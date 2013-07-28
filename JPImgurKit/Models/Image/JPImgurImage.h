@@ -24,7 +24,12 @@
 @property (nonatomic, readonly) NSInteger views;
 @property (nonatomic, readonly) NSInteger bandwidth;
 
-#pragma mark -
+#pragma mark - Uploading an image
+
++ (void)uploadImageWithFileURL:(NSURL *)fileURL success:(void (^)(JPImgurBasicImage *))success failure:(void (^)(NSError *))failure;
++ (void)uploadImageWithFileURL:(NSURL *)fileURL title:(NSString *)title description:(NSString *)description andLinkToAlbumWithID:(NSString *)albumID success:(void (^)(JPImgurBasicImage *))success failure:(void (^)(NSError *))failure;
+
+#pragma mark - Loading the image properties
 
 + (void)imageWithID:(NSString *)imageID success:(void (^)(JPImgurImage *))success failure:(void (^)(NSError *))failure;
 - (void)loadImageWithID:(NSString *)imageID success:(void (^)(JPImgurImage *))success failure:(void (^)(NSError *))failure;

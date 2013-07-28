@@ -8,8 +8,60 @@
 
 #import "JPImgurImage.h"
 #import "JPImgurClient.h"
+#import "AFHTTPRequestOperation.h"
 
 @implementation JPImgurImage
+
++ (void)uploadImageWithFileURL:(NSURL *)fileURL success:(void (^)(JPImgurBasicImage *))success failure:(void (^)(NSError *))failure
+{
+    [self uploadImageWithFileURL:fileURL title:nil description:nil andLinkToAlbumWithID:nil success:success failure:failure];
+}
+
++ (void)uploadImageWithFileURL:(NSURL *)fileURL title:(NSString *)title description:(NSString *)description andLinkToAlbumWithID:(NSString *)albumID success:(void (^)(JPImgurBasicImage *))success failure:(void (^)(NSError *))failure
+{
+    JPImgurClient *client = [JPImgurClient sharedInstance];
+    NSMutableDictionary *parameters = [NSMutableDictionary new];
+    
+    // Adding used parameters:
+    
+    if(title != nil)
+        [parameters setObject:title forKey:@"title"];
+    if(description != nil)
+        [parameters setObject:description forKey:@"description"];
+    if(albumID != nil)
+        [parameters setObject:albumID forKey:@"album"];
+    
+    // Creating the request:
+    
+    void (^appendFile)(id<AFMultipartFormData> formData) = ^(id<AFMultipartFormData> formData) {
+        NSError *error;
+        [formData appendPartWithFileURL:fileURL name:@"image" error:&error];
+        
+        if(error)
+            @throw [NSException exceptionWithName:@"FileAppendingError"
+                                           reason:error.localizedDescription
+                                         userInfo:[NSDictionary dictionaryWithObject:error forKey:@"error"]];
+    };
+    
+    AFHTTPRequestOperation *request = [[AFHTTPRequestOperation alloc] initWithRequest:[client multipartFormRequestWithMethod:@"POST"
+                                                                                                                        path:@"image"
+                                                                                                                  parameters:parameters
+                                                                                                   constructingBodyWithBlock:appendFile]];
+    
+    // Setting the callbacks:
+    
+    [request setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        JPImgurBasicImage *image = [JPImgurBasicImage new];
+        [image setImagePropertiesWithJSONObject:responseObject];
+        success(image);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        failure(error);
+    }];
+    
+    [client enqueueHTTPRequestOperation:request];
+}
+
+#pragma mark - Loading the image properties
 
 + (void)imageWithID:(NSString *)imageID success:(void (^)(JPImgurImage *))success failure:(void (^)(NSError *))failure
 {
@@ -47,7 +99,7 @@
     _bandwidth = [[data objectForKey:@"bandwidth"] integerValue];
 }
 
-#pragma mark -
+#pragma mark - Visualize the image properties
 
 - (NSString *)description
 {

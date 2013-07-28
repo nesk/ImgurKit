@@ -144,6 +144,8 @@
 		1EDDF2A217A4612B0076314A /* JPImgurBasicImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDDF29D17A4612B0076314A /* JPImgurBasicImage.m */; };
 		1EDDF2A317A461330076314A /* JPImgurBasicAlbum.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EDDF29517A461220076314A /* JPImgurBasicAlbum.h */; };
 		1EDDF2A417A461330076314A /* JPImgurBasicImage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EDDF29C17A4612B0076314A /* JPImgurBasicImage.h */; };
+		1EDDF2A617A5606C0076314A /* image-example.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDDF2A517A5606C0076314A /* image-example.png */; };
+		1EDDF2A717A5606C0076314A /* image-example.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDDF2A517A5606C0076314A /* image-example.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -237,6 +239,7 @@
 		1EDDF29617A461220076314A /* JPImgurBasicAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImgurBasicAlbum.m; sourceTree = "<group>"; };
 		1EDDF29C17A4612B0076314A /* JPImgurBasicImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImgurBasicImage.h; sourceTree = "<group>"; };
 		1EDDF29D17A4612B0076314A /* JPImgurBasicImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImgurBasicImage.m; sourceTree = "<group>"; };
+		1EDDF2A517A5606C0076314A /* image-example.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image-example.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -408,6 +411,7 @@
 				1EB963D517784DD2005AA1D5 /* JPImgurKit-Info.plist */,
 				1E0392EB178C8A3E00C13A3B /* JPImgurKitTests-Info.plist */,
 				1EB9657517785743005AA1D5 /* JPImgurKit-Prefix.pch */,
+				1EDDF2A517A5606C0076314A /* image-example.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -596,6 +600,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EDDF2A617A5606C0076314A /* image-example.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,6 +608,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EDDF2A717A5606C0076314A /* image-example.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
