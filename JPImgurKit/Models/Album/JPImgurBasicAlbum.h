@@ -13,6 +13,8 @@
 @property (nonatomic, readonly) NSString *albumID;
 @property (nonatomic, readonly) NSString *deletehash;
 
+#pragma mark -
+
 - (void)setAlbumPropertiesWithJSONObject:(NSData *)object;
 
 @end

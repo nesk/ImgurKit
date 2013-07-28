@@ -19,6 +19,8 @@
     _deletehash = [data objectForKey:@"deletehash"];
 }
 
+#pragma mark -
+
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"albumID: %@; deletehash: %@", _albumID, _deletehash];

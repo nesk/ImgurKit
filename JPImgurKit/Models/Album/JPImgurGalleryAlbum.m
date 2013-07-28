@@ -48,6 +48,8 @@
         _vote = 0;
 }
 
+#pragma mark -
+
 - (NSString *)description
 {
     return [NSString stringWithFormat:

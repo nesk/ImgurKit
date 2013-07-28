@@ -35,7 +35,7 @@ static NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
     return sharedInstance;
 }
 
-#pragma mark -
+#pragma mark - Initialization
 
 - (instancetype)initWithBaseURL:(NSURL *)url clientID:(NSString *)clientID secret:(NSString *)secret
 {
@@ -48,7 +48,7 @@ static NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
     return self;
 }
 
-#pragma mark -
+#pragma mark - Getters/Setters
 
 @synthesize oauthClient=_oauthClient;
 
@@ -60,7 +60,7 @@ static NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
     return _oauthClient;
 }
 
-#pragma mark -
+#pragma mark - Authentication
 
 - (NSURL *)getAuthorizationURLUsingPIN
 {

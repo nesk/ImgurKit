@@ -19,7 +19,7 @@
     [super setUp];
     
     NSDictionary *infos = [[NSBundle bundleForClass:[self class]] infoDictionary];
-    imgurIDExamples = [infos objectForKey:@"imgurIDExamples"];
+    imgurVariousValues = [infos objectForKey:@"imgurVariousValues"];
     
     NSDictionary *imgurClient = [infos objectForKey:@"imgurClient"];
     NSString *clientID = [imgurClient objectForKey:@"id"];
@@ -30,7 +30,7 @@
     [[JPImgurClient sharedInstanceWithClientID:clientID secret:clientSecret] setAuthorizationHeaderWithToken:accessToken];
 }
 
-#pragma mark -
+#pragma mark - Enable asynchronous testing
 
 - (dispatch_semaphore_t)enableAsyncTestingFirstStep
 {
@@ -48,7 +48,7 @@
     dispatch_semaphore_signal(semaphore);
 }
 
-#pragma mark -
+#pragma mark - Authentication
 
 - (void)testAuthorizationURLWithPIN
 {
@@ -88,7 +88,7 @@
     [self enableAsyncTestingSecondStep:semaphore];
 }
 
-#pragma mark -
+#pragma mark - Account tests
 
 - (void)testAccountLoading
 {
@@ -105,13 +105,13 @@
     [self enableAsyncTestingSecondStep:semaphore];
 }
 
-#pragma mark -
+#pragma mark - Image tests
 
 - (void)testImageLoading
 {
     dispatch_semaphore_t semaphore = [self enableAsyncTestingFirstStep];
     
-    NSString *imageID = [imgurIDExamples objectForKey:@"imageID"];
+    NSString *imageID = [imgurVariousValues objectForKey:@"imageID"];
     
     [JPImgurImage imageWithID:imageID success:^(JPImgurImage *image) {
         NSLog(@"%@", image);
@@ -128,7 +128,7 @@
 {
     dispatch_semaphore_t semaphore = [self enableAsyncTestingFirstStep];
     
-    NSString *imageID = [imgurIDExamples objectForKey:@"imageID"];
+    NSString *imageID = [imgurVariousValues objectForKey:@"imageID"];
     
     [JPImgurGalleryImage imageWithID:imageID success:^(JPImgurGalleryImage *image) {
         NSLog(@"%@", image);
@@ -141,13 +141,13 @@
     [self enableAsyncTestingSecondStep:semaphore];
 }
 
-#pragma mark -
+#pragma mark - Album tests
 
 - (void)testAlbumLoading
 {
     dispatch_semaphore_t semaphore = [self enableAsyncTestingFirstStep];
     
-    NSString *albumID = [imgurIDExamples objectForKey:@"albumID"];
+    NSString *albumID = [imgurVariousValues objectForKey:@"albumID"];
     
     [JPImgurAlbum albumWithID:albumID success:^(JPImgurAlbum *album) {
         NSLog(@"%@", album);
@@ -164,7 +164,7 @@
 {
     dispatch_semaphore_t semaphore = [self enableAsyncTestingFirstStep];
     
-    NSString *albumID = [imgurIDExamples objectForKey:@"albumID"];
+    NSString *albumID = [imgurVariousValues objectForKey:@"albumID"];
     
     [JPImgurGalleryAlbum albumWithID:albumID success:^(JPImgurGalleryAlbum *album) {
         NSLog(@"%@", album);

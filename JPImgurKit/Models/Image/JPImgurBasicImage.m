@@ -20,6 +20,8 @@
     _link = [data objectForKey:@"link"];
 }
 
+#pragma mark -
+
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"imageID: %@; deletehash: %@; link: %@", _imageID, _deletehash, _link];

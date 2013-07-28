@@ -26,6 +26,8 @@
 @property (nonatomic, readonly) NSInteger imagesCount; // Optional: can be set to NSNotFound
 @property (nonatomic) NSArray *images; // Optional: can be set to nil
 
+#pragma mark -
+
 + (void)albumWithID:(NSString *)albumID success:(void (^)(JPImgurAlbum *))success failure:(void (^)(NSError *))failure;
 - (void)loadAlbumWithID:(NSString *)albumID success:(void (^)(JPImgurAlbum *))success failure:(void (^)(NSError *))failure;
 - (void)setAlbumPropertiesWithJSONObject:(NSData *)object;

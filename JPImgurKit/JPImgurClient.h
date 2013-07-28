@@ -16,15 +16,17 @@
 @property (readonly, nonatomic) NSString *clientID;
 @property (readonly, nonatomic) NSString *secret;
 
+#pragma mark - Singleton methods
+
 + (instancetype)sharedInstance;
 + (instancetype)sharedInstanceWithClientID:(NSString *)clientID secret:(NSString *)secret;
 + (instancetype)sharedInstanceWithBaseURL:(NSURL *)url clientID:(NSString *)clientID secret:(NSString *)secret;
 
-#pragma mark -
+#pragma mark - Initialization
 
 - (instancetype)initWithBaseURL:(NSURL *)url clientID:(NSString *)clientID secret:(NSString *)secret;
 
-#pragma mark -
+#pragma mark - Authentication
 
 - (NSURL *)getAuthorizationURLUsingPIN;
 - (void)authenticateUsingOAuthWithPIN:(NSString *)pin success:(void (^)(AFOAuthCredential *))success failure:(void (^)(NSError *))failure;

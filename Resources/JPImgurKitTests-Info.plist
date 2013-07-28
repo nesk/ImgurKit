@@ -30,7 +30,7 @@
 		<key>accessToken</key>
 		<string>your-access-token</string>
 	</dict>
-	<key>imgurIDExamples</key>
+	<key>imgurVariousValues</key>
 	<dict>
 		<key>imageID</key>
 		<string>szDQB6Q</string>

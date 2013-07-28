@@ -47,6 +47,8 @@
     _bandwidth = [[data objectForKey:@"bandwidth"] integerValue];
 }
 
+#pragma mark -
+
 - (NSString *)description
 {
     return [NSString stringWithFormat:

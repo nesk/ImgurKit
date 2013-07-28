@@ -48,6 +48,8 @@
     _images = [data objectForKey:@"images"];
 }
 
+#pragma mark -
+
 - (NSString *)description
 {
     return [NSString stringWithFormat:

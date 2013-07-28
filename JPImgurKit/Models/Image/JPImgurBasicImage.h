@@ -15,6 +15,8 @@
 @property (nonatomic, readonly) NSString *deletehash;
 @property (nonatomic, readonly) NSString *link;
 
+#pragma mark -
+
 - (void)setImagePropertiesWithJSONObject:(NSData *)object;
 
 @end

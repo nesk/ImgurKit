@@ -18,6 +18,8 @@
 
 @property (nonatomic) NSInteger vote; // -1 = downvote, +1 = upvote, 0 = user hasn't vote yet
 
+#pragma mark -
+
 + (void)imageWithID:(NSString *)imageID success:(void (^)(JPImgurGalleryImage *))success failure:(void (^)(NSError *))failure;
 - (void)loadImageWithID:(NSString *)imageID success:(void (^)(JPImgurGalleryImage *))success failure:(void (^)(NSError *))failure;
 - (void)setImagePropertiesWithJSONObject:(NSData *)object;

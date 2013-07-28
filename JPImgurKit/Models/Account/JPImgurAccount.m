@@ -40,6 +40,8 @@
     _created = [NSDate dateWithTimeIntervalSince1970:[[data objectForKey:@"created"] integerValue]];
 }
 
+#pragma mark -
+
 - (NSString *)description
 {
     return [NSString stringWithFormat:
