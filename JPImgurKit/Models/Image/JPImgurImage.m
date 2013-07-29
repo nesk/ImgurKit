@@ -135,7 +135,7 @@
     _bandwidth = [[data objectForKey:@"bandwidth"] integerValue];
 }
 
-#pragma mark - Visualize the image properties
+#pragma mark - Visualizing the image properties
 
 - (NSString *)description
 {
