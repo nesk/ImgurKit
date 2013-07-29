@@ -22,6 +22,8 @@
     JPImgurClient *client = [JPImgurClient sharedInstance];
     NSMutableDictionary *parameters = [NSMutableDictionary new];
     
+    [parameters setObject:@"file" forKey:@"type"];
+    
     // Adding used parameters:
     
     if(title != nil)
@@ -59,6 +61,40 @@
     }];
     
     [client enqueueHTTPRequestOperation:request];
+}
+
++ (void)uploadImageWithURL:(NSURL *)url success:(void (^)(JPImgurBasicImage *))success failure:(void (^)(NSError *))failure
+{
+    [self uploadImageWithURL:url title:nil description:nil filename:nil andLinkToAlbumWithID:nil success:success failure:failure];
+}
+
++ (void)uploadImageWithURL:(NSURL *)url title:(NSString *)title description:(NSString *)description filename:(NSString *)filename andLinkToAlbumWithID:(NSString *)albumID success:(void (^)(JPImgurBasicImage *))success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary new];
+    
+    [parameters setObject:[url absoluteString] forKey:@"image"];
+    [parameters setObject:@"URL" forKey:@"type"];
+    
+    // Adding used parameters:
+    
+    if(title != nil)
+        [parameters setObject:title forKey:@"title"];
+    if(description != nil)
+        [parameters setObject:description forKey:@"description"];
+    if(filename != nil)
+        [parameters setObject:filename forKey:@"filename"];
+    if(albumID != nil)
+        [parameters setObject:albumID forKey:@"album"];
+    
+    // Creating the request:
+    
+    [[JPImgurClient sharedInstance] postPath:@"image" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        JPImgurBasicImage *image = [JPImgurBasicImage new];
+        [image setImagePropertiesWithJSONObject:responseObject];
+        success(image);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        failure(error);
+    }];
 }
 
 #pragma mark - Loading the image properties

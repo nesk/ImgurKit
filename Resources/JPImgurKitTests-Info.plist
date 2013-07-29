@@ -36,6 +36,8 @@
 		<string>szDQB6Q</string>
 		<key>albumID</key>
 		<string>wZT6K</string>
+		<key>imageURL</key>
+		<string>http://images.apple.com/euro/home/f/generic/images/ios_hero_smaller.png</string>
 	</dict>
 </dict>
 </plist>
