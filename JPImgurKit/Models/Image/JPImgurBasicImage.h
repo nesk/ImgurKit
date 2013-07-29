@@ -13,7 +13,7 @@
 @property (nonatomic, readonly) NSString *imageID;
 
 @property (nonatomic, readonly) NSString *deletehash;
-@property (nonatomic, readonly) NSString *link;
+@property (nonatomic, readonly) NSURL *link;
 
 #pragma mark -
 

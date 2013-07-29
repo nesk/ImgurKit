@@ -17,14 +17,14 @@
     
     _imageID = [data objectForKey:@"id"];
     _deletehash = [data objectForKey:@"deletehash"];
-    _link = [data objectForKey:@"link"];
+    _link = [NSURL URLWithString:[data objectForKey:@"link"]];
 }
 
 #pragma mark -
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"imageID: %@; deletehash: %@; link: %@", _imageID, _deletehash, _link];
+    return [NSString stringWithFormat:@"imageID: %@; deletehash: %@; link: %@", _imageID, _deletehash, [_link absoluteString]];
 }
 
 @end
