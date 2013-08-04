@@ -13,23 +13,19 @@
 
 + (void)accountWithUsername:(NSString *)username success:(void (^)(JPImgurAccount *))success failure:(void (^)(NSError *))failure
 {
-    [[JPImgurAccount alloc] loadAccountWithUsername:username success:success failure:failure];
-}
-
-- (void)loadAccountWithUsername:(NSString *)username success:(void (^)(JPImgurAccount *))success failure:(void (^)(NSError *))failure
-{
     NSString *path = [NSString stringWithFormat:@"account/%@", username];
     
     [[JPImgurClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self setAccountPropertiesWithJSONObject:responseObject];
-        success(self);
+        success([[self alloc] initWithJSONObject:responseObject]);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
     }];
 }
 
-- (void)setAccountPropertiesWithJSONObject:(NSData *)object
+- (instancetype)initWithJSONObject:(NSData *)object
 {
+    self = [super init];
+    
     NSDictionary *data = [NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
     data = [data objectForKey:@"data"];
 
@@ -38,6 +34,8 @@
     _bio = [data objectForKey:@"bio"];
     _reputation = [[data objectForKey:@"reputation"] floatValue];
     _created = [NSDate dateWithTimeIntervalSince1970:[[data objectForKey:@"created"] integerValue]];
+    
+    return self;
 }
 
 #pragma mark -

@@ -14,7 +14,6 @@ This todo list currently exists to list specific aspects of the library, not all
 ### All models
 
 * Create a method to only specify the ID (will be useful later but that's pretty hard to explain with my English level...)
-* Allow only one execution of the `setObjectPropertiesWithJSONObject:` to initialize the object (this will probably need a pretty big rework of all the models)
 * Must use the error parameter of the `JSONObjectWithData:options:error:` from the `NSJSONSerialization` class
 
 ### JPImgurClient

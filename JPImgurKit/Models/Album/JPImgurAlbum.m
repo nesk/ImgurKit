@@ -13,24 +13,18 @@
 
 + (void)albumWithID:(NSString *)albumID success:(void (^)(JPImgurAlbum *))success failure:(void (^)(NSError *))failure
 {
-    [[JPImgurAlbum alloc] loadAlbumWithID:albumID success:success failure:failure];
-}
-
-- (void)loadAlbumWithID:(NSString *)albumID success:(void (^)(JPImgurAlbum *))success failure:(void (^)(NSError *))failure
-{
     NSString *path = [NSString stringWithFormat:@"album/%@", albumID];
     
     [[JPImgurClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self setAlbumPropertiesWithJSONObject:responseObject];
-        success(self);
+        success([[self alloc] initWithJSONObject:responseObject]);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
     }];
 }
 
-- (void)setAlbumPropertiesWithJSONObject:(NSData *)object
+- (instancetype)initWithJSONObject:(NSData *)object
 {
-    [super setAlbumPropertiesWithJSONObject:object];
+    self = [super initWithJSONObject:object];
     
     NSDictionary *data = [NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
     data = [data objectForKey:@"data"];
@@ -46,6 +40,8 @@
     _link = [data objectForKey:@"link"];
     _imagesCount = [[data objectForKey:@"images_count"] integerValue];
     _images = [data objectForKey:@"images"];
+    
+    return self;
 }
 
 #pragma mark -

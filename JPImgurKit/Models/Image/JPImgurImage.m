@@ -53,9 +53,7 @@
     // Setting the callbacks:
     
     [request setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        JPImgurBasicImage *image = [JPImgurBasicImage new];
-        [image setImagePropertiesWithJSONObject:responseObject];
-        success(image);
+        success([[JPImgurBasicImage alloc] initWithJSONObject:responseObject]);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
     }];
@@ -89,9 +87,7 @@
     // Creating the request:
     
     [[JPImgurClient sharedInstance] postPath:@"image" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        JPImgurBasicImage *image = [JPImgurBasicImage new];
-        [image setImagePropertiesWithJSONObject:responseObject];
-        success(image);
+        success([[JPImgurBasicImage alloc] initWithJSONObject:responseObject]);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
     }];
@@ -101,24 +97,18 @@
 
 + (void)imageWithID:(NSString *)imageID success:(void (^)(JPImgurImage *))success failure:(void (^)(NSError *))failure
 {
-    [[JPImgurImage alloc] loadImageWithID:imageID success:success failure:failure];
-}
-
-- (void)loadImageWithID:(NSString *)imageID success:(void (^)(JPImgurImage *))success failure:(void (^)(NSError *))failure
-{
     NSString *path = [NSString stringWithFormat:@"image/%@", imageID];
     
     [[JPImgurClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self setImagePropertiesWithJSONObject:responseObject];
-        success(self);
+        success([[self alloc] initWithJSONObject:responseObject]);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
     }];
 }
 
-- (void)setImagePropertiesWithJSONObject:(NSData *)object
+- (instancetype)initWithJSONObject:(NSData *)object
 {
-    [super setImagePropertiesWithJSONObject:object];
+    self = [super initWithJSONObject:object];
     
     NSDictionary *data = [NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
     data = [data objectForKey:@"data"];
@@ -133,6 +123,8 @@
     _size = [[data objectForKey:@"size"] integerValue];
     _views = [[data objectForKey:@"views"] integerValue];
     _bandwidth = [[data objectForKey:@"bandwidth"] integerValue];
+    
+    return self;
 }
 
 #pragma mark - Visualizing the image properties

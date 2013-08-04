@@ -10,14 +10,18 @@
 
 @implementation JPImgurBasicImage
 
-- (void)setImagePropertiesWithJSONObject:(NSData *)object
+- (instancetype)initWithJSONObject:(NSData *)object
 {
+    self = [super init];
+    
     NSDictionary *data = [NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
     data = [data objectForKey:@"data"];
     
     _imageID = [data objectForKey:@"id"];
     _deletehash = [data objectForKey:@"deletehash"];
     _link = [NSURL URLWithString:[data objectForKey:@"link"]];
+    
+    return self;
 }
 
 #pragma mark - Displaying the image

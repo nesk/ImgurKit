@@ -21,7 +21,6 @@
 #pragma mark -
 
 + (void)imageWithID:(NSString *)imageID success:(void (^)(JPImgurGalleryImage *))success failure:(void (^)(NSError *))failure;
-- (void)loadImageWithID:(NSString *)imageID success:(void (^)(JPImgurGalleryImage *))success failure:(void (^)(NSError *))failure;
-- (void)setImagePropertiesWithJSONObject:(NSData *)object;
+- (instancetype)initWithJSONObject:(NSData *)object;
 
 @end

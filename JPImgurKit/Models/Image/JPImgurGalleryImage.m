@@ -13,24 +13,18 @@
 
 + (void)imageWithID:(NSString *)imageID success:(void (^)(JPImgurGalleryImage *))success failure:(void (^)(NSError *))failure
 {
-    [[JPImgurGalleryImage alloc] loadImageWithID:imageID success:success failure:failure];
-}
-
-- (void)loadImageWithID:(NSString *)imageID success:(void (^)(JPImgurGalleryImage *))success failure:(void (^)(NSError *))failure
-{
     NSString *path = [NSString stringWithFormat:@"gallery/image/%@", imageID];
     
     [[JPImgurClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self setImagePropertiesWithJSONObject:responseObject];
-        success(self);
+        success([[self alloc] initWithJSONObject:responseObject]);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
     }];
 }
 
-- (void)setImagePropertiesWithJSONObject:(NSData *)object
+- (instancetype)initWithJSONObject:(NSData *)object
 {
-    [super setImagePropertiesWithJSONObject:object];
+    self = [super initWithJSONObject:object];
     
     NSDictionary *data = [NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
     data = [data objectForKey:@"data"];
@@ -47,6 +41,8 @@
         _vote = -1;
     else
         _vote = 0;
+    
+    return self;
 }
 
 #pragma mark -

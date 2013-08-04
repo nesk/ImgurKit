@@ -21,7 +21,6 @@
 #pragma mark -
 
 + (void)accountWithUsername:(NSString *)username success:(void (^)(JPImgurAccount *))success failure:(void (^)(NSError *))failure;
-- (void)loadAccountWithUsername:(NSString *)username success:(void (^)(JPImgurAccount *))success failure:(void (^)(NSError *))failure;
-- (void)setAccountPropertiesWithJSONObject:(NSData *)data;
+- (instancetype)initWithJSONObject:(NSData *)data;
 
 @end

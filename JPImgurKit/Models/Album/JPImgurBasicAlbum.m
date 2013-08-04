@@ -10,13 +10,17 @@
 
 @implementation JPImgurBasicAlbum
 
-- (void)setAlbumPropertiesWithJSONObject:(NSData *)object
+- (instancetype)initWithJSONObject:(NSData *)object
 {
+    self = [super init];
+    
     NSDictionary *data = [NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
     data = [data objectForKey:@"data"];
     
     _albumID = [data objectForKey:@"id"];
     _deletehash = [data objectForKey:@"deletehash"];
+    
+    return self;
 }
 
 #pragma mark -

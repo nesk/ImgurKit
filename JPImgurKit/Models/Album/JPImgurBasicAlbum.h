@@ -15,6 +15,6 @@
 
 #pragma mark -
 
-- (void)setAlbumPropertiesWithJSONObject:(NSData *)object;
+- (instancetype)initWithJSONObject:(NSData *)object;
 
 @end

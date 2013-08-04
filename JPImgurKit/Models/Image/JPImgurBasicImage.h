@@ -27,7 +27,7 @@ typedef enum {
 
 #pragma mark - Setting the image properties
 
-- (void)setImagePropertiesWithJSONObject:(NSData *)object;
+- (instancetype)initWithJSONObject:(NSData *)object;
 
 #pragma mark - Displaying the image
 
