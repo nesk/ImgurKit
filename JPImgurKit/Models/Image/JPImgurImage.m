@@ -8,7 +8,6 @@
 
 #import "JPImgurImage.h"
 #import "JPImgurClient.h"
-#import "AFHTTPRequestOperation.h"
 
 @implementation JPImgurImage
 
@@ -45,20 +44,20 @@
                                          userInfo:[NSDictionary dictionaryWithObject:error forKey:@"error"]];
     };
     
-    AFHTTPRequestOperation *request = [[AFHTTPRequestOperation alloc] initWithRequest:[client multipartFormRequestWithMethod:@"POST"
-                                                                                                                        path:@"image"
-                                                                                                                  parameters:parameters
-                                                                                                   constructingBodyWithBlock:appendFile]];
+    NSURLRequest *request = [client multipartFormRequestWithMethod:@"POST"
+                                                              path:@"image"
+                                                        parameters:parameters
+                                         constructingBodyWithBlock:appendFile];
     
-    // Setting the callbacks:
+    // Creating the operation:
     
-    [request setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    AFHTTPRequestOperation *operation = [client HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success([[JPImgurBasicImage alloc] initWithJSONObject:responseObject]);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
     }];
     
-    [client enqueueHTTPRequestOperation:request];
+    [client enqueueHTTPRequestOperation:operation];
 }
 
 + (void)uploadImageWithURL:(NSURL *)url success:(void (^)(JPImgurBasicImage *image))success failure:(void (^)(NSError *error))failure
