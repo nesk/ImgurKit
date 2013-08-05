@@ -29,7 +29,7 @@
 #pragma mark - Authentication
 
 - (NSURL *)getAuthorizationURLUsingPIN;
-- (void)authenticateUsingOAuthWithPIN:(NSString *)pin success:(void (^)(AFOAuthCredential *))success failure:(void (^)(NSError *))failure;
+- (void)authenticateUsingOAuthWithPIN:(NSString *)pin success:(void (^)(AFOAuthCredential *credentials))success failure:(void (^)(NSError *error))failure;
 - (void)setAuthorizationHeaderWithToken:(NSString *)token;
 
 @end

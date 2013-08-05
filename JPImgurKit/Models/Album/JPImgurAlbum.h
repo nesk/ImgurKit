@@ -28,7 +28,7 @@
 
 #pragma mark -
 
-+ (void)albumWithID:(NSString *)albumID success:(void (^)(JPImgurAlbum *))success failure:(void (^)(NSError *))failure;
++ (void)albumWithID:(NSString *)albumID success:(void (^)(JPImgurAlbum *album))success failure:(void (^)(NSError *error))failure;
 - (instancetype)initWithJSONObject:(NSData *)object;
 
 @end

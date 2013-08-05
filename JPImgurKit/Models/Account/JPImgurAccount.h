@@ -20,7 +20,7 @@
 
 #pragma mark -
 
-+ (void)accountWithUsername:(NSString *)username success:(void (^)(JPImgurAccount *))success failure:(void (^)(NSError *))failure;
++ (void)accountWithUsername:(NSString *)username success:(void (^)(JPImgurAccount *account))success failure:(void (^)(NSError *error))failure;
 - (instancetype)initWithJSONObject:(NSData *)data;
 
 @end

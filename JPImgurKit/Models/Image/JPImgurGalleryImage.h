@@ -20,7 +20,7 @@
 
 #pragma mark -
 
-+ (void)imageWithID:(NSString *)imageID success:(void (^)(JPImgurGalleryImage *))success failure:(void (^)(NSError *))failure;
++ (void)imageWithID:(NSString *)imageID success:(void (^)(JPImgurGalleryImage *image))success failure:(void (^)(NSError *error))failure;
 - (instancetype)initWithJSONObject:(NSData *)object;
 
 @end

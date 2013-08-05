@@ -11,7 +11,7 @@
 
 @implementation JPImgurGalleryImage
 
-+ (void)imageWithID:(NSString *)imageID success:(void (^)(JPImgurGalleryImage *))success failure:(void (^)(NSError *))failure
++ (void)imageWithID:(NSString *)imageID success:(void (^)(JPImgurGalleryImage *image))success failure:(void (^)(NSError *error))failure
 {
     NSString *path = [NSString stringWithFormat:@"gallery/image/%@", imageID];
     

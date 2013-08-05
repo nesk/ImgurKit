@@ -19,6 +19,7 @@ This todo list currently exists to list specific aspects of the library, not all
 ### JPImgurClient
 
 * Enable anonymous navigation
+* Add rate limits informations
 
 ### JPImgurBasicAlbum
 
