@@ -12,6 +12,8 @@
 
 @interface JPImgurClient : AFHTTPClient
 
+@property (nonatomic) NSInteger retryCountOnImgurError; // Default: 3 (= 1 initial request + 3 retries)
+
 @property (readonly, nonatomic) AFOAuth2Client *oauthClient;
 @property (readonly, nonatomic) NSString *clientID;
 @property (readonly, nonatomic) NSString *secret;
@@ -31,5 +33,17 @@
 - (NSURL *)getAuthorizationURLUsingPIN;
 - (void)authenticateUsingOAuthWithPIN:(NSString *)pin success:(void (^)(AFOAuthCredential *credentials))success failure:(void (^)(NSError *error))failure;
 - (void)setAuthorizationHeaderWithToken:(NSString *)token;
+
+#pragma mark - Network management
+
+// This method is overwritten to manage Imgur overloads or internal errors. Basically, just retries to send the request a number of times defined by the `retryCountOnImgurError` property when an error 500 occurs.
+- (AFHTTPRequestOperation *)HTTPRequestOperationWithRequest:(NSURLRequest *)urlRequest
+                                                    success:(void (^)(AFHTTPRequestOperation *, id))success
+                                                    failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure;
+
+- (void)HTTPRequestOperationWithRequest:(NSURLRequest *)urlRequest
+                                                    success:(void (^)(AFHTTPRequestOperation *, id))success
+                                                    failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+                                                   andRetry:(NSInteger)retryCount;
 
 @end

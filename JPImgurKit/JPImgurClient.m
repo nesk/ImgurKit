@@ -42,6 +42,8 @@ static NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
     url = (url == nil) ? [NSURL URLWithString:JPBaseURL] : url;
     self = [self initWithBaseURL:url];
     
+    _retryCountOnImgurError = 3;
+    
     _clientID = clientID;
     _secret = secret;
     
@@ -85,6 +87,43 @@ static NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
 - (void)setAuthorizationHeaderWithToken:(NSString *)token
 {
     [self setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", token]];
+}
+
+#pragma mark - Network management
+
+- (AFHTTPRequestOperation *)HTTPRequestOperationWithRequest:(NSURLRequest *)urlRequest
+                                                    success:(void (^)(AFHTTPRequestOperation *, id))success
+                                                    failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+{
+    return [super HTTPRequestOperationWithRequest:urlRequest success:success failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if(operation.response.statusCode >= 500)
+            [self HTTPRequestOperationWithRequest:urlRequest success:success failure:failure andRetry:_retryCountOnImgurError];
+        else
+            failure(operation, error);
+    }];
+}
+
+- (void)HTTPRequestOperationWithRequest:(NSURLRequest *)urlRequest
+                                                    success:(void (^)(AFHTTPRequestOperation *, id))success
+                                                    failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+                                                   andRetry:(NSInteger)retryCount
+{
+    AFHTTPRequestOperation *operation;
+    
+    if(retryCount > 1)
+    {
+        operation = [super HTTPRequestOperationWithRequest:urlRequest success:success failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if(operation.response.statusCode >= 500)
+                [self HTTPRequestOperationWithRequest:urlRequest success:success failure:failure andRetry:retryCount - 1];
+            else
+                failure(operation, error);
+        }];
+    }
+    
+    else // Last retry
+        operation = [super HTTPRequestOperationWithRequest:urlRequest success:success failure:failure];
+    
+    [self enqueueHTTPRequestOperation:operation];
 }
 
 @end

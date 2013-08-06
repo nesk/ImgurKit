@@ -6,11 +6,6 @@ __JPImgurKit__ is an Objective-C library created to easily handle [Imgur](http:/
 
 This todo list currently exists to list specific aspects of the library, not all the endpoints of the [Imgur API](http://api.imgur.com/) that should be handled.
 
-### All classes
-
-* In case of overload (error >500), the requests should be resend a couple of time
-* If the overload still persists, an error should be returned through the `failure` block
-
 ### All models
 
 * Create a method to only specify the ID (will be useful later but that's pretty hard to explain with my English level...)
