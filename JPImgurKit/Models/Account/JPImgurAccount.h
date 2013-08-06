@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class AFHTTPRequestOperation;
+
 @interface JPImgurAccount : NSObject
 
 @property (nonatomic, readonly) NSUInteger accountID;
@@ -20,7 +22,7 @@
 
 #pragma mark -
 
-+ (void)accountWithUsername:(NSString *)username success:(void (^)(JPImgurAccount *account))success failure:(void (^)(NSError *error))failure;
++ (void)accountWithUsername:(NSString *)username success:(void (^)(JPImgurAccount *account))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 - (instancetype)initWithJSONObject:(NSData *)data;
 
 @end

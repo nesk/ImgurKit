@@ -11,15 +11,13 @@
 
 @implementation JPImgurAccount
 
-+ (void)accountWithUsername:(NSString *)username success:(void (^)(JPImgurAccount *account))success failure:(void (^)(NSError *error))failure
++ (void)accountWithUsername:(NSString *)username success:(void (^)(JPImgurAccount *account))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
     NSString *path = [NSString stringWithFormat:@"account/%@", username];
     
     [[JPImgurClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success([[self alloc] initWithJSONObject:responseObject]);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        failure(error);
-    }];
+    } failure:failure];
 }
 
 - (instancetype)initWithJSONObject:(NSData *)object

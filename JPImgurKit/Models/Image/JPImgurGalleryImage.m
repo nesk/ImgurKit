@@ -11,15 +11,13 @@
 
 @implementation JPImgurGalleryImage
 
-+ (void)imageWithID:(NSString *)imageID success:(void (^)(JPImgurGalleryImage *image))success failure:(void (^)(NSError *error))failure
++ (void)imageWithID:(NSString *)imageID success:(void (^)(JPImgurGalleryImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
     NSString *path = [NSString stringWithFormat:@"gallery/image/%@", imageID];
     
     [[JPImgurClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success([[self alloc] initWithJSONObject:responseObject]);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        failure(error);
-    }];
+    } failure:failure];
 }
 
 - (instancetype)initWithJSONObject:(NSData *)object

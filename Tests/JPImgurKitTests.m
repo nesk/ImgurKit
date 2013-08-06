@@ -61,7 +61,7 @@
     NSInteger status = [request.response statusCode];
     
     if(status != 200)
-        STFail(@"Unexpected status code (%d) returned from URL `%@`", (int)status, [url absoluteString]);
+        STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)status, [url absoluteString]);
 }
 
 - (void)testAuthenticateUsingOAuthWithPIN
@@ -97,8 +97,10 @@
     [JPImgurAccount accountWithUsername:@"me" success:^(JPImgurAccount *account) {
         NSLog(@"%@", account);
         [self enableAsyncTestingThirdStep:semaphore];
-    } failure:^(NSError *error) {
-        STFail(@"%@", error.localizedRecoverySuggestion);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSHTTPURLResponse *response = operation.response;
+        STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+        
         [self enableAsyncTestingThirdStep:semaphore];
     }];
     
@@ -116,8 +118,10 @@
     [JPImgurImage imageWithID:imageID success:^(JPImgurImage *image) {
         NSLog(@"%@", image);
         [self enableAsyncTestingThirdStep:semaphore];
-    } failure:^(NSError *error) {
-        STFail(@"%@", error.localizedRecoverySuggestion);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSHTTPURLResponse *response = operation.response;
+        STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+        
         [self enableAsyncTestingThirdStep:semaphore];
     }];
     
@@ -133,8 +137,10 @@
     [JPImgurGalleryImage imageWithID:imageID success:^(JPImgurGalleryImage *image) {
         NSLog(@"%@", image);
         [self enableAsyncTestingThirdStep:semaphore];
-    } failure:^(NSError *error) {
-        STFail(@"%@", error.localizedRecoverySuggestion);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSHTTPURLResponse *response = operation.response;
+        STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+        
         [self enableAsyncTestingThirdStep:semaphore];
     }];
     
@@ -150,8 +156,10 @@
     [JPImgurImage uploadImageWithFileURL:imageURL success:^(JPImgurBasicImage *image) {
         NSLog(@"%@", image);
         [self enableAsyncTestingThirdStep:semaphore];
-    } failure:^(NSError *error) {
-        STFail(@"%@", error.localizedRecoverySuggestion);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSHTTPURLResponse *response = operation.response;
+        STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+        
         [self enableAsyncTestingThirdStep:semaphore];
     }];
     
@@ -167,8 +175,10 @@
     [JPImgurImage uploadImageWithURL:imageURL success:^(JPImgurBasicImage *image) {
         NSLog(@"%@", image);
         [self enableAsyncTestingThirdStep:semaphore];
-    } failure:^(NSError *error) {
-        STFail(@"%@", error.localizedRecoverySuggestion);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSHTTPURLResponse *response = operation.response;
+        STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+        
         [self enableAsyncTestingThirdStep:semaphore];
     }];
     
@@ -186,8 +196,10 @@
     [JPImgurAlbum albumWithID:albumID success:^(JPImgurAlbum *album) {
         NSLog(@"%@", album);
         [self enableAsyncTestingThirdStep:semaphore];
-    } failure:^(NSError *error) {
-        STFail(@"%@", error.localizedRecoverySuggestion);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSHTTPURLResponse *response = operation.response;
+        STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+        
         [self enableAsyncTestingThirdStep:semaphore];
     }];
     
@@ -203,8 +215,10 @@
     [JPImgurGalleryAlbum albumWithID:albumID success:^(JPImgurGalleryAlbum *album) {
         NSLog(@"%@", album);
         [self enableAsyncTestingThirdStep:semaphore];
-    } failure:^(NSError *error) {
-        STFail(@"%@", error.localizedRecoverySuggestion);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSHTTPURLResponse *response = operation.response;
+        STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+        
         [self enableAsyncTestingThirdStep:semaphore];
     }];
     
