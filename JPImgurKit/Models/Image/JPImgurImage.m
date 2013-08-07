@@ -36,9 +36,8 @@
     
     void (^appendFile)(id<AFMultipartFormData> formData) = ^(id<AFMultipartFormData> formData) {
         NSError *error;
-        [formData appendPartWithFileURL:fileURL name:@"image" error:&error];
         
-        if(error)
+        if(![formData appendPartWithFileURL:fileURL name:@"image" error:&error])
             @throw [NSException exceptionWithName:@"FileAppendingError"
                                            reason:error.localizedDescription
                                          userInfo:[NSDictionary dictionaryWithObject:error forKey:@"error"]];
