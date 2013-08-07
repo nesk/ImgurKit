@@ -6,6 +6,11 @@ __JPImgurKit__ is an Objective-C library created to easily handle [Imgur](http:/
 
 This todo list currently exists to list specific aspects of the library, not all the endpoints of the [Imgur API](http://api.imgur.com/) that should be handled.
 
+### Whole project
+
+* Must redefine the classes prefix, `JPImgur` is to long, `JPIK` could be a better solution
+* Rework indentation
+
 ### All models
 
 * Create a method to only specify the ID (will be useful later but that's pretty hard to explain with my English level...)
