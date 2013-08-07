@@ -10,12 +10,12 @@
 
 // Not using NS_ENUM for backward compatibility with OS X 10.7 and 10.6
 typedef enum {
-    JPImgurSmallSquare,
-    JPImgurBigSquare,
-    JPImgurSmallThumbnail,
-    JPImgurMediumThumbnail,
-    JPImgurLargeThumbnail,
-    JPImgurHugeThumbnail
+    JPImgurSmallSquareSize,
+    JPImgurBigSquareSize,
+    JPImgurSmallThumbnailSize,
+    JPImgurMediumThumbnailSize,
+    JPImgurLargeThumbnailSize,
+    JPImgurHugeThumbnailSize
 } JPImgurSize;
 
 @interface JPImgurBasicImage : NSObject

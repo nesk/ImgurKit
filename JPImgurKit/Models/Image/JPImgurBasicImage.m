@@ -34,27 +34,27 @@
     NSString *secondPart = [stringURL substringFromIndex:dotLocation];
     
     switch (size) {
-        case JPImgurSmallSquare:
+        case JPImgurSmallSquareSize:
             stringURL = [NSString stringWithFormat:@"%@s%@", firstPart, secondPart];
             break;
             
-        case JPImgurBigSquare:
+        case JPImgurBigSquareSize:
             stringURL = [NSString stringWithFormat:@"%@b%@", firstPart, secondPart];
             break;
             
-        case JPImgurSmallThumbnail:
+        case JPImgurSmallThumbnailSize:
             stringURL = [NSString stringWithFormat:@"%@t%@", firstPart, secondPart];
             break;
             
-        case JPImgurMediumThumbnail:
+        case JPImgurMediumThumbnailSize:
             stringURL = [NSString stringWithFormat:@"%@m%@", firstPart, secondPart];
             break;
             
-        case JPImgurLargeThumbnail:
+        case JPImgurLargeThumbnailSize:
             stringURL = [NSString stringWithFormat:@"%@l%@", firstPart, secondPart];
             break;
             
-        case JPImgurHugeThumbnail:
+        case JPImgurHugeThumbnailSize:
             stringURL = [NSString stringWithFormat:@"%@h%@", firstPart, secondPart];
             break;
             
