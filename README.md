@@ -16,6 +16,10 @@ This todo list currently exists to list specific aspects of the library, not all
 * Create a method to only specify the ID (will be useful later but that's pretty hard to explain with my English level...)
 * Must use the error parameter of the `JSONObjectWithData:options:error:` from the `NSJSONSerialization` class
 
+## Album and Image models
+
+* The non-basic classes should return non-basic images but this requires to make two request to Imgur, the user must be warned about this
+
 ### JPImgurClient
 
 * Enable anonymous navigation
