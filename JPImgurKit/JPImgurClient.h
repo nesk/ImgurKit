@@ -7,8 +7,8 @@
 //
 
 #import "AFHTTPClient.h"
-
-@class AFOAuth2Client, AFOAuthCredential;
+#import "AFOAuth2Client.h"
+#import "AFHTTPRequestOperation.h"
 
 @interface JPImgurClient : AFHTTPClient
 

@@ -7,8 +7,6 @@
 //
 
 #import "JPImgurClient.h"
-#import "AFOAuth2Client.h"
-#import "AFJSONRequestOperation.h"
 
 static NSString * const JPBaseURL = @"https://api.imgur.com/3/";
 static NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";

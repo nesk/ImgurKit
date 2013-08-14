@@ -9,9 +9,6 @@
 #import "JPImgurKitTests.h"
 #import "JPImgurKit.h"
 
-#import "AFHTTPRequestOperation.h"
-#import "AFOAuth2Client.h"
-
 @implementation JPImgurKitTests
 
 - (void)setUp
