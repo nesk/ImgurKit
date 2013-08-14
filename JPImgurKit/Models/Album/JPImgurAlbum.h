@@ -8,7 +8,23 @@
 
 #import "JPImgurBasicAlbum.h"
 
-@class AFHTTPRequestOperation;
+@class AFHTTPRequestOperation, JPImgurBasicImage;
+
+// Not using NS_ENUM for backward compatibility with OS X 10.7 and 10.6
+typedef enum {
+    JPImgurDefaultPrivacy,
+    JPImgurPublicPrivacy,
+    JPImgurHiddenPrivacy,
+    JPImgurSecretPrivacy
+} JPImgurPrivacy;
+
+typedef enum {
+    JPImgurDefaultLayout,
+    JPImgurBlogLayout,
+    JPImgurGridLayout,
+    JPImgurHorizontalLayout,
+    JPImgurVerticalLayout
+} JPImgurLayout;
 
 @interface JPImgurAlbum : JPImgurBasicAlbum
 
@@ -28,7 +44,12 @@
 @property (nonatomic, readonly) NSInteger imagesCount; // Optional: can be set to NSNotFound
 @property (nonatomic) NSArray *images; // Optional: can be set to nil
 
-#pragma mark -
+#pragma mark - Uploading an image
+
++ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description images:(NSArray *)images success:(void (^)(JPImgurBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description images:(NSArray *)images privacy:(JPImgurPrivacy)privacy layout:(JPImgurLayout)layout cover:(JPImgurBasicImage *)cover success:(void (^)(JPImgurBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+#pragma mark - Loading the album properties
 
 + (void)albumWithID:(NSString *)albumID success:(void (^)(JPImgurAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 - (instancetype)initWithJSONObject:(NSData *)object;

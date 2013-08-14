@@ -184,6 +184,23 @@
 
 #pragma mark - Album tests
 
+- (void)testAlbumCreation
+{
+    dispatch_semaphore_t semaphore = [self enableAsyncTestingFirstStep];
+
+    [JPImgurAlbum createAlbumWithTitle:@"testAlbumCreation" description:nil images:nil success:^(JPImgurBasicAlbum *album) {
+        NSLog(@"%@", album);
+        [self enableAsyncTestingThirdStep:semaphore];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSHTTPURLResponse *response = operation.response;
+        STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+        
+        [self enableAsyncTestingThirdStep:semaphore];
+    }];
+
+    [self enableAsyncTestingSecondStep:semaphore];
+}
+
 - (void)testAlbumLoading
 {
     dispatch_semaphore_t semaphore = [self enableAsyncTestingFirstStep];
