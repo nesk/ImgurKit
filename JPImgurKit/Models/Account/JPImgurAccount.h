@@ -23,6 +23,10 @@
 #pragma mark -
 
 + (void)accountWithUsername:(NSString *)username success:(void (^)(JPImgurAccount *account))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
++ (instancetype)accountWithID:(NSUInteger)accountID;
+- (instancetype)initWithID:(NSUInteger)accountID;
+
 - (instancetype)initWithJSONObject:(NSData *)data;
 
 @end

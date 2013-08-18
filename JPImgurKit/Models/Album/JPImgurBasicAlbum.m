@@ -10,6 +10,20 @@
 
 @implementation JPImgurBasicAlbum
 
++ (instancetype)albumWithID:(NSString *)albumID
+{
+    return [[self alloc] initWithID:albumID];
+}
+
+- (instancetype)initWithID:(NSString *)albumID
+{
+    self = [super init];
+    
+    _albumID = albumID;
+    
+    return self;
+}
+
 - (instancetype)initWithJSONObject:(NSData *)object
 {
     self = [super init];

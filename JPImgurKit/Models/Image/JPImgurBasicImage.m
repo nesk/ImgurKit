@@ -89,6 +89,20 @@
 
 #pragma mark - Setting the image properties
 
++ (instancetype)imageWithID:(NSString *)imageID
+{
+    return [[self alloc] initWithID:imageID];
+}
+
+- (instancetype)initWithID:(NSString *)imageID
+{
+    self = [super init];
+    
+    _imageID = imageID;
+    
+    return self;
+}
+
 - (instancetype)initWithJSONObject:(NSData *)object
 {
     self = [super init];
