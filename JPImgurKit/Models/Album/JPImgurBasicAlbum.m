@@ -107,6 +107,17 @@
     } failure:failure];
 }
 
+#pragma mark - Deleting an album
+
++ (void)deleteAlbum:(JPImgurBasicAlbum *)album success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+{
+    NSString *path = [NSString stringWithFormat:@"album/%@", album.albumID];
+    
+    [[JPImgurClient sharedInstance] deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        success();
+    } failure:failure];
+}
+
 #pragma mark - Setting the album properties
 
 + (instancetype)albumWithID:(NSString *)albumID

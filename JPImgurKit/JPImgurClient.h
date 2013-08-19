@@ -36,7 +36,7 @@
 
 #pragma mark - Network management
 
-// This method is overwritten to manage Imgur overloads or internal errors. Basically, just retries to send the request a number of times defined by the `retryCountOnImgurError` property when an error 500 occurs.
+// This method is overwritten to manage Imgur overloads or internal errors. Basically, it just retries to send the request a number of times defined by the `retryCountOnImgurError` property when an error 500 occurs.
 - (AFHTTPRequestOperation *)HTTPRequestOperationWithRequest:(NSURLRequest *)urlRequest
                                                     success:(void (^)(AFHTTPRequestOperation *, id))success
                                                     failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure;
