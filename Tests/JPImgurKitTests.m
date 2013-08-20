@@ -11,6 +11,8 @@
 
 @implementation JPImgurKitTests
 
+#pragma mark - Setting up unit testing
+
 - (void)setUp
 {
     [super setUp];
@@ -27,7 +29,7 @@
     [[JPImgurClient sharedInstanceWithClientID:clientID secret:clientSecret] setAuthorizationHeaderWithToken:accessToken];
 }
 
-#pragma mark - Enable asynchronous testing
+#pragma mark - Enabling asynchronous testing
 
 - (void)enableAsyncTestingFirstStep
 {
@@ -45,7 +47,7 @@
     dispatch_semaphore_signal(semaphore);
 }
 
-#pragma mark - Authentication
+#pragma mark - Authenticating
 
 - (void)testAuthorizationURLWithPIN
 {
@@ -85,7 +87,7 @@
     [self enableAsyncTestingSecondStep];
 }
 
-#pragma mark - Account tests
+#pragma mark - Testing account endpoints
 
 - (void)testAccountLoading
 {
@@ -104,7 +106,7 @@
     [self enableAsyncTestingSecondStep];
 }
 
-#pragma mark - Image tests
+#pragma mark - Testing image endpoints
 
 - (void)testImageLoading
 {
@@ -182,7 +184,7 @@
     [self enableAsyncTestingSecondStep];
 }
 
-#pragma mark - Album tests
+#pragma mark - Testing album endpoints
 
 - (void)testAlbumCreation
 {
