@@ -22,7 +22,7 @@
     
     NSDictionary *imgurClient = [infos objectForKey:@"imgurClient"];
     NSString *clientID = [imgurClient objectForKey:@"id"];
-    NSString *clientSecret = [imgurClient objectForKey:@"Secret"];
+    NSString *clientSecret = [imgurClient objectForKey:@"secret"];
 
     NSString *accessToken = [[infos objectForKey:@"imgurUser"] objectForKey:@"accessToken"];
     
