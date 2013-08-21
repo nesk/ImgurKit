@@ -70,10 +70,8 @@ static NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
 
 - (void)authenticateUsingOAuthWithPIN:(NSString *)pin success:(void (^)(AFOAuthCredential *credentials))success failure:(void (^)(NSError *error))failure
 {
-    NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionary];
-    [mutableParameters setObject:@"pin" forKey:@"grant_type"];
-    [mutableParameters setValue:pin forKey:@"pin"];
-    NSDictionary *parameters = [NSDictionary dictionaryWithDictionary:mutableParameters];
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"pin", pin, nil]
+                                                           forKeys:[NSArray arrayWithObjects:@"grant_type", @"pin", nil]];
     
     [self.oauthClient authenticateUsingOAuthWithPath:@"token" parameters:parameters success:^(AFOAuthCredential *credential) {
         // Here we specify the authorization header for the API client and call afterwards the success block
