@@ -190,7 +190,7 @@
 {
     [self enableAsyncTestingFirstStep];
 
-    [JPImgurAlbum createAlbumWithTitle:@"testAlbumCreation" description:nil images:nil success:^(JPImgurBasicAlbum *album) {
+    [JPImgurAlbum createAlbumWithTitle:@"testAlbumCreation" description:nil imageIDs:nil success:^(JPImgurBasicAlbum *album) {
         NSLog(@"%@", album);
         [self enableAsyncTestingThirdStep];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

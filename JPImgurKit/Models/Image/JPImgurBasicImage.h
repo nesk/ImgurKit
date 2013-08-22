@@ -37,12 +37,9 @@ typedef enum {
 
 #pragma mark - Deleting an image
 
-+ (void)deleteImage:(JPImgurBasicImage *)image success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (void)deleteImageWithID:(NSString *)imageID success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
 #pragma mark - Setting the image properties
-
-+ (instancetype)imageWithID:(NSString *)imageID;
-- (instancetype)initWithID:(NSString *)imageID;
 
 - (instancetype)initWithJSONObject:(NSData *)object;
 

@@ -14,12 +14,12 @@
 
 #pragma mark - Creating an album
 
-+ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description images:(NSArray *)images success:(void (^)(JPImgurBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs success:(void (^)(JPImgurBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
-    [self createAlbumWithTitle:title description:description images:images privacy:JPImgurDefaultPrivacy layout:JPImgurDefaultLayout cover:nil success:success failure:failure];
+    [self createAlbumWithTitle:title description:description imageIDs:imageIDs privacy:JPImgurDefaultPrivacy layout:JPImgurDefaultLayout cover:nil success:success failure:failure];
 }
 
-+ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description images:(NSArray *)images privacy:(JPImgurPrivacy)privacy layout:(JPImgurLayout)layout cover:(JPImgurBasicImage *)cover success:(void (^)(JPImgurBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs privacy:(JPImgurPrivacy)privacy layout:(JPImgurLayout)layout cover:(JPImgurBasicImage *)cover success:(void (^)(JPImgurBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
     NSMutableDictionary *parameters = [NSMutableDictionary new];
     
@@ -32,17 +32,19 @@
     if(cover != nil)
         [parameters setObject:cover.imageID forKey:@"cover"];
     
-    if(images != nil)
+    if(imageIDs != nil)
     {
         NSString *idsParameter = @"";
-        for (JPImgurBasicImage *image in images) {
-            if([image isKindOfClass:[JPImgurBasicImage class]])
-                idsParameter = [NSString stringWithFormat:@"%@%@,", idsParameter, image.imageID];
+        for (JPImgurBasicImage *imageID in imageIDs) {
+            if([imageID isKindOfClass:[NSString class]])
+                idsParameter = [NSString stringWithFormat:@"%@%@,", idsParameter, imageID];
             else
                 @throw [NSException exceptionWithName:@"JPImgurObjectTypeException"
-                                               reason:@"Objects contained in this array should be of type JPImgurBasicImage"
-                                             userInfo:[NSDictionary dictionaryWithObject:images forKey:@"images"]];
+                                               reason:@"Objects contained in this array should be of type NSString"
+                                             userInfo:[NSDictionary dictionaryWithObject:imageIDs forKey:@"images"]];
         }
+        
+        // Removing the last comma, which is useless
         [parameters setObject:[idsParameter substringToIndex:[idsParameter length] - 1] forKey:@"ids"];
     }
     
@@ -109,9 +111,9 @@
 
 #pragma mark - Deleting an album
 
-+ (void)deleteAlbum:(JPImgurBasicAlbum *)album success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (void)deleteAlbumWithID:(NSString *)albumID success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
-    NSString *path = [NSString stringWithFormat:@"album/%@", album.albumID];
+    NSString *path = [NSString stringWithFormat:@"album/%@", albumID];
     
     [[JPImgurClient sharedInstance] deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success();
@@ -119,20 +121,6 @@
 }
 
 #pragma mark - Setting the album properties
-
-+ (instancetype)albumWithID:(NSString *)albumID
-{
-    return [[self alloc] initWithID:albumID];
-}
-
-- (instancetype)initWithID:(NSString *)albumID
-{
-    self = [super init];
-    
-    _albumID = albumID;
-    
-    return self;
-}
 
 - (instancetype)initWithJSONObject:(NSData *)object
 {

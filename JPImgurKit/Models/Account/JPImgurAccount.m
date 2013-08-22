@@ -20,20 +20,6 @@
     } failure:failure];
 }
 
-+ (instancetype)accountWithID:(NSUInteger)accountID
-{
-    return [[self alloc] initWithID:accountID];
-}
-
-- (instancetype)initWithID:(NSUInteger)accountID
-{
-    self = [super init];
-    
-    _accountID = accountID;
-    
-    return self;
-}
-
 - (instancetype)initWithJSONObject:(NSData *)object
 {
     self = [super init];

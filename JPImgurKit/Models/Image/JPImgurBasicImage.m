@@ -89,9 +89,9 @@
 
 #pragma mark - Deleting an image
 
-+ (void)deleteImage:(JPImgurBasicImage *)image success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (void)deleteImageWithID:(NSString *)imageID success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
-    NSString *path = [NSString stringWithFormat:@"image/%@", image.imageID];
+    NSString *path = [NSString stringWithFormat:@"image/%@", imageID];
     
     [[JPImgurClient sharedInstance] deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success();
@@ -99,20 +99,6 @@
 }
 
 #pragma mark - Setting the image properties
-
-+ (instancetype)imageWithID:(NSString *)imageID
-{
-    return [[self alloc] initWithID:imageID];
-}
-
-- (instancetype)initWithID:(NSString *)imageID
-{
-    self = [super init];
-    
-    _imageID = imageID;
-    
-    return self;
-}
 
 - (instancetype)initWithJSONObject:(NSData *)object
 {
