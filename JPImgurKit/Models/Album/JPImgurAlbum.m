@@ -9,9 +9,9 @@
 #import "JPImgurAlbum.h"
 #import "JPImgurClient.h"
 
-@implementation JPImgurAlbum
+@implementation JPImgurAlbum;
 
-#pragma mark - Loading the album properties
+#pragma mark - Load
 
 + (void)albumWithID:(NSString *)albumID success:(void (^)(JPImgurAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
@@ -44,7 +44,7 @@
     return self;
 }
 
-#pragma mark -
+#pragma mark - Describe
 
 - (NSString *)description
 {

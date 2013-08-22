@@ -10,9 +10,9 @@
 #import "JPImgurClient.h"
 #import "JPImgurBasicImage.h"
 
-@implementation JPImgurBasicAlbum
+@implementation JPImgurBasicAlbum;
 
-#pragma mark - Creating an album
+#pragma mark - Create
 
 + (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs success:(void (^)(JPImgurBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
@@ -109,18 +109,7 @@
     } failure:failure];
 }
 
-#pragma mark - Deleting an album
-
-+ (void)deleteAlbumWithID:(NSString *)albumID success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
-{
-    NSString *path = [NSString stringWithFormat:@"album/%@", albumID];
-    
-    [[JPImgurClient sharedInstance] deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        success();
-    } failure:failure];
-}
-
-#pragma mark - Setting the album properties
+#pragma mark - Load
 
 - (instancetype)initWithJSONObject:(NSData *)object
 {
@@ -135,7 +124,18 @@
     return self;
 }
 
-#pragma mark - Visualizing the album properties
+#pragma mark - Delete
+
++ (void)deleteAlbumWithID:(NSString *)albumID success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+{
+    NSString *path = [NSString stringWithFormat:@"album/%@", albumID];
+    
+    [[JPImgurClient sharedInstance] deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        success();
+    } failure:failure];
+}
+
+#pragma mark - Describe
 
 - (NSString *)description
 {

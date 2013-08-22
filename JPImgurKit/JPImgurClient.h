@@ -18,23 +18,21 @@
 @property (readonly, nonatomic) NSString *clientID;
 @property (readonly, nonatomic) NSString *secret;
 
-#pragma mark - Singleton methods
+#pragma mark - Initialize
 
 + (instancetype)sharedInstance;
 + (instancetype)sharedInstanceWithClientID:(NSString *)clientID secret:(NSString *)secret;
 + (instancetype)sharedInstanceWithBaseURL:(NSURL *)url clientID:(NSString *)clientID secret:(NSString *)secret;
 
-#pragma mark - Initialization
-
 - (instancetype)initWithBaseURL:(NSURL *)url clientID:(NSString *)clientID secret:(NSString *)secret;
 
-#pragma mark - Authentication
+#pragma mark - Authenticate
 
 - (NSURL *)getAuthorizationURLUsingPIN;
 - (void)authenticateUsingOAuthWithPIN:(NSString *)pin success:(void (^)(AFOAuthCredential *credentials))success failure:(void (^)(NSError *error))failure;
 - (void)setAuthorizationHeaderWithToken:(NSString *)token;
 
-#pragma mark - Network management
+#pragma mark - Manage the requests
 
 // This method is overwritten to manage Imgur overloads or internal errors. Basically, it just retries to send the request a number of times defined by the `retryCountOnImgurError` property when an error 500 occurs.
 - (AFHTTPRequestOperation *)HTTPRequestOperationWithRequest:(NSURLRequest *)urlRequest

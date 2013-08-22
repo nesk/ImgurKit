@@ -31,17 +31,17 @@ typedef enum {
 @property (nonatomic, readonly) NSString *albumID;
 @property (nonatomic, readonly) NSString *deletehash;
 
-#pragma mark - Creating an album
+#pragma mark - Create
 
 + (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs success:(void (^)(JPImgurBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 + (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs privacy:(JPImgurPrivacy)privacy layout:(JPImgurLayout)layout cover:(JPImgurBasicImage *)cover success:(void (^)(JPImgurBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
-#pragma mark - Deleting an album
-
-+ (void)deleteAlbumWithID:(NSString *)albumID success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
-
-#pragma mark - Setting the album properties
+#pragma mark - Load
 
 - (instancetype)initWithJSONObject:(NSData *)object;
+
+#pragma mark - Delete
+
++ (void)deleteAlbumWithID:(NSString *)albumID success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
 @end

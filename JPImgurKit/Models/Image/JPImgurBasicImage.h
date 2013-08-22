@@ -27,7 +27,7 @@ typedef enum {
 @property (nonatomic, readonly) NSString *deletehash;
 @property (nonatomic, readonly) NSURL *link;
 
-#pragma mark - Uploading an image
+#pragma mark - Upload
 
 + (void)uploadImageWithFileURL:(NSURL *)fileURL success:(void (^)(JPImgurBasicImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 + (void)uploadImageWithFileURL:(NSURL *)fileURL title:(NSString *)title description:(NSString *)description andLinkToAlbumWithID:(NSString *)albumID success:(void (^)(JPImgurBasicImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
@@ -35,16 +35,16 @@ typedef enum {
 + (void)uploadImageWithURL:(NSURL *)url success:(void (^)(JPImgurBasicImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 + (void)uploadImageWithURL:(NSURL *)url title:(NSString *)title description:(NSString *)description filename:(NSString *)filename andLinkToAlbumWithID:(NSString *)albumID success:(void (^)(JPImgurBasicImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
-#pragma mark - Deleting an image
-
-+ (void)deleteImageWithID:(NSString *)imageID success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
-
-#pragma mark - Setting the image properties
+#pragma mark - Load
 
 - (instancetype)initWithJSONObject:(NSData *)object;
 
-#pragma mark - Displaying the image
+#pragma mark - Display
 
 - (NSURL *)URLWithSize:(JPImgurSize)size;
+
+#pragma mark - Delete
+
++ (void)deleteImageWithID:(NSString *)imageID success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
 @end

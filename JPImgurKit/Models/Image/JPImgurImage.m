@@ -9,7 +9,9 @@
 #import "JPImgurImage.h"
 #import "JPImgurClient.h"
 
-@implementation JPImgurImage
+@implementation JPImgurImage;
+
+#pragma mark - Load
 
 + (void)imageWithID:(NSString *)imageID success:(void (^)(JPImgurImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
@@ -41,7 +43,7 @@
     return self;
 }
 
-#pragma mark - Visualizing the image properties
+#pragma mark - Describe
 
 - (NSString *)description
 {

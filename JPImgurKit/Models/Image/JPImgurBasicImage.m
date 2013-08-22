@@ -9,7 +9,9 @@
 #import "JPImgurBasicImage.h"
 #import "JPImgurClient.h"
 
-@implementation JPImgurBasicImage
+@implementation JPImgurBasicImage;
+
+#pragma mark - Upload
 
 + (void)uploadImageWithFileURL:(NSURL *)fileURL success:(void (^)(JPImgurBasicImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
@@ -87,18 +89,7 @@
     } failure:failure];
 }
 
-#pragma mark - Deleting an image
-
-+ (void)deleteImageWithID:(NSString *)imageID success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
-{
-    NSString *path = [NSString stringWithFormat:@"image/%@", imageID];
-    
-    [[JPImgurClient sharedInstance] deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        success();
-    } failure:failure];
-}
-
-#pragma mark - Setting the image properties
+#pragma mark - Load
 
 - (instancetype)initWithJSONObject:(NSData *)object
 {
@@ -114,7 +105,7 @@
     return self;
 }
 
-#pragma mark - Displaying the image
+#pragma mark - Display
 
 - (NSURL *)URLWithSize:(JPImgurSize)size
 {
@@ -155,7 +146,18 @@
     return [NSURL URLWithString:stringURL];
 }
 
-#pragma mark - Visualizing the image properties
+#pragma mark - Delete
+
++ (void)deleteImageWithID:(NSString *)imageID success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+{
+    NSString *path = [NSString stringWithFormat:@"image/%@", imageID];
+    
+    [[JPImgurClient sharedInstance] deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        success();
+    } failure:failure];
+}
+
+#pragma mark - Describe
 
 - (NSString *)description
 {

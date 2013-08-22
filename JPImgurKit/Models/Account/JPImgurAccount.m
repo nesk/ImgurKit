@@ -9,7 +9,9 @@
 #import "JPImgurAccount.h"
 #import "JPImgurClient.h"
 
-@implementation JPImgurAccount
+@implementation JPImgurAccount;
+
+#pragma mark - Load
 
 + (void)accountWithUsername:(NSString *)username success:(void (^)(JPImgurAccount *account))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
@@ -36,7 +38,7 @@
     return self;
 }
 
-#pragma mark -
+#pragma mark - Describe
 
 - (NSString *)description
 {

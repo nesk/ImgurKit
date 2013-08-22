@@ -20,7 +20,7 @@
 @property (nonatomic, readonly) float reputation;
 @property (nonatomic, readonly) NSDate *created;
 
-#pragma mark -
+#pragma mark - Load
 
 + (void)accountWithUsername:(NSString *)username success:(void (^)(JPImgurAccount *account))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 - (instancetype)initWithJSONObject:(NSData *)data;

@@ -11,7 +11,21 @@
 static NSString * const JPBaseURL = @"https://api.imgur.com/3/";
 static NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
 
-@implementation JPImgurClient
+@implementation JPImgurClient;
+
+#pragma mark - Get/Set
+
+@synthesize oauthClient=_oauthClient;
+
+- (AFOAuth2Client *)oauthClient
+{
+    if(!_oauthClient)
+        _oauthClient = [[AFOAuth2Client alloc] initWithBaseURL:[NSURL URLWithString:JPOAuthBaseURL] clientID:_clientID secret:_secret];
+    
+    return _oauthClient;
+}
+
+#pragma mark - Initialize
 
 + (instancetype)sharedInstance
 {
@@ -33,8 +47,6 @@ static NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
     return sharedInstance;
 }
 
-#pragma mark - Initialization
-
 - (instancetype)initWithBaseURL:(NSURL *)url clientID:(NSString *)clientID secret:(NSString *)secret
 {
     url = (url == nil) ? [NSURL URLWithString:JPBaseURL] : url;
@@ -48,19 +60,7 @@ static NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
     return self;
 }
 
-#pragma mark - Getters/Setters
-
-@synthesize oauthClient=_oauthClient;
-
-- (AFOAuth2Client *)oauthClient
-{
-    if(!_oauthClient)
-        _oauthClient = [[AFOAuth2Client alloc] initWithBaseURL:[NSURL URLWithString:JPOAuthBaseURL] clientID:_clientID secret:_secret];
-    
-    return _oauthClient;
-}
-
-#pragma mark - Authentication
+#pragma mark - Authenticate
 
 - (NSURL *)getAuthorizationURLUsingPIN
 {
@@ -85,7 +85,7 @@ static NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
     [self setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", token]];
 }
 
-#pragma mark - Network management
+#pragma mark - Manage the requests
 
 - (AFHTTPRequestOperation *)HTTPRequestOperationWithRequest:(NSURLRequest *)urlRequest
                                                     success:(void (^)(AFHTTPRequestOperation *, id))success

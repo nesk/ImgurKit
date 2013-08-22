@@ -24,7 +24,7 @@
 @property (nonatomic, readonly) NSInteger views;
 @property (nonatomic, readonly) NSInteger bandwidth;
 
-#pragma mark - Loading the image properties
+#pragma mark - Load
 
 + (void)imageWithID:(NSString *)imageID success:(void (^)(JPImgurImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 - (instancetype)initWithJSONObject:(NSData *)object;

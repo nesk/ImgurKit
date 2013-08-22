@@ -16,7 +16,7 @@
     dispatch_semaphore_t semaphore;
 }
 
-#pragma mark - Enabling asynchronous testing
+#pragma mark - Enable asynchronous testing
 
 - (void)enableAsyncTestingFirstStep;
 - (void)enableAsyncTestingSecondStep;
