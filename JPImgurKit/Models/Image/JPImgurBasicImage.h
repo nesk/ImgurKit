@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-// Not using NS_ENUM for backward compatibility with OS X 10.7 and 10.6
+// Not using NS_ENUM for backward compatibility with OS X 10.7
 typedef enum {
     JPImgurSmallSquareSize,
     JPImgurBigSquareSize,

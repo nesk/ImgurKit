@@ -7,6 +7,7 @@
 //
 
 #import "JPImgurImage.h"
+#import "JPImgurVote.h"
 
 @interface JPImgurGalleryImage : JPImgurImage
 
@@ -16,7 +17,7 @@
 @property (nonatomic, readonly) NSInteger downs;
 @property (nonatomic, readonly) NSInteger score;
 
-@property (nonatomic) NSInteger vote; // -1 = downvote, +1 = upvote, 0 = user hasn't vote yet
+@property (nonatomic) JPImgurVote vote;
 
 #pragma mark - Load
 

@@ -146,6 +146,8 @@
 		1EDDF2A417A461330076314A /* JPImgurBasicImage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EDDF29C17A4612B0076314A /* JPImgurBasicImage.h */; };
 		1EDDF2A617A5606C0076314A /* image-example.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDDF2A517A5606C0076314A /* image-example.png */; };
 		1EDDF2A717A5606C0076314A /* image-example.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDDF2A517A5606C0076314A /* image-example.png */; };
+		1EF35B4417C6C24E003000FE /* JPImgurVote.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EF35B4317C6C24D003000FE /* JPImgurVote.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1EF35B4517C6C2A3003000FE /* JPImgurVote.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EF35B4317C6C24D003000FE /* JPImgurVote.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -155,6 +157,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				1EF35B4517C6C2A3003000FE /* JPImgurVote.h in CopyFiles */,
 				1EDDF2A317A461330076314A /* JPImgurBasicAlbum.h in CopyFiles */,
 				1EDDF2A417A461330076314A /* JPImgurBasicImage.h in CopyFiles */,
 				1E085B7A17A45FEF0067BF6E /* JPImgurAccount.h in CopyFiles */,
@@ -240,6 +243,7 @@
 		1EDDF29C17A4612B0076314A /* JPImgurBasicImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImgurBasicImage.h; sourceTree = "<group>"; };
 		1EDDF29D17A4612B0076314A /* JPImgurBasicImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImgurBasicImage.m; sourceTree = "<group>"; };
 		1EDDF2A517A5606C0076314A /* image-example.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image-example.png"; sourceTree = "<group>"; };
+		1EF35B4317C6C24D003000FE /* JPImgurVote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImgurVote.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -336,6 +340,7 @@
 		1E187BD4178DF5600031D85B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1EF35B4317C6C24D003000FE /* JPImgurVote.h */,
 				1E085B5417A45FD70067BF6E /* Account */,
 				1E085B5717A45FD70067BF6E /* Album */,
 				1E085B5C17A45FD70067BF6E /* Image */,
@@ -469,6 +474,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EF35B4417C6C24E003000FE /* JPImgurVote.h in Headers */,
 				1EDDF29717A461220076314A /* JPImgurBasicAlbum.h in Headers */,
 				1EDDF29E17A4612B0076314A /* JPImgurBasicImage.h in Headers */,
 				1E085B6117A45FD70067BF6E /* JPImgurAccount.h in Headers */,
