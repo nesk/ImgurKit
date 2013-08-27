@@ -340,10 +340,10 @@
 		1E187BD4178DF5600031D85B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1EF35B4317C6C24D003000FE /* JPImgurVote.h */,
 				1E085B5417A45FD70067BF6E /* Account */,
 				1E085B5717A45FD70067BF6E /* Album */,
 				1E085B5C17A45FD70067BF6E /* Image */,
+				1EF35B4317C6C24D003000FE /* JPImgurVote.h */,
 			);
 			path = Models;
 			sourceTree = "<group>";
