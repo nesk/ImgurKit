@@ -13,13 +13,6 @@
 @interface JPImgurKitTests : SenTestCase
 {
     NSDictionary *imgurVariousValues;
-    dispatch_semaphore_t semaphore;
 }
-
-#pragma mark - Enable asynchronous testing
-
-- (void)enableAsyncTestingFirstStep;
-- (void)enableAsyncTestingSecondStep;
-- (void)enableAsyncTestingThirdStep;
 
 @end

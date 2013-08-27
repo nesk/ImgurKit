@@ -4,3 +4,6 @@
 [submodule "Vendors/AFOAuth2Client"]
 	path = Vendors/AFOAuth2Client
 	url = https://github.com/AFNetworking/AFOAuth2Client.git
+[submodule "Vendors/SenTestingKitAsync"]
+	path = Vendors/SenTestingKitAsync
+	url = https://github.com/nxtbgthng/SenTestingKitAsync.git

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E0155DE17CD429700B13BD2 /* SenTestingKitAsync.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0155DA17CD426600B13BD2 /* SenTestingKitAsync.m */; };
+		1E0155DF17CD429700B13BD2 /* SenTestingKitAsync.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0155DA17CD426600B13BD2 /* SenTestingKitAsync.m */; };
 		1E085B6117A45FD70067BF6E /* JPImgurAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E085B5517A45FD70067BF6E /* JPImgurAccount.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1E085B6217A45FD70067BF6E /* JPImgurAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E085B5617A45FD70067BF6E /* JPImgurAccount.m */; };
 		1E085B6317A45FD70067BF6E /* JPImgurAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E085B5617A45FD70067BF6E /* JPImgurAccount.m */; };
@@ -183,6 +185,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1E0155D617CD426600B13BD2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1E0155D717CD426600B13BD2 /* SenTestingKitAsync-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SenTestingKitAsync-Info.plist"; sourceTree = "<group>"; };
+		1E0155D817CD426600B13BD2 /* SenTestingKitAsync-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SenTestingKitAsync-Prefix.pch"; sourceTree = "<group>"; };
+		1E0155D917CD426600B13BD2 /* SenTestingKitAsync.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SenTestingKitAsync.h; sourceTree = "<group>"; };
+		1E0155DA17CD426600B13BD2 /* SenTestingKitAsync.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SenTestingKitAsync.m; sourceTree = "<group>"; };
 		1E0392EB178C8A3E00C13A3B /* JPImgurKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JPImgurKitTests-Info.plist"; sourceTree = "<group>"; };
 		1E085B5517A45FD70067BF6E /* JPImgurAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImgurAccount.h; sourceTree = "<group>"; };
 		1E085B5617A45FD70067BF6E /* JPImgurAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImgurAccount.m; sourceTree = "<group>"; };
@@ -302,6 +309,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E0155D417CD426600B13BD2 /* SenTestingKitAsync */ = {
+			isa = PBXGroup;
+			children = (
+				1E0155D517CD426600B13BD2 /* InfoPlist.strings */,
+				1E0155D717CD426600B13BD2 /* SenTestingKitAsync-Info.plist */,
+				1E0155D817CD426600B13BD2 /* SenTestingKitAsync-Prefix.pch */,
+				1E0155D917CD426600B13BD2 /* SenTestingKitAsync.h */,
+				1E0155DA17CD426600B13BD2 /* SenTestingKitAsync.m */,
+			);
+			name = SenTestingKitAsync;
+			path = SenTestingKitAsync/SenTestingKitAsync;
+			sourceTree = "<group>";
+		};
 		1E085B5417A45FD70067BF6E /* Account */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +446,7 @@
 			children = (
 				1EB9658717785ECD005AA1D5 /* AFNetworking */,
 				1EB9665617789417005AA1D5 /* AFOAuth2Client */,
+				1E0155D417CD426600B13BD2 /* SenTestingKitAsync */,
 			);
 			path = Vendors;
 			sourceTree = "<group>";
@@ -680,6 +701,7 @@
 				1E085B7717A45FD70067BF6E /* JPImgurImage.m in Sources */,
 				1EDDF29917A461220076314A /* JPImgurBasicAlbum.m in Sources */,
 				1EDDF2A017A4612B0076314A /* JPImgurBasicImage.m in Sources */,
+				1E0155DE17CD429700B13BD2 /* SenTestingKitAsync.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -706,6 +728,7 @@
 				1E085B7917A45FD70067BF6E /* JPImgurImage.m in Sources */,
 				1EDDF29B17A461220076314A /* JPImgurBasicAlbum.m in Sources */,
 				1EDDF2A217A4612B0076314A /* JPImgurBasicImage.m in Sources */,
+				1E0155DF17CD429700B13BD2 /* SenTestingKitAsync.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -760,6 +783,17 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1E0155D517CD426600B13BD2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1E0155D617CD426600B13BD2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1E9A836A177BA96800F01B05 /* Debug */ = {

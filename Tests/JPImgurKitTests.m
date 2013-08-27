@@ -7,11 +7,13 @@
 //
 
 #import "JPImgurKitTests.h"
+
+#import "SenTestingKitAsync.h"
 #import "JPImgurKit.h"
 
-@implementation JPImgurKitTests
+@implementation JPImgurKitTests;
 
-#pragma mark - Set up
+#pragma mark - Setup
 
 - (void)setUp
 {
@@ -29,44 +31,25 @@
     [[JPImgurClient sharedInstanceWithClientID:clientID secret:clientSecret] setAuthorizationHeaderWithToken:accessToken];
 }
 
-#pragma mark - Enable asynchronous testing
-
-- (void)enableAsyncTestingFirstStep
-{
-    semaphore = dispatch_semaphore_create(0);
-}
-
-- (void)enableAsyncTestingSecondStep
-{
-    while (dispatch_semaphore_wait(semaphore, DISPATCH_TIME_NOW))
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:10]];
-}
-
-- (void)enableAsyncTestingThirdStep
-{
-    dispatch_semaphore_signal(semaphore);
-}
-
 #pragma mark - Authenticate
 
-- (void)testAuthorizationURLWithPIN
+- (void)testAuthorizationURLWithPINAsync
 {
     NSURL *url = [[JPImgurClient sharedInstance] getAuthorizationURLUsingPIN];
     AFHTTPRequestOperation *request = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:url]];
     
+    [request setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        STSuccess();
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSHTTPURLResponse *response = operation.response;
+        STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+    }];
+    
     [request start];
-    [request waitUntilFinished];
-    
-    NSInteger status = [request.response statusCode];
-    
-    if(status != 200)
-        STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)status, [url absoluteString]);
 }
 
-- (void)testAuthenticateUsingOAuthWithPIN
+- (void)testAuthenticateUsingOAuthWithPINAsync
 {
-    [self enableAsyncTestingFirstStep];
-    
     JPImgurClient *client = [JPImgurClient sharedInstance];
     
     [[NSWorkspace sharedWorkspace] openURL:[client getAuthorizationURLUsingPIN]];
@@ -78,167 +61,116 @@
     [client authenticateUsingOAuthWithPIN:[NSString stringWithUTF8String:pin] success:^(AFOAuthCredential *credentials) {
         NSLog(@"Access token: %@", credentials.accessToken);
         NSLog(@"Refresh token: %@", credentials.refreshToken);
-        [self enableAsyncTestingThirdStep];
+        STSuccess();
     } failure:^(NSError *error) {
         STFail(@"%@", error.localizedRecoverySuggestion);
-        [self enableAsyncTestingThirdStep];
     }];
-
-    [self enableAsyncTestingSecondStep];
 }
 
 #pragma mark - Test Account endpoints
 
-- (void)testAccountLoading
+- (void)testAccountLoadingAsync
 {
-    [self enableAsyncTestingFirstStep];
-    
     [JPImgurAccount accountWithUsername:@"me" success:^(JPImgurAccount *account) {
         NSLog(@"%@", account);
-        [self enableAsyncTestingThirdStep];
+        STSuccess();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSHTTPURLResponse *response = operation.response;
         STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-        
-        [self enableAsyncTestingThirdStep];
     }];
-    
-    [self enableAsyncTestingSecondStep];
 }
 
 #pragma mark - Test Image endpoints
 
-- (void)testImageLoading
+- (void)testImageLoadingAsync
 {
-    [self enableAsyncTestingFirstStep];
-    
     NSString *imageID = [imgurVariousValues objectForKey:@"imageID"];
     
     [JPImgurImage imageWithID:imageID success:^(JPImgurImage *image) {
         NSLog(@"%@", image);
-        [self enableAsyncTestingThirdStep];
+        STSuccess();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSHTTPURLResponse *response = operation.response;
         STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-        
-        [self enableAsyncTestingThirdStep];
     }];
-    
-    [self enableAsyncTestingSecondStep];
 }
 
-- (void)testGalleryImageLoading
+- (void)testGalleryImageLoadingAsync
 {
-    [self enableAsyncTestingFirstStep];
-    
     NSString *imageID = [imgurVariousValues objectForKey:@"imageID"];
     
     [JPImgurGalleryImage imageWithID:imageID success:^(JPImgurGalleryImage *image) {
         NSLog(@"%@", image);
-        [self enableAsyncTestingThirdStep];
+        STSuccess();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSHTTPURLResponse *response = operation.response;
         STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-        
-        [self enableAsyncTestingThirdStep];
     }];
-    
-    [self enableAsyncTestingSecondStep];
 }
 
-- (void)testImageUploadingWithFile
+- (void)testImageUploadingWithFileAsync
 {
-    [self enableAsyncTestingFirstStep];
-    
     NSURL *imageURL = [NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"image-example" ofType:@"png"]];
 
     [JPImgurImage uploadImageWithFileURL:imageURL success:^(JPImgurBasicImage *image) {
         NSLog(@"%@", image);
-        [self enableAsyncTestingThirdStep];
+        STSuccess();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSHTTPURLResponse *response = operation.response;
         STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-        
-        [self enableAsyncTestingThirdStep];
     }];
-    
-    [self enableAsyncTestingSecondStep];
 }
 
-- (void)testImageUploadingWithURL
+- (void)testImageUploadingWithURLAsync
 {
-    [self enableAsyncTestingFirstStep];
-    
     NSURL *imageURL = [NSURL URLWithString:[imgurVariousValues objectForKey:@"imageURL"]];
     
     [JPImgurImage uploadImageWithURL:imageURL success:^(JPImgurBasicImage *image) {
         NSLog(@"%@", image);
-        [self enableAsyncTestingThirdStep];
+        STSuccess();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSHTTPURLResponse *response = operation.response;
         STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-        
-        [self enableAsyncTestingThirdStep];
     }];
-    
-    [self enableAsyncTestingSecondStep];
 }
 
 #pragma mark - Test Album endpoints
 
-- (void)testAlbumCreation
+- (void)testAlbumCreationAsync
 {
-    [self enableAsyncTestingFirstStep];
-
     [JPImgurAlbum createAlbumWithTitle:@"testAlbumCreation" description:nil imageIDs:nil success:^(JPImgurBasicAlbum *album) {
         NSLog(@"%@", album);
-        [self enableAsyncTestingThirdStep];
+        STSuccess();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSHTTPURLResponse *response = operation.response;
         STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-        
-        [self enableAsyncTestingThirdStep];
     }];
-
-    [self enableAsyncTestingSecondStep];
 }
 
-- (void)testAlbumLoading
+- (void)testAlbumLoadingAsync
 {
-    [self enableAsyncTestingFirstStep];
-    
     NSString *albumID = [imgurVariousValues objectForKey:@"albumID"];
     
     [JPImgurAlbum albumWithID:albumID success:^(JPImgurAlbum *album) {
         NSLog(@"%@", album);
-        [self enableAsyncTestingThirdStep];
+        STSuccess();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSHTTPURLResponse *response = operation.response;
         STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-        
-        [self enableAsyncTestingThirdStep];
     }];
-    
-    [self enableAsyncTestingSecondStep];
 }
 
-- (void)testGalleryAlbumLoading
+- (void)testGalleryAlbumLoadingAsync
 {
-    [self enableAsyncTestingFirstStep];
-    
     NSString *albumID = [imgurVariousValues objectForKey:@"albumID"];
     
     [JPImgurGalleryAlbum albumWithID:albumID success:^(JPImgurGalleryAlbum *album) {
         NSLog(@"%@", album);
-        [self enableAsyncTestingThirdStep];
+        STSuccess();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSHTTPURLResponse *response = operation.response;
         STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-        
-        [self enableAsyncTestingThirdStep];
     }];
-    
-    [self enableAsyncTestingSecondStep];
 }
 
 @end
