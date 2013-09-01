@@ -11,6 +11,25 @@
 
 @implementation JPImgurGalleryImage;
 
+#pragma mark - Submit
+
++ (void)submitImageWithID:(NSString *)imageID title:(NSString *)title success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+{
+    [self submitImageWithID:imageID title:title terms:YES success:success failure:failure];
+}
+
++ (void)submitImageWithID:(NSString *)imageID title:(NSString *)title terms:(BOOL)terms success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+{
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:title, [NSNumber numberWithBool:terms], nil]
+                                                           forKeys:[NSArray arrayWithObjects:@"title", @"terms", nil]];
+    
+    NSString *path = [NSString stringWithFormat:@"gallery/image/%@", imageID];
+    
+    [[JPImgurClient sharedInstance] postPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        success();
+    } failure:failure];
+}
+
 #pragma mark - Load
 
 + (void)imageWithID:(NSString *)imageID success:(void (^)(JPImgurGalleryImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
@@ -43,6 +62,17 @@
         _vote = 0;
     
     return self;
+}
+
+#pragma mark - Remove
+
++ (void)removeImageWithID:(NSString *)imageID success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+{
+    NSString *path = [NSString stringWithFormat:@"gallery/%@", imageID];
+    
+    [[JPImgurClient sharedInstance] deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        success();
+    } failure:failure];
 }
 
 #pragma mark - Describe
