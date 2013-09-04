@@ -32,12 +32,10 @@
 	</dict>
 	<key>imgurVariousValues</key>
 	<dict>
+		<key>title</key>
+		<string>Just messing with the API, you can ignore this</string>
 		<key>imageID</key>
-		<string>szDQB6Q</string>
-		<key>albumID</key>
-		<string>wZT6K</string>
-		<key>imageURL</key>
-		<string>http://images.apple.com/euro/home/f/generic/images/ios_hero_smaller.png</string>
+		<string>lwIkLWk</string>
 	</dict>
 </dict>
 </plist>

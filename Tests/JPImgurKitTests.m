@@ -19,8 +19,12 @@
 {
     [super setUp];
     
+    // Storing various testing values
+    
     NSDictionary *infos = [[NSBundle bundleForClass:[self class]] infoDictionary];
     imgurVariousValues = [infos objectForKey:@"imgurVariousValues"];
+    
+    // Initializing the client
     
     NSDictionary *imgurClient = [infos objectForKey:@"imgurClient"];
     NSString *clientID = [imgurClient objectForKey:@"id"];
@@ -31,7 +35,7 @@
     [[JPImgurClient sharedInstanceWithClientID:clientID secret:clientSecret] setAuthorizationHeaderWithToken:accessToken];
 }
 
-#pragma mark - Authenticate
+#pragma mark - Test authentication
 
 - (void)testAuthorizationURLWithPINAsync
 {
@@ -82,95 +86,119 @@
 
 #pragma mark - Test Image endpoints
 
-- (void)testImageLoadingAsync
+- (void)testImageWorkflowAsync
 {
-    NSString *imageID = [imgurVariousValues objectForKey:@"imageID"];
+    __block WorkBlock upload, submit, load, remove, delete;
     
-    [JPImgurImage imageWithID:imageID success:^(JPImgurImage *image) {
-        NSLog(@"%@", image);
-        STSuccess();
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSHTTPURLResponse *response = operation.response;
-        STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-    }];
-}
-
-- (void)testGalleryImageLoadingAsync
-{
-    NSString *imageID = [imgurVariousValues objectForKey:@"imageID"];
+    upload = ^(NSURL *fileURL) {
+        [JPImgurImage uploadImageWithFileURL:fileURL success:^(JPImgurBasicImage *image) {
+            NSLog(@"%@", image);
+            submit(image.imageID);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSHTTPURLResponse *response = operation.response;
+            STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+        }];
+    };
     
-    [JPImgurGalleryImage imageWithID:imageID success:^(JPImgurGalleryImage *image) {
-        NSLog(@"%@", image);
-        STSuccess();
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSHTTPURLResponse *response = operation.response;
-        STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-    }];
-}
-
-- (void)testImageUploadingWithFileAsync
-{
-    NSURL *imageURL = [NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"image-example" ofType:@"png"]];
-
-    [JPImgurImage uploadImageWithFileURL:imageURL success:^(JPImgurBasicImage *image) {
-        NSLog(@"%@", image);
-        STSuccess();
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSHTTPURLResponse *response = operation.response;
-        STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-    }];
-}
-
-- (void)testImageUploadingWithURLAsync
-{
-    NSURL *imageURL = [NSURL URLWithString:[imgurVariousValues objectForKey:@"imageURL"]];
+    submit = ^(NSString *imageID) {
+        [JPImgurGalleryImage submitImageWithID:imageID title:@"Just messing with the API, you can ignore this" success:^{
+            load(imageID);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSHTTPURLResponse *response = operation.response;
+            STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+        }];
+    };
     
-    [JPImgurImage uploadImageWithURL:imageURL success:^(JPImgurBasicImage *image) {
-        NSLog(@"%@", image);
-        STSuccess();
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSHTTPURLResponse *response = operation.response;
-        STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-    }];
+    load = ^(NSString *imageID) {
+        [JPImgurGalleryImage imageWithID:imageID success:^(JPImgurGalleryImage *image) {
+            NSLog(@"%@", image);
+            remove(imageID);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSHTTPURLResponse *response = operation.response;
+            STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+        }];
+    };
+    
+    remove = ^(NSString *imageID) {
+        [JPImgurGalleryImage removeImageWithID:imageID success:^{
+            delete(imageID);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSHTTPURLResponse *response = operation.response;
+            STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+        }];
+    };
+    
+    delete = ^(NSString *imageID) {
+        [JPImgurImage deleteImageWithID:imageID success:^{
+            STSuccess();
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSHTTPURLResponse *response = operation.response;
+            STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+        }];
+    };
+    
+    // Initiates the workflow with the URL of the image
+    
+    upload([NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"image-example" ofType:@"png"]]);
 }
 
 #pragma mark - Test Album endpoints
 
-- (void)testAlbumCreationAsync
+- (void)testAlbumWorkflowAsync
 {
-    [JPImgurAlbum createAlbumWithTitle:@"testAlbumCreation" description:nil imageIDs:nil success:^(JPImgurBasicAlbum *album) {
-        NSLog(@"%@", album);
-        STSuccess();
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSHTTPURLResponse *response = operation.response;
-        STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-    }];
-}
-
-- (void)testAlbumLoadingAsync
-{
-    NSString *albumID = [imgurVariousValues objectForKey:@"albumID"];
+    void (^create)(NSString *, NSString *);
+    __block WorkBlock submit, load, remove, delete;
     
-    [JPImgurAlbum albumWithID:albumID success:^(JPImgurAlbum *album) {
-        NSLog(@"%@", album);
-        STSuccess();
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSHTTPURLResponse *response = operation.response;
-        STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-    }];
-}
-
-- (void)testGalleryAlbumLoadingAsync
-{
-    NSString *albumID = [imgurVariousValues objectForKey:@"albumID"];
+    create = ^(NSString *title, NSString *imageID) {
+        [JPImgurAlbum createAlbumWithTitle:title description:nil imageIDs:[NSArray arrayWithObjects:imageID, nil] success:^(JPImgurBasicAlbum *album) {
+            NSLog(@"%@", album);
+            submit(album.albumID);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSHTTPURLResponse *response = operation.response;
+            STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+        }];
+    };
     
-    [JPImgurGalleryAlbum albumWithID:albumID success:^(JPImgurGalleryAlbum *album) {
-        NSLog(@"%@", album);
-        STSuccess();
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSHTTPURLResponse *response = operation.response;
-        STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-    }];
+    submit = ^(NSString *albumID) {
+        [JPImgurGalleryAlbum submitAlbumWithID:albumID title:@"Just messing with the API, you can ignore this" success:^{
+            load(albumID);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSHTTPURLResponse *response = operation.response;
+            STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+        }];
+    };
+    
+    load = ^(NSString *albumID) {
+        [JPImgurAlbum albumWithID:albumID success:^(JPImgurAlbum *album) {
+            NSLog(@"%@", album);
+            remove(albumID);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSHTTPURLResponse *response = operation.response;
+            STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+        }];
+    };
+    
+    remove = ^(NSString *albumID) {
+        [JPImgurGalleryAlbum removeAlbumWithID:albumID success:^{
+            STSuccess();
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSHTTPURLResponse *response = operation.response;
+            STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+        }];
+    };
+    
+    delete = ^(NSString *albumID) {
+        [JPImgurAlbum deleteAlbumWithID:albumID success:^{
+            STSuccess();
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSHTTPURLResponse *response = operation.response;
+            STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+        }];
+    };
+    
+    // Initiates the workflow with the URL of the image
+    
+    create([imgurVariousValues objectForKey:@"title"], [imgurVariousValues objectForKey:@"imageID"]);
 }
 
 @end

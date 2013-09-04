@@ -8,7 +8,7 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@class JPImgurClient;
+typedef void(^WorkBlock)(id);
 
 @interface JPImgurKitTests : SenTestCase
 {
