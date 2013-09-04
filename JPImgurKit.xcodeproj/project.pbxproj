@@ -134,6 +134,8 @@
 		1EB9665917789417005AA1D5 /* AFOAuth2Client.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB9665717789417005AA1D5 /* AFOAuth2Client.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1EB9665A17789417005AA1D5 /* AFOAuth2Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9665817789417005AA1D5 /* AFOAuth2Client.m */; };
 		1EB9665B17789417005AA1D5 /* AFOAuth2Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9665817789417005AA1D5 /* AFOAuth2Client.m */; };
+		1EDC1BA917D7A83F00880981 /* image-example.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC1BA817D7A79500880981 /* image-example.jpg */; };
+		1EDC1BAA17D7A84000880981 /* image-example.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC1BA817D7A79500880981 /* image-example.jpg */; };
 		1EDDF29717A461220076314A /* JPImgurBasicAlbum.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EDDF29517A461220076314A /* JPImgurBasicAlbum.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1EDDF29817A461220076314A /* JPImgurBasicAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDDF29617A461220076314A /* JPImgurBasicAlbum.m */; };
 		1EDDF29917A461220076314A /* JPImgurBasicAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDDF29617A461220076314A /* JPImgurBasicAlbum.m */; };
@@ -146,8 +148,6 @@
 		1EDDF2A217A4612B0076314A /* JPImgurBasicImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDDF29D17A4612B0076314A /* JPImgurBasicImage.m */; };
 		1EDDF2A317A461330076314A /* JPImgurBasicAlbum.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EDDF29517A461220076314A /* JPImgurBasicAlbum.h */; };
 		1EDDF2A417A461330076314A /* JPImgurBasicImage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EDDF29C17A4612B0076314A /* JPImgurBasicImage.h */; };
-		1EDDF2A617A5606C0076314A /* image-example.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDDF2A517A5606C0076314A /* image-example.png */; };
-		1EDDF2A717A5606C0076314A /* image-example.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDDF2A517A5606C0076314A /* image-example.png */; };
 		1EF35B4417C6C24E003000FE /* JPImgurVote.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EF35B4317C6C24D003000FE /* JPImgurVote.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1EF35B4517C6C2A3003000FE /* JPImgurVote.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EF35B4317C6C24D003000FE /* JPImgurVote.h */; };
 /* End PBXBuildFile section */
@@ -245,11 +245,11 @@
 		1EB9664E17786FB3005AA1D5 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		1EB9665717789417005AA1D5 /* AFOAuth2Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFOAuth2Client.h; sourceTree = "<group>"; };
 		1EB9665817789417005AA1D5 /* AFOAuth2Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFOAuth2Client.m; sourceTree = "<group>"; };
+		1EDC1BA817D7A79500880981 /* image-example.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "image-example.jpg"; sourceTree = "<group>"; };
 		1EDDF29517A461220076314A /* JPImgurBasicAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImgurBasicAlbum.h; sourceTree = "<group>"; };
 		1EDDF29617A461220076314A /* JPImgurBasicAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImgurBasicAlbum.m; sourceTree = "<group>"; };
 		1EDDF29C17A4612B0076314A /* JPImgurBasicImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImgurBasicImage.h; sourceTree = "<group>"; };
 		1EDDF29D17A4612B0076314A /* JPImgurBasicImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImgurBasicImage.m; sourceTree = "<group>"; };
-		1EDDF2A517A5606C0076314A /* image-example.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image-example.png"; sourceTree = "<group>"; };
 		1EF35B4317C6C24D003000FE /* JPImgurVote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImgurVote.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -436,7 +436,7 @@
 				1EB963D517784DD2005AA1D5 /* JPImgurKit-Info.plist */,
 				1E0392EB178C8A3E00C13A3B /* JPImgurKitTests-Info.plist */,
 				1EB9657517785743005AA1D5 /* JPImgurKit-Prefix.pch */,
-				1EDDF2A517A5606C0076314A /* image-example.png */,
+				1EDC1BA817D7A79500880981 /* image-example.jpg */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -627,7 +627,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EDDF2A617A5606C0076314A /* image-example.png in Resources */,
+				1EDC1BAA17D7A84000880981 /* image-example.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,7 +635,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EDDF2A717A5606C0076314A /* image-example.png in Resources */,
+				1EDC1BA917D7A83F00880981 /* image-example.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

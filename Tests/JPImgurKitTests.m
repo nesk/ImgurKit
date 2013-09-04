@@ -101,7 +101,7 @@
     };
     
     submit = ^(NSString *imageID) {
-        [JPImgurGalleryImage submitImageWithID:imageID title:@"Just messing with the API, you can ignore this" success:^{
+        [JPImgurGalleryImage submitImageWithID:imageID title:[imgurVariousValues objectForKey:@"title"] success:^{
             load(imageID);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSHTTPURLResponse *response = operation.response;
@@ -139,18 +139,17 @@
     
     // Initiates the workflow with the URL of the image
     
-    upload([NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"image-example" ofType:@"png"]]);
+    upload([NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"image-example" ofType:@"jpg"]]);
 }
 
 #pragma mark - Test Album endpoints
 
 - (void)testAlbumWorkflowAsync
 {
-    void (^create)(NSString *, NSString *);
-    __block WorkBlock submit, load, remove, delete;
+    __block WorkBlock create, submit, load, remove, delete;
     
-    create = ^(NSString *title, NSString *imageID) {
-        [JPImgurAlbum createAlbumWithTitle:title description:nil imageIDs:[NSArray arrayWithObjects:imageID, nil] success:^(JPImgurBasicAlbum *album) {
+    create = ^(NSString *imageID) {
+        [JPImgurAlbum createAlbumWithTitle:nil description:nil imageIDs:[NSArray arrayWithObjects:imageID, nil] success:^(JPImgurBasicAlbum *album) {
             NSLog(@"%@", album);
             submit(album.albumID);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -160,7 +159,7 @@
     };
     
     submit = ^(NSString *albumID) {
-        [JPImgurGalleryAlbum submitAlbumWithID:albumID title:@"Just messing with the API, you can ignore this" success:^{
+        [JPImgurGalleryAlbum submitAlbumWithID:albumID title:[imgurVariousValues objectForKey:@"title"] success:^{
             load(albumID);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSHTTPURLResponse *response = operation.response;
@@ -169,7 +168,7 @@
     };
     
     load = ^(NSString *albumID) {
-        [JPImgurAlbum albumWithID:albumID success:^(JPImgurAlbum *album) {
+        [JPImgurGalleryAlbum albumWithID:albumID success:^(JPImgurAlbum *album) {
             NSLog(@"%@", album);
             remove(albumID);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -180,7 +179,7 @@
     
     remove = ^(NSString *albumID) {
         [JPImgurGalleryAlbum removeAlbumWithID:albumID success:^{
-            STSuccess();
+            delete(albumID);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSHTTPURLResponse *response = operation.response;
             STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
@@ -196,9 +195,9 @@
         }];
     };
     
-    // Initiates the workflow with the URL of the image
+    // Initiates the workflow with an image ID
     
-    create([imgurVariousValues objectForKey:@"title"], [imgurVariousValues objectForKey:@"imageID"]);
+    create([imgurVariousValues objectForKey:@"imageID"]);
 }
 
 @end
