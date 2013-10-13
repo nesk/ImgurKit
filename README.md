@@ -15,7 +15,7 @@ This todo list currently exists to list specific aspects of the library, not all
 
 * Must use the error parameter of the `JSONObjectWithData:options:error:` from the `NSJSONSerialization` class
 
-## Album and Image models
+### Album and Image models
 
 * The non-basic classes should return non-basic images but this requires to make two request to Imgur, the user must be warned about this
 
@@ -23,6 +23,7 @@ This todo list currently exists to list specific aspects of the library, not all
 
 * Enable anonymous navigation
 * Add rate limits informations
+* The various `sharedInstance...` class methods are confusing. Those should be removed and two clients must be created with a single `sharedClient` class method for each one. Each client will have a different base URL (one for the commercial endpoints, the other for the free ones). The client ID and secret will be set through a method which could be used only once.
 
 ### JPImgurBasicAlbum
 
