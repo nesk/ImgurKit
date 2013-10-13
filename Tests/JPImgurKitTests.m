@@ -54,9 +54,9 @@
 
 #pragma mark - Test authentication
 
-- (void)testAuthorizationURLWithPINAsync
+- (void)testAuthorizationURLAsync
 {
-    NSURL *url = [[JPImgurClient sharedInstance] getAuthorizationURLUsingPIN];
+    NSURL *url = [[JPImgurClient sharedInstance] authorizationURLUsing:JPImgurAuthTypePIN];
     AFHTTPRequestOperation *request = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:url]];
     
     [request setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -73,7 +73,7 @@
 {
     JPImgurClient *client = [JPImgurClient sharedInstance];
     
-    [[NSWorkspace sharedWorkspace] openURL:[client getAuthorizationURLUsingPIN]];
+    [[NSWorkspace sharedWorkspace] openURL:[client authorizationURLUsing:JPImgurAuthTypePIN]];
     
     NSLog(@"Enter the code PIN");
     char pin[20];

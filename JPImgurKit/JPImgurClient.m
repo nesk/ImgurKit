@@ -62,9 +62,25 @@ static NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
 
 #pragma mark - Authenticate
 
-- (NSURL *)getAuthorizationURLUsingPIN
+- (NSURL *)authorizationURLUsing:(JPImgurAuthType)authType
 {
-    NSString *path = [NSString stringWithFormat:@"authorize?response_type=pin&client_id=%@", self.oauthClient.clientID];
+    NSString *responseType;
+
+    switch (authType) {
+        case JPImgurAuthTypeToken:
+            responseType = @"token";
+            break;
+
+        case JPImgurAuthTypePIN:
+            responseType = @"pin";
+            break;
+
+        case JPImgurAuthTypeCode:
+            responseType = @"code";
+            break;
+    }
+
+    NSString *path = [NSString stringWithFormat:@"authorize?response_type=%@&client_id=%@", responseType, self.oauthClient.clientID];
     return [NSURL URLWithString:path relativeToURL:[NSURL URLWithString:JPOAuthBaseURL]];
 }
 

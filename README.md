@@ -41,3 +41,4 @@ This todo list currently exists to list specific aspects of the library, not all
 
 * The `testAuthenticateUsingOAuthWithPIN` method must handle iOS
 * Add a test for the `URLWithSize` method from the `JPImgurBasicImage` class
+* Add a library to provide promises, which will simplify the tests. Once the library is added, the `testAuthorizationURLAsync` test should be rewrite to use all the authentication types available.

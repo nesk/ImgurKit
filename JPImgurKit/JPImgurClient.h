@@ -10,6 +10,13 @@
 #import "AFOAuth2Client.h"
 #import "AFHTTPRequestOperation.h"
 
+// Not using NS_ENUM for backward compatibility with OS X 10.7
+typedef enum {
+    JPImgurAuthTypeToken,
+    JPImgurAuthTypePIN,
+    JPImgurAuthTypeCode
+} JPImgurAuthType;
+
 @interface JPImgurClient : AFHTTPClient
 
 @property (nonatomic) NSInteger retryCountOnImgurError; // Default: 3 (= 1 initial request + 3 retries)
@@ -28,7 +35,7 @@
 
 #pragma mark - Authenticate
 
-- (NSURL *)getAuthorizationURLUsingPIN;
+- (NSURL *)authorizationURLUsing:(JPImgurAuthType)authType;
 - (void)authenticateUsingOAuthWithPIN:(NSString *)pin success:(void (^)(AFOAuthCredential *credentials))success failure:(void (^)(NSError *error))failure;
 - (void)setAuthorizationHeaderWithToken:(NSString *)token;
 
