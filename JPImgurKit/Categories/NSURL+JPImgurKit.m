@@ -24,4 +24,8 @@
     return [NSDictionary dictionaryWithDictionary:pathComponents];
 }
 
+- (NSString *)codeComponent {
+    return [[self absoluteString] componentsSeparatedByString:@"="][1];
+}
+
 @end

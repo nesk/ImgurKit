@@ -52,6 +52,17 @@
     NSLog(@"%@", tokenComponents);
 }
 
+- (void)testCodeComponent {
+    // A typical URL used by Imgur for returning a pin code
+    NSURL *codeURL = [NSURL URLWithString:[imgurVariousValues objectForKey:@"codeURL"]];
+
+    NSString *codeComponent = [codeURL codeComponent];
+
+    if(![codeComponent isEqual: @"AUTHORIZATION_CODE"]) {
+        STFail(@"Unexpected code component. Expecting \"AUTHORIZATION_CODE\", got \"%@\".", codeComponent);
+    }
+}
+
 #pragma mark - Test authentication
 
 - (void)testAuthorizationURLAsync

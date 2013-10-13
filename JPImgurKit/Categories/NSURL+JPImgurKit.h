@@ -11,5 +11,6 @@
 @interface NSURL (JPImgurKit)
 
 - (NSDictionary *)tokenComponents;
+- (NSString *)codeComponent;
 
 @end
