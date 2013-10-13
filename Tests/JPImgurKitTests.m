@@ -11,6 +11,8 @@
 #import "SenTestingKitAsync.h"
 #import "JPImgurKit.h"
 
+#import "NSURL+JPImgurKit.h"
+
 @implementation JPImgurKitTests;
 
 #pragma mark - Setup
@@ -33,6 +35,21 @@
     NSString *accessToken = [[infos objectForKey:@"imgurUser"] objectForKey:@"accessToken"];
     
     [[JPImgurClient sharedInstanceWithClientID:clientID secret:clientSecret] setAuthorizationHeaderWithToken:accessToken];
+}
+
+#pragma mark - Test utilities methods
+
+- (void)testTokenComponents {
+    // A typical URL used by Imgur for returning access tokens
+    NSURL *tokenURL = [NSURL URLWithString:[imgurVariousValues objectForKey:@"tokenURL"]];
+
+    NSDictionary *tokenComponents = [tokenURL tokenComponents];
+
+    if([tokenComponents count] != 5) {
+        STFail(@"Unexpected number of token components. Expecting 5, got %lu.", (unsigned long)[tokenComponents count]);
+    }
+
+    NSLog(@"%@", tokenComponents);
 }
 
 #pragma mark - Test authentication

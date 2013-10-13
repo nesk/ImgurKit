@@ -39,6 +39,12 @@
 		1E085B7C17A45FEF0067BF6E /* JPImgurGalleryAlbum.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1E085B5A17A45FD70067BF6E /* JPImgurGalleryAlbum.h */; };
 		1E085B7D17A45FEF0067BF6E /* JPImgurImage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1E085B5F17A45FD70067BF6E /* JPImgurImage.h */; };
 		1E085B7E17A45FEF0067BF6E /* JPImgurGalleryImage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1E085B5D17A45FD70067BF6E /* JPImgurGalleryImage.h */; };
+		1E1445AD180AE644001D98BF /* NSURL+JPImgurKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E1445AB180AE644001D98BF /* NSURL+JPImgurKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1E1445B2180AE657001D98BF /* NSURL+JPImgurKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1E1445AB180AE644001D98BF /* NSURL+JPImgurKit.h */; };
+		1E1445BA180AF56F001D98BF /* NSURL+JPImgurKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1445AC180AE644001D98BF /* NSURL+JPImgurKit.m */; };
+		1E1445BB180AF56F001D98BF /* NSURL+JPImgurKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1445AC180AE644001D98BF /* NSURL+JPImgurKit.m */; };
+		1E1445BC180AF625001D98BF /* NSURL+JPImgurKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1445AC180AE644001D98BF /* NSURL+JPImgurKit.m */; };
+		1E1445BD180AF626001D98BF /* NSURL+JPImgurKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1445AC180AE644001D98BF /* NSURL+JPImgurKit.m */; };
 		1E3E50DB177BB58F007E85A2 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658917785ECD005AA1D5 /* AFHTTPClient.m */; };
 		1E3E50DC177BB58F007E85A2 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658B17785ECD005AA1D5 /* AFHTTPRequestOperation.m */; };
 		1E3E50DD177BB58F007E85A2 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658D17785ECD005AA1D5 /* AFImageRequestOperation.m */; };
@@ -159,6 +165,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				1E1445B2180AE657001D98BF /* NSURL+JPImgurKit.h in CopyFiles */,
 				1EF35B4517C6C2A3003000FE /* JPImgurVote.h in CopyFiles */,
 				1EDDF2A317A461330076314A /* JPImgurBasicAlbum.h in CopyFiles */,
 				1EDDF2A417A461330076314A /* JPImgurBasicImage.h in CopyFiles */,
@@ -201,6 +208,8 @@
 		1E085B5E17A45FD70067BF6E /* JPImgurGalleryImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImgurGalleryImage.m; sourceTree = "<group>"; };
 		1E085B5F17A45FD70067BF6E /* JPImgurImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImgurImage.h; sourceTree = "<group>"; };
 		1E085B6017A45FD70067BF6E /* JPImgurImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImgurImage.m; sourceTree = "<group>"; };
+		1E1445AB180AE644001D98BF /* NSURL+JPImgurKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+JPImgurKit.h"; sourceTree = "<group>"; };
+		1E1445AC180AE644001D98BF /* NSURL+JPImgurKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+JPImgurKit.m"; sourceTree = "<group>"; };
 		1E3E515E177BB963007E85A2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		1E3E5160177BB96C007E85A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		1E8C72C1177F3B7D00DEE26C /* JPImgurClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImgurClient.h; sourceTree = "<group>"; };
@@ -357,6 +366,15 @@
 			path = Image;
 			sourceTree = "<group>";
 		};
+		1E1445A2180AE569001D98BF /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				1E1445AB180AE644001D98BF /* NSURL+JPImgurKit.h */,
+				1E1445AC180AE644001D98BF /* NSURL+JPImgurKit.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 		1E187BD4178DF5600031D85B /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -422,6 +440,7 @@
 		1EB963A21778341A005AA1D5 /* JPImgurKit */ = {
 			isa = PBXGroup;
 			children = (
+				1E1445A2180AE569001D98BF /* Categories */,
 				1E187BD4178DF5600031D85B /* Models */,
 				1EB963A91778341A005AA1D5 /* JPImgurKit.h */,
 				1E8C72C1177F3B7D00DEE26C /* JPImgurClient.h */,
@@ -516,6 +535,7 @@
 				1EB965FA17785ECE005AA1D5 /* AFXMLRequestOperation.h in Headers */,
 				1EB965FD17785ECE005AA1D5 /* UIImageView+AFNetworking.h in Headers */,
 				1EB9665917789417005AA1D5 /* AFOAuth2Client.h in Headers */,
+				1E1445AD180AE644001D98BF /* NSURL+JPImgurKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,6 +621,14 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Johann PARDANAUD";
+				TargetAttributes = {
+					1E9A8355177BA96800F01B05 = {
+						TestTargetID = 1EB963981778341A005AA1D5;
+					};
+					1E9A8370177BA97D00F01B05 = {
+						TestTargetID = 1EB963B517783D08005AA1D5;
+					};
+				};
 			};
 			buildConfigurationList = 1EB963931778341A005AA1D5 /* Build configuration list for PBXProject "JPImgurKit" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -697,6 +725,7 @@
 				1E085B6317A45FD70067BF6E /* JPImgurAccount.m in Sources */,
 				1E085B6817A45FD70067BF6E /* JPImgurAlbum.m in Sources */,
 				1E085B6D17A45FD70067BF6E /* JPImgurGalleryAlbum.m in Sources */,
+				1E1445BD180AF626001D98BF /* NSURL+JPImgurKit.m in Sources */,
 				1E085B7217A45FD70067BF6E /* JPImgurGalleryImage.m in Sources */,
 				1E085B7717A45FD70067BF6E /* JPImgurImage.m in Sources */,
 				1EDDF29917A461220076314A /* JPImgurBasicAlbum.m in Sources */,
@@ -724,6 +753,7 @@
 				1E085B6517A45FD70067BF6E /* JPImgurAccount.m in Sources */,
 				1E085B6A17A45FD70067BF6E /* JPImgurAlbum.m in Sources */,
 				1E085B6F17A45FD70067BF6E /* JPImgurGalleryAlbum.m in Sources */,
+				1E1445BB180AF56F001D98BF /* NSURL+JPImgurKit.m in Sources */,
 				1E085B7417A45FD70067BF6E /* JPImgurGalleryImage.m in Sources */,
 				1E085B7917A45FD70067BF6E /* JPImgurImage.m in Sources */,
 				1EDDF29B17A461220076314A /* JPImgurBasicAlbum.m in Sources */,
@@ -745,6 +775,7 @@
 				1EB965F817785ECE005AA1D5 /* AFURLConnectionOperation.m in Sources */,
 				1EB965FB17785ECE005AA1D5 /* AFXMLRequestOperation.m in Sources */,
 				1EB965FE17785ECE005AA1D5 /* UIImageView+AFNetworking.m in Sources */,
+				1E1445BC180AF625001D98BF /* NSURL+JPImgurKit.m in Sources */,
 				1EB9665A17789417005AA1D5 /* AFOAuth2Client.m in Sources */,
 				1E8C72C4177F3B7D00DEE26C /* JPImgurClient.m in Sources */,
 				1E085B6217A45FD70067BF6E /* JPImgurAccount.m in Sources */,
@@ -770,6 +801,7 @@
 				1EB965F917785ECE005AA1D5 /* AFURLConnectionOperation.m in Sources */,
 				1EB965FC17785ECE005AA1D5 /* AFXMLRequestOperation.m in Sources */,
 				1EB965FF17785ECE005AA1D5 /* UIImageView+AFNetworking.m in Sources */,
+				1E1445BA180AF56F001D98BF /* NSURL+JPImgurKit.m in Sources */,
 				1EB9665B17789417005AA1D5 /* AFOAuth2Client.m in Sources */,
 				1E8C72C6177F3B7D00DEE26C /* JPImgurClient.m in Sources */,
 				1E085B6417A45FD70067BF6E /* JPImgurAccount.m in Sources */,

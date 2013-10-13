@@ -6,6 +6,8 @@
 //  Distributed under the MIT license.
 //
 
+#import "NSURL+JPImgurKit.h"
+
 #import "JPImgurClient.h"
 
 #import "JPImgurAccount.h"

@@ -36,6 +36,8 @@
 		<string>Just messing with the API, you can ignore this</string>
 		<key>imageID</key>
 		<string>lwIkLWk</string>
+		<key>tokenURL</key>
+		<string>YourImgurAppProtocol://#access_token=ACCESS_TOKEN&amp;expires_in=3600&amp;token_type=bearer&amp;refresh_token=REFRESH_TOKEN&amp;account_username=ACCOUNT_USERNAME</string>
 	</dict>
 </dict>
 </plist>
