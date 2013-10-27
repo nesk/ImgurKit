@@ -14,6 +14,7 @@ This todo list currently exists to list specific aspects of the library, not all
 ### All models
 
 * Must use the error parameter of the `JSONObjectWithData:options:error:` from the `NSJSONSerialization` class
+* All asynchronous methods should return a ReactiveCocoa Signal, simplifying the way to manage the requests. This will also allow to ignore the callbacks and set them to `nil`.
 
 ### Album and Image models
 

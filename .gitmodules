@@ -7,3 +7,6 @@
 [submodule "Vendors/SenTestingKitAsync"]
 	path = Vendors/SenTestingKitAsync
 	url = https://github.com/nxtbgthng/SenTestingKitAsync.git
+[submodule "Vendors/ReactiveCocoa"]
+	path = Vendors/ReactiveCocoa
+	url = https://github.com/ReactiveCocoa/ReactiveCocoa.git

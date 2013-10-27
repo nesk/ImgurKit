@@ -45,6 +45,10 @@
 		1E1445BB180AF56F001D98BF /* NSURL+JPImgurKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1445AC180AE644001D98BF /* NSURL+JPImgurKit.m */; };
 		1E1445BC180AF625001D98BF /* NSURL+JPImgurKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1445AC180AE644001D98BF /* NSURL+JPImgurKit.m */; };
 		1E1445BD180AF626001D98BF /* NSURL+JPImgurKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1445AC180AE644001D98BF /* NSURL+JPImgurKit.m */; };
+		1E1A25A8181DDE9B00C8ECAA /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1A2599181DDE8300C8ECAA /* ReactiveCocoa.framework */; };
+		1E1A25AB181DDEA900C8ECAA /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1A2599181DDE8300C8ECAA /* ReactiveCocoa.framework */; };
+		1E1A25AE181DDEB200C8ECAA /* libReactiveCocoa-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1A259B181DDE8300C8ECAA /* libReactiveCocoa-iOS.a */; };
+		1E1A25B1181DDEBF00C8ECAA /* libReactiveCocoa-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1A259B181DDE8300C8ECAA /* libReactiveCocoa-iOS.a */; };
 		1E3E50DB177BB58F007E85A2 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658917785ECD005AA1D5 /* AFHTTPClient.m */; };
 		1E3E50DC177BB58F007E85A2 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658B17785ECD005AA1D5 /* AFHTTPRequestOperation.m */; };
 		1E3E50DD177BB58F007E85A2 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB9658D17785ECD005AA1D5 /* AFImageRequestOperation.m */; };
@@ -158,6 +162,86 @@
 		1EF35B4517C6C2A3003000FE /* JPImgurVote.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EF35B4317C6C24D003000FE /* JPImgurVote.h */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1E1A2598181DDE8300C8ECAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1E1A258C181DDE8200C8ECAA /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88037F8315056328001A5B19;
+			remoteInfo = ReactiveCocoa;
+		};
+		1E1A259A181DDE8300C8ECAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1E1A258C181DDE8200C8ECAA /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88F440AB153DAC820097B4C3;
+			remoteInfo = "ReactiveCocoa-iOS";
+		};
+		1E1A259C181DDE8300C8ECAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1E1A258C181DDE8200C8ECAA /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88CDF7DC15000FCF00163A9F;
+			remoteInfo = ReactiveCocoaTests;
+		};
+		1E1A259E181DDE8300C8ECAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1E1A258C181DDE8200C8ECAA /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5FAF5223174D4C2000CAC810;
+			remoteInfo = "ReactiveCocoaTests-iOS";
+		};
+		1E1A25A0181DDE8300C8ECAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1E1A258C181DDE8200C8ECAA /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1860F412177C91B500C7B3C9;
+			remoteInfo = "ReactiveCocoa-iOS-UIKitTestHost";
+		};
+		1E1A25A2181DDE8300C8ECAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1E1A258C181DDE8200C8ECAA /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1860F430177C91B500C7B3C9;
+			remoteInfo = "ReactiveCocoa-iOS-UIKitTestHostTests";
+		};
+		1E1A25A4181DDE8300C8ECAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1E1A258C181DDE8200C8ECAA /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D05AD39417F2D56F0080895B;
+			remoteInfo = "ReactiveCocoa-Mac";
+		};
+		1E1A25A6181DDE9800C8ECAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1E1A258C181DDE8200C8ECAA /* ReactiveCocoa.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 88037F8215056328001A5B19;
+			remoteInfo = ReactiveCocoa;
+		};
+		1E1A25A9181DDEA400C8ECAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1E1A258C181DDE8200C8ECAA /* ReactiveCocoa.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 88037F8215056328001A5B19;
+			remoteInfo = ReactiveCocoa;
+		};
+		1E1A25AC181DDEAE00C8ECAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1E1A258C181DDE8200C8ECAA /* ReactiveCocoa.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 88037F8215056328001A5B19;
+			remoteInfo = ReactiveCocoa;
+		};
+		1E1A25AF181DDEB800C8ECAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1E1A258C181DDE8200C8ECAA /* ReactiveCocoa.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 88037F8215056328001A5B19;
+			remoteInfo = ReactiveCocoa;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		1EB963B417783D08005AA1D5 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -210,6 +294,7 @@
 		1E085B6017A45FD70067BF6E /* JPImgurImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImgurImage.m; sourceTree = "<group>"; };
 		1E1445AB180AE644001D98BF /* NSURL+JPImgurKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+JPImgurKit.h"; sourceTree = "<group>"; };
 		1E1445AC180AE644001D98BF /* NSURL+JPImgurKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+JPImgurKit.m"; sourceTree = "<group>"; };
+		1E1A258C181DDE8200C8ECAA /* ReactiveCocoa.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveCocoa.xcodeproj; path = ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoa.xcodeproj; sourceTree = "<group>"; };
 		1E3E515E177BB963007E85A2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		1E3E5160177BB96C007E85A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		1E8C72C1177F3B7D00DEE26C /* JPImgurClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImgurClient.h; sourceTree = "<group>"; };
@@ -273,6 +358,7 @@
 				1E9A8387177BAA9300F01B05 /* AppKit.framework in Frameworks */,
 				1E9A8388177BAA9300F01B05 /* CoreServices.framework in Frameworks */,
 				1E9A8389177BAA9300F01B05 /* Security.framework in Frameworks */,
+				1E1A25AB181DDEA900C8ECAA /* ReactiveCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +373,7 @@
 				1E3E515B177BB8AF007E85A2 /* Security.framework in Frameworks */,
 				1E3E515C177BB8AF007E85A2 /* SystemConfiguration.framework in Frameworks */,
 				1E3E5156177BB822007E85A2 /* SenTestingKit.framework in Frameworks */,
+				1E1A25B1181DDEBF00C8ECAA /* libReactiveCocoa-iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +386,7 @@
 				1EB9657B17785CC1005AA1D5 /* CoreServices.framework in Frameworks */,
 				1EB963C617783EE6005AA1D5 /* Foundation.framework in Frameworks */,
 				1EB9657C17785CC1005AA1D5 /* SystemConfiguration.framework in Frameworks */,
+				1E1A25A8181DDE9B00C8ECAA /* ReactiveCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +400,7 @@
 				1EB963B817783D08005AA1D5 /* Foundation.framework in Frameworks */,
 				1EB9658217785DC8005AA1D5 /* SystemConfiguration.framework in Frameworks */,
 				1EB9657F17785CEE005AA1D5 /* MobileCoreServices.framework in Frameworks */,
+				1E1A25AE181DDEB200C8ECAA /* libReactiveCocoa-iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +473,20 @@
 				1EF35B4317C6C24D003000FE /* JPImgurVote.h */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		1E1A258D181DDE8200C8ECAA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1E1A2599181DDE8300C8ECAA /* ReactiveCocoa.framework */,
+				1E1A259B181DDE8300C8ECAA /* libReactiveCocoa-iOS.a */,
+				1E1A259D181DDE8300C8ECAA /* ReactiveCocoaTests.octest */,
+				1E1A259F181DDE8300C8ECAA /* ReactiveCocoaTests-iOS.octest */,
+				1E1A25A1181DDE8300C8ECAA /* ReactiveCocoa-iOS-UIKitTestHost.app */,
+				1E1A25A3181DDE8300C8ECAA /* ReactiveCocoa-iOS-UIKitTestHostTests.octest */,
+				1E1A25A5181DDE8300C8ECAA /* libReactiveCocoa-Mac.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		1E3E50D2177BB4DA007E85A2 /* Tests */ = {
@@ -466,6 +569,7 @@
 				1EB9658717785ECD005AA1D5 /* AFNetworking */,
 				1EB9665617789417005AA1D5 /* AFOAuth2Client */,
 				1E0155D417CD426600B13BD2 /* SenTestingKitAsync */,
+				1E1A258C181DDE8200C8ECAA /* ReactiveCocoa.xcodeproj */,
 			);
 			path = Vendors;
 			sourceTree = "<group>";
@@ -554,6 +658,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				1E1A25AA181DDEA400C8ECAA /* PBXTargetDependency */,
 			);
 			name = JPImgurKitFrameworkTests;
 			productName = JPImgurKitFrameworkTests;
@@ -572,6 +677,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				1E1A25B0181DDEB800C8ECAA /* PBXTargetDependency */,
 			);
 			name = libJPImgurKitTests;
 			productName = libJPImgurKitTests;
@@ -590,6 +696,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				1E1A25A7181DDE9800C8ECAA /* PBXTargetDependency */,
 			);
 			name = JPImgurKit.framework;
 			productName = JPImgurKit;
@@ -607,6 +714,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				1E1A25AD181DDEAE00C8ECAA /* PBXTargetDependency */,
 			);
 			name = libJPImgurKit.a;
 			productName = JPImgurKit;
@@ -640,6 +748,12 @@
 			mainGroup = 1EB9638F1778341A005AA1D5;
 			productRefGroup = 1EB9639A1778341A005AA1D5 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 1E1A258D181DDE8200C8ECAA /* Products */;
+					ProjectRef = 1E1A258C181DDE8200C8ECAA /* ReactiveCocoa.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1EB963981778341A005AA1D5 /* JPImgurKit.framework */,
@@ -649,6 +763,58 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		1E1A2599181DDE8300C8ECAA /* ReactiveCocoa.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ReactiveCocoa.framework;
+			remoteRef = 1E1A2598181DDE8300C8ECAA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1E1A259B181DDE8300C8ECAA /* libReactiveCocoa-iOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libReactiveCocoa-iOS.a";
+			remoteRef = 1E1A259A181DDE8300C8ECAA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1E1A259D181DDE8300C8ECAA /* ReactiveCocoaTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ReactiveCocoaTests.octest;
+			remoteRef = 1E1A259C181DDE8300C8ECAA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1E1A259F181DDE8300C8ECAA /* ReactiveCocoaTests-iOS.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "ReactiveCocoaTests-iOS.octest";
+			remoteRef = 1E1A259E181DDE8300C8ECAA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1E1A25A1181DDE8300C8ECAA /* ReactiveCocoa-iOS-UIKitTestHost.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "ReactiveCocoa-iOS-UIKitTestHost.app";
+			remoteRef = 1E1A25A0181DDE8300C8ECAA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1E1A25A3181DDE8300C8ECAA /* ReactiveCocoa-iOS-UIKitTestHostTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "ReactiveCocoa-iOS-UIKitTestHostTests.octest";
+			remoteRef = 1E1A25A2181DDE8300C8ECAA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1E1A25A5181DDE8300C8ECAA /* libReactiveCocoa-Mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libReactiveCocoa-Mac.a";
+			remoteRef = 1E1A25A4181DDE8300C8ECAA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1E9A8353177BA96800F01B05 /* Resources */ = {
@@ -816,6 +982,29 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		1E1A25A7181DDE9800C8ECAA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ReactiveCocoa;
+			targetProxy = 1E1A25A6181DDE9800C8ECAA /* PBXContainerItemProxy */;
+		};
+		1E1A25AA181DDEA400C8ECAA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ReactiveCocoa;
+			targetProxy = 1E1A25A9181DDEA400C8ECAA /* PBXContainerItemProxy */;
+		};
+		1E1A25AD181DDEAE00C8ECAA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ReactiveCocoa;
+			targetProxy = 1E1A25AC181DDEAE00C8ECAA /* PBXContainerItemProxy */;
+		};
+		1E1A25B0181DDEB800C8ECAA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ReactiveCocoa;
+			targetProxy = 1E1A25AF181DDEB800C8ECAA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		1E0155D517CD426600B13BD2 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -835,6 +1024,11 @@
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resources/JPImgurKit-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(BUILD_ROOT)/../IntermediateBuildFilesPath/UninstalledProducts/include/**",
+				);
 				INFOPLIST_FILE = "Resources/JPImgurKitTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
@@ -848,6 +1042,11 @@
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resources/JPImgurKit-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(BUILD_ROOT)/../IntermediateBuildFilesPath/UninstalledProducts/include/**",
+				);
 				INFOPLIST_FILE = "Resources/JPImgurKitTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
@@ -863,8 +1062,14 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resources/JPImgurKit-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(BUILD_ROOT)/../IntermediateBuildFilesPath/UninstalledProducts/include/**",
+				);
 				INFOPLIST_FILE = "Resources/JPImgurKitTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = octest;
@@ -880,8 +1085,14 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resources/JPImgurKit-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(BUILD_ROOT)/../IntermediateBuildFilesPath/UninstalledProducts/include/**",
+				);
 				INFOPLIST_FILE = "Resources/JPImgurKitTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -958,6 +1169,7 @@
 				HEADER_SEARCH_PATHS = (
 					"JPImgurKit/**",
 					"Vendors/**",
+					"$(BUILD_ROOT)/../IntermediateBuildFilesPath/UninstalledProducts/include/**",
 				);
 				INFOPLIST_FILE = "Resources/JPImgurKit-Info.plist";
 				PRODUCT_NAME = JPImgurKit;
@@ -978,6 +1190,7 @@
 				HEADER_SEARCH_PATHS = (
 					"JPImgurKit/**",
 					"Vendors/**",
+					"$(BUILD_ROOT)/../IntermediateBuildFilesPath/UninstalledProducts/include/**",
 				);
 				INFOPLIST_FILE = "Resources/JPImgurKit-Info.plist";
 				PRODUCT_NAME = JPImgurKit;
@@ -992,6 +1205,11 @@
 				DSTROOT = /tmp/JPImgurKit.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resources/JPImgurKit-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(BUILD_ROOT)/../IntermediateBuildFilesPath/UninstalledProducts/include/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = JPImgurKit;
@@ -1006,6 +1224,11 @@
 				DSTROOT = /tmp/JPImgurKit.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resources/JPImgurKit-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(BUILD_ROOT)/../IntermediateBuildFilesPath/UninstalledProducts/include/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = JPImgurKit;
