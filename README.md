@@ -15,6 +15,7 @@ This todo list currently exists to list specific aspects of the library, not all
 
 * Must use the error parameter of the `JSONObjectWithData:options:error:` from the `NSJSONSerialization` class
 * All asynchronous methods should return a ReactiveCocoa Signal, simplifying the way to manage the requests. This will also allow to ignore the callbacks and set them to `nil`.
+* All asynchronous methods should return a unique `NSError` object containing the `AFHTTPRequestOperation` object and, if needed, the uploaded images. This allows to use the same callback signature with __and__ without using ReactiveCocoa.
 
 ### Album and Image models
 
