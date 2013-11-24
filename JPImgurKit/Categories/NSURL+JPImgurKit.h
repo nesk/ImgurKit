@@ -3,7 +3,7 @@
 //  JPImgurKit
 //
 //  Created by Johann Pardanaud on 13/10/13.
-//  Copyright (c) 2013 Johann PARDANAUD. All rights reserved.
+//  Distributed under the MIT license.
 //
 
 #import <Foundation/Foundation.h>
