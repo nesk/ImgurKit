@@ -6,10 +6,19 @@
 //  Distributed under the MIT license.
 //
 
+#import "NSError+JPImgurKit.h"
 #import "NSURL+JPImgurKit.h"
 
-#import "JPImgurClient.h"
+#import "JPImgurVote.h"
+
+#import "JPImgurBasicAlbum.h"
+#import "JPImgurBasicImage.h"
 
 #import "JPImgurAccount.h"
-#import "JPImgurGalleryImage.h"
+#import "JPImgurAlbum.h"
+#import "JPImgurImage.h"
+
 #import "JPImgurGalleryAlbum.h"
+#import "JPImgurGalleryImage.h"
+
+#import "JPImgurClient.h"
