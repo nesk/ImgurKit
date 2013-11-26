@@ -7,25 +7,31 @@
 //
 
 #import "JPImgurBasicImage.h"
+
+#import "NSError+JPImgurKit.h"
 #import "JPImgurClient.h"
+
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
+NSString * const JPImgurUploadedImagesKey = @"JPImgurUploadedImages";
 
 @implementation JPImgurBasicImage;
 
-#pragma mark - Upload
+#pragma mark - Upload one image
 
-+ (void)uploadImageWithFileURL:(NSURL *)fileURL success:(void (^)(JPImgurBasicImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (RACSignal *)uploadImageWithFileURL:(NSURL *)fileURL success:(void (^)(JPImgurBasicImage *))success failure:(void (^)(NSError *))failure
 {
-    [self uploadImageWithFileURL:fileURL title:nil description:nil andLinkToAlbumWithID:nil success:success failure:failure];
+    return [self uploadImageWithFileURL:fileURL title:nil description:nil andLinkToAlbumWithID:nil success:success failure:failure];
 }
 
-+ (void)uploadImageWithFileURL:(NSURL *)fileURL title:(NSString *)title description:(NSString *)description andLinkToAlbumWithID:(NSString *)albumID success:(void (^)(JPImgurBasicImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (RACSignal *)uploadImageWithFileURL:(NSURL *)fileURL title:(NSString *)title description:(NSString *)description andLinkToAlbumWithID:(NSString *)albumID success:(void (^)(JPImgurBasicImage *))success failure:(void (^)(NSError *))failure
 {
     JPImgurClient *client = [JPImgurClient sharedInstance];
     NSMutableDictionary *parameters = [NSMutableDictionary new];
     
     [parameters setObject:@"file" forKey:@"type"];
     
-    // Adding used parameters:
+    // Add used parameters
     
     if(title != nil)
         [parameters setObject:title forKey:@"title"];
@@ -34,15 +40,12 @@
     if(albumID != nil)
         [parameters setObject:albumID forKey:@"album"];
     
-    // Creating the request:
+    // Create the request with the file appended to the body
+
+    __block NSError *fileAppendingError = nil;
     
     void (^appendFile)(id<AFMultipartFormData> formData) = ^(id<AFMultipartFormData> formData) {
-        NSError *error;
-        
-        if(![formData appendPartWithFileURL:fileURL name:@"image" error:&error])
-            @throw [NSException exceptionWithName:@"FileAppendingError"
-                                           reason:error.localizedDescription
-                                         userInfo:[NSDictionary dictionaryWithObject:error forKey:@"error"]];
+        [formData appendPartWithFileURL:fileURL name:@"image" error:&fileAppendingError];
     };
     
     NSURLRequest *request = [client multipartFormRequestWithMethod:@"POST"
@@ -50,28 +53,55 @@
                                                         parameters:parameters
                                          constructingBodyWithBlock:appendFile];
     
-    // Creating the operation:
-    
-    AFHTTPRequestOperation *operation = [client HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        success([[JPImgurBasicImage alloc] initWithJSONObject:responseObject]);
-    } failure:failure];
-    
-    [client enqueueHTTPRequestOperation:operation];
+    // Return a signal that creates and runs the operation
+
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        // If there's a file appending error, we must abort and return the error
+
+        if(fileAppendingError) {
+            [subscriber sendError:fileAppendingError];
+            if(failure)
+                failure(fileAppendingError);
+
+            return nil;
+        }
+
+        // Create the operation
+
+        AFHTTPRequestOperation *operation = [client HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            JPImgurBasicImage *image = [[JPImgurBasicImage alloc] initWithJSONObject:responseObject];
+
+            [subscriber sendNext:image];
+            [subscriber sendCompleted];
+            if(success)
+                success(image);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ JPImgurHTTPRequestOperationKey: operation }];
+
+            [subscriber sendError:finalError];
+            if(failure)
+                failure(finalError);
+        }];
+
+        [client enqueueHTTPRequestOperation:operation];
+
+        return nil;
+    }] replayLast];
 }
 
-+ (void)uploadImageWithURL:(NSURL *)url success:(void (^)(JPImgurBasicImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (RACSignal *)uploadImageWithURL:(NSURL *)url success:(void (^)(JPImgurBasicImage *))success failure:(void (^)(NSError *))failure
 {
-    [self uploadImageWithURL:url title:nil description:nil filename:nil andLinkToAlbumWithID:nil success:success failure:failure];
+    return [self uploadImageWithURL:url title:nil description:nil filename:nil andLinkToAlbumWithID:nil success:success failure:failure];
 }
 
-+ (void)uploadImageWithURL:(NSURL *)url title:(NSString *)title description:(NSString *)description filename:(NSString *)filename andLinkToAlbumWithID:(NSString *)albumID success:(void (^)(JPImgurBasicImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (RACSignal *)uploadImageWithURL:(NSURL *)url title:(NSString *)title description:(NSString *)description filename:(NSString *)filename andLinkToAlbumWithID:(NSString *)albumID success:(void (^)(JPImgurBasicImage *))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary *parameters = [NSMutableDictionary new];
     
     [parameters setObject:[url absoluteString] forKey:@"image"];
     [parameters setObject:@"URL" forKey:@"type"];
     
-    // Adding used parameters:
+    // Add used parameters
     
     if(title != nil)
         [parameters setObject:title forKey:@"title"];
@@ -82,11 +112,135 @@
     if(albumID != nil)
         [parameters setObject:albumID forKey:@"album"];
     
-    // Creating the request:
-    
-    [[JPImgurClient sharedInstance] postPath:@"image" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        success([[JPImgurBasicImage alloc] initWithJSONObject:responseObject]);
-    } failure:failure];
+    // Return a signal that creates and run the operation
+
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [[JPImgurClient sharedInstance] postPath:@"image" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            JPImgurBasicImage *image = [[JPImgurBasicImage alloc] initWithJSONObject:responseObject];
+
+            [subscriber sendNext:image];
+            [subscriber sendCompleted];
+            if(success)
+                success(image);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ JPImgurHTTPRequestOperationKey: operation }];
+
+            [subscriber sendError:finalError];
+            if(failure)
+                failure(finalError);
+        }];
+        
+        return nil;
+    }] replayLast];
+}
+
+#pragma mark - Upload multiples images
+
++ (RACSignal *)uploadImagesWithFileURLs:(NSArray *)fileURLs success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    return [self uploadImagesWithFileURLs:fileURLs titles:nil descriptions:nil andLinkToAlbumWithID:nil success:success failure:failure];
+}
+
++ (RACSignal *)uploadImagesWithFileURLs:(NSArray *)fileURLs titles:(NSArray *)titles descriptions:(NSArray *)descriptions andLinkToAlbumWithID:(NSString *)albumID success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSInteger filesNumber = [fileURLs count];
+
+    // Check for invalid number of values
+
+    if( (titles != nil && filesNumber != [titles count]) && (descriptions != nil && filesNumber != [descriptions count]) ) {
+        @throw [NSException exceptionWithName:@"JPImgurArrayLengthException"
+                                       reason:@"There should be as much titles and descriptions as file URLs (or set them to `nil`)"
+                                     userInfo:@{ @"fileURLs": fileURLs,
+                                                 @"titles": titles,
+                                                 @"descriptions": descriptions }];
+    }
+
+    // Return a signal that handles all the upload process
+
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        if(filesNumber > 0) {
+            __block NSMutableArray *images = [NSMutableArray new];
+            RACSignal *uploadQueue = [self uploadImageWithFileURL:fileURLs[0] title:(titles ? titles[0] : nil) description:(descriptions ? descriptions[0] : nil) andLinkToAlbumWithID:albumID success:nil failure:nil];
+
+            for(NSInteger i = 1 ; i < filesNumber ; i++) {
+                uploadQueue = [uploadQueue flattenMap:^RACStream *(JPImgurBasicImage *image) {
+                    [images addObject:image];
+                    return [self uploadImageWithFileURL:fileURLs[i] title:(titles ? titles[i] : nil) description:(descriptions ? descriptions[i] : nil) andLinkToAlbumWithID:albumID success:nil failure:nil];
+                }];
+            }
+
+            [uploadQueue subscribeNext:^(JPImgurBasicImage *image) {
+                [images addObject:image]; // Add the final image
+
+                [subscriber sendNext:images];
+                [subscriber sendCompleted];
+                if(success)
+                    success(images);
+            } error:^(NSError *error) {
+                NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ JPImgurUploadedImagesKey: images }];
+
+                [subscriber sendError:finalError];
+                if(failure)
+                    failure(finalError);
+            }];
+        }
+
+        return nil;
+    }] replayLast];
+}
+
++ (RACSignal *)uploadImagesWithURLs:(NSArray *)urls success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    return [self uploadImagesWithURLs:urls titles:nil descriptions:nil filenames:nil andLinkToAlbumWithID:nil success:success failure:failure];
+}
+
++ (RACSignal *)uploadImagesWithURLs:(NSArray *)urls titles:(NSArray *)titles descriptions:(NSArray *)descriptions filenames:(NSArray *)filenames andLinkToAlbumWithID:(NSString *)albumID success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSInteger urlsNumber = [urls count];
+
+    // Check for invalid number of values
+
+    if( (titles != nil && urlsNumber != [titles count]) && (descriptions != nil && urlsNumber != [descriptions count]) && (filenames != nil && urlsNumber != [filenames count]) ) {
+        @throw [NSException exceptionWithName:@"JPImgurArrayLengthException"
+                                       reason:@"There should be as much titles, descriptions and filenames as file URLs (or set them to `nil`)"
+                                     userInfo:@{ @"urls": urls,
+                                                 @"titles": titles,
+                                                 @"descriptions": descriptions,
+                                                 @"filenames": filenames }];
+    }
+
+    // Return a signal that handles all the upload process
+
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        if(urlsNumber > 0) {
+            __block NSMutableArray *images = [NSMutableArray new];
+            RACSignal *uploadQueue = [self uploadImageWithURL:urls[0] title:(titles ? titles[0] : nil) description:(descriptions ? descriptions[0] : nil) filename:(filenames ? filenames[0] : nil) andLinkToAlbumWithID:albumID success:nil failure:nil];
+
+            for(NSInteger i = 1 ; i < urlsNumber ; i++) {
+                uploadQueue = [uploadQueue flattenMap:^RACStream *(JPImgurBasicImage *image) {
+                    [images addObject:image];
+                    return [self uploadImageWithURL:urls[i] title:(titles ? titles[i] : nil) description:(descriptions ? descriptions[i] : nil) filename:(filenames ? filenames[i] : nil) andLinkToAlbumWithID:albumID success:nil failure:nil];
+                }];
+            }
+
+            [uploadQueue subscribeNext:^(JPImgurBasicImage *image) {
+                [images addObject:image]; // Add the final image
+
+                [subscriber sendNext:images];
+                [subscriber sendCompleted];
+                if(success)
+                    success(images);
+            } error:^(NSError *error) {
+                NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ JPImgurUploadedImagesKey: images }];
+
+                [subscriber sendError:finalError];
+                if(failure)
+                    failure(finalError);
+            }];
+        }
+        
+        return nil;
+    }] replayLast];
 }
 
 #pragma mark - Load

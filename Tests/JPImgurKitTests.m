@@ -11,8 +11,6 @@
 #import "SenTestingKitAsync.h"
 #import "JPImgurKit.h"
 
-#import "NSURL+JPImgurKit.h"
-
 @implementation JPImgurKitTests;
 
 #pragma mark - Setup
@@ -39,7 +37,8 @@
 
 #pragma mark - Test utilities methods
 
-- (void)testTokenComponents {
+- (void)testTokenComponents
+{
     // A typical URL used by Imgur for returning access tokens
     NSURL *tokenURL = [NSURL URLWithString:[imgurVariousValues objectForKey:@"tokenURL"]];
 
@@ -52,7 +51,8 @@
     NSLog(@"%@", tokenComponents);
 }
 
-- (void)testCodeComponent {
+- (void)testCodeComponent
+{
     // A typical URL used by Imgur for returning a pin code
     NSURL *codeURL = [NSURL URLWithString:[imgurVariousValues objectForKey:@"codeURL"]];
 
@@ -122,7 +122,8 @@
         [JPImgurImage uploadImageWithFileURL:fileURL success:^(JPImgurBasicImage *image) {
             NSLog(@"%@", image);
             submit(image.imageID);
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        } failure:^(NSError *error) {
+            AFHTTPRequestOperation *operation = [[error userInfo] objectForKey:JPImgurHTTPRequestOperationKey];
             NSHTTPURLResponse *response = operation.response;
             STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
         }];
