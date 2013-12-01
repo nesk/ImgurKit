@@ -1,17 +1,17 @@
 //
-//  ImgurClient.m
+//  IKClient.m
 //  ImgurKit
 //
 //  Created by Johann Pardanaud on 29/06/13.
 //  Distributed under the MIT license.
 //
 
-#import "ImgurClient.h"
+#import "IKClient.h"
 
-static NSString * const JPBaseURL = @"https://api.imgur.com/3/";
-static NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
+static NSString * const IKBaseURL = @"https://api.imgur.com/3/";
+static NSString * const IKOAuthBaseURL = @"https://api.imgur.com/oauth2/";
 
-@implementation ImgurClient;
+@implementation IKClient;
 
 #pragma mark - Get/Set
 
@@ -20,7 +20,7 @@ static NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
 - (AFOAuth2Client *)oauthClient
 {
     if(!_oauthClient)
-        _oauthClient = [[AFOAuth2Client alloc] initWithBaseURL:[NSURL URLWithString:JPOAuthBaseURL] clientID:_clientID secret:_secret];
+        _oauthClient = [[AFOAuth2Client alloc] initWithBaseURL:[NSURL URLWithString:IKOAuthBaseURL] clientID:_clientID secret:_secret];
     
     return _oauthClient;
 }
@@ -40,16 +40,16 @@ static NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
 + (instancetype)sharedInstanceWithBaseURL:(NSURL *)url clientID:(NSString *)clientID secret:(NSString *)secret
 {
     static dispatch_once_t onceToken;
-    static ImgurClient *sharedInstance = nil;
+    static IKClient *sharedInstance = nil;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[ImgurClient alloc] initWithBaseURL:url clientID:clientID secret:secret];
+        sharedInstance = [[IKClient alloc] initWithBaseURL:url clientID:clientID secret:secret];
     });
     return sharedInstance;
 }
 
 - (instancetype)initWithBaseURL:(NSURL *)url clientID:(NSString *)clientID secret:(NSString *)secret
 {
-    url = (url == nil) ? [NSURL URLWithString:JPBaseURL] : url;
+    url = (url == nil) ? [NSURL URLWithString:IKBaseURL] : url;
     self = [self initWithBaseURL:url];
     
     _retryCountOnImgurError = 3;
@@ -62,26 +62,26 @@ static NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
 
 #pragma mark - Authenticate
 
-- (NSURL *)authorizationURLUsing:(ImgurAuthType)authType
+- (NSURL *)authorizationURLUsing:(IKAuthType)authType
 {
     NSString *responseType;
 
     switch (authType) {
-        case ImgurAuthTypeToken:
+        case IKAuthTypeToken:
             responseType = @"token";
             break;
 
-        case ImgurAuthTypePIN:
+        case IKAuthTypePIN:
             responseType = @"pin";
             break;
 
-        case ImgurAuthTypeCode:
+        case IKAuthTypeCode:
             responseType = @"code";
             break;
     }
 
     NSString *path = [NSString stringWithFormat:@"authorize?response_type=%@&client_id=%@", responseType, self.oauthClient.clientID];
-    return [NSURL URLWithString:path relativeToURL:[NSURL URLWithString:JPOAuthBaseURL]];
+    return [NSURL URLWithString:path relativeToURL:[NSURL URLWithString:IKOAuthBaseURL]];
 }
 
 - (void)authenticateUsingOAuthWithPIN:(NSString *)pin success:(void (^)(AFOAuthCredential *credentials))success failure:(void (^)(NSError *error))failure

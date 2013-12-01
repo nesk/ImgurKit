@@ -6,27 +6,27 @@
 //  Distributed under the MIT license.
 //
 
-#import "ImgurBasicImage.h"
+#import "IKBasicImage.h"
 
 #import "NSError+ImgurKit.h"
-#import "ImgurClient.h"
+#import "IKClient.h"
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-NSString * const ImgurUploadedImagesKey = @"ImgurUploadedImages";
+NSString * const IKUploadedImagesKey = @"ImgurUploadedImages";
 
-@implementation ImgurBasicImage;
+@implementation IKBasicImage;
 
 #pragma mark - Upload one image
 
-+ (RACSignal *)uploadImageWithFileURL:(NSURL *)fileURL success:(void (^)(ImgurBasicImage *))success failure:(void (^)(NSError *))failure
++ (RACSignal *)uploadImageWithFileURL:(NSURL *)fileURL success:(void (^)(IKBasicImage *))success failure:(void (^)(NSError *))failure
 {
     return [self uploadImageWithFileURL:fileURL title:nil description:nil andLinkToAlbumWithID:nil success:success failure:failure];
 }
 
-+ (RACSignal *)uploadImageWithFileURL:(NSURL *)fileURL title:(NSString *)title description:(NSString *)description andLinkToAlbumWithID:(NSString *)albumID success:(void (^)(ImgurBasicImage *))success failure:(void (^)(NSError *))failure
++ (RACSignal *)uploadImageWithFileURL:(NSURL *)fileURL title:(NSString *)title description:(NSString *)description andLinkToAlbumWithID:(NSString *)albumID success:(void (^)(IKBasicImage *))success failure:(void (^)(NSError *))failure
 {
-    ImgurClient *client = [ImgurClient sharedInstance];
+    IKClient *client = [IKClient sharedInstance];
     NSMutableDictionary *parameters = [NSMutableDictionary new];
     
     [parameters setObject:@"file" forKey:@"type"];
@@ -69,14 +69,14 @@ NSString * const ImgurUploadedImagesKey = @"ImgurUploadedImages";
         // Create the operation
 
         AFHTTPRequestOperation *operation = [client HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            ImgurBasicImage *image = [[ImgurBasicImage alloc] initWithJSONObject:responseObject];
+            IKBasicImage *image = [[IKBasicImage alloc] initWithJSONObject:responseObject];
 
             [subscriber sendNext:image];
             [subscriber sendCompleted];
             if(success)
                 success(image);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ ImgurHTTPRequestOperationKey: operation }];
+            NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ IKHTTPRequestOperationKey: operation }];
 
             [subscriber sendError:finalError];
             if(failure)
@@ -89,12 +89,12 @@ NSString * const ImgurUploadedImagesKey = @"ImgurUploadedImages";
     }] replayLast];
 }
 
-+ (RACSignal *)uploadImageWithURL:(NSURL *)url success:(void (^)(ImgurBasicImage *))success failure:(void (^)(NSError *))failure
++ (RACSignal *)uploadImageWithURL:(NSURL *)url success:(void (^)(IKBasicImage *))success failure:(void (^)(NSError *))failure
 {
     return [self uploadImageWithURL:url title:nil description:nil filename:nil andLinkToAlbumWithID:nil success:success failure:failure];
 }
 
-+ (RACSignal *)uploadImageWithURL:(NSURL *)url title:(NSString *)title description:(NSString *)description filename:(NSString *)filename andLinkToAlbumWithID:(NSString *)albumID success:(void (^)(ImgurBasicImage *))success failure:(void (^)(NSError *))failure
++ (RACSignal *)uploadImageWithURL:(NSURL *)url title:(NSString *)title description:(NSString *)description filename:(NSString *)filename andLinkToAlbumWithID:(NSString *)albumID success:(void (^)(IKBasicImage *))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary *parameters = [NSMutableDictionary new];
     
@@ -115,15 +115,15 @@ NSString * const ImgurUploadedImagesKey = @"ImgurUploadedImages";
     // Return a signal that creates and run the operation
 
     return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [[ImgurClient sharedInstance] postPath:@"image" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            ImgurBasicImage *image = [[ImgurBasicImage alloc] initWithJSONObject:responseObject];
+        [[IKClient sharedInstance] postPath:@"image" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            IKBasicImage *image = [[IKBasicImage alloc] initWithJSONObject:responseObject];
 
             [subscriber sendNext:image];
             [subscriber sendCompleted];
             if(success)
                 success(image);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ ImgurHTTPRequestOperationKey: operation }];
+            NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ IKHTTPRequestOperationKey: operation }];
 
             [subscriber sendError:finalError];
             if(failure)
@@ -163,13 +163,13 @@ NSString * const ImgurUploadedImagesKey = @"ImgurUploadedImages";
             RACSignal *uploadQueue = [self uploadImageWithFileURL:fileURLs[0] title:(titles ? titles[0] : nil) description:(descriptions ? descriptions[0] : nil) andLinkToAlbumWithID:albumID success:nil failure:nil];
 
             for(NSInteger i = 1 ; i < filesNumber ; i++) {
-                uploadQueue = [uploadQueue flattenMap:^RACStream *(ImgurBasicImage *image) {
+                uploadQueue = [uploadQueue flattenMap:^RACStream *(IKBasicImage *image) {
                     [images addObject:image];
                     return [self uploadImageWithFileURL:fileURLs[i] title:(titles ? titles[i] : nil) description:(descriptions ? descriptions[i] : nil) andLinkToAlbumWithID:albumID success:nil failure:nil];
                 }];
             }
 
-            [uploadQueue subscribeNext:^(ImgurBasicImage *image) {
+            [uploadQueue subscribeNext:^(IKBasicImage *image) {
                 [images addObject:image]; // Add the final image
 
                 [subscriber sendNext:images];
@@ -177,7 +177,7 @@ NSString * const ImgurUploadedImagesKey = @"ImgurUploadedImages";
                 if(success)
                     success(images);
             } error:^(NSError *error) {
-                NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ ImgurUploadedImagesKey: images }];
+                NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ IKUploadedImagesKey: images }];
 
                 [subscriber sendError:finalError];
                 if(failure)
@@ -217,13 +217,13 @@ NSString * const ImgurUploadedImagesKey = @"ImgurUploadedImages";
             RACSignal *uploadQueue = [self uploadImageWithURL:urls[0] title:(titles ? titles[0] : nil) description:(descriptions ? descriptions[0] : nil) filename:(filenames ? filenames[0] : nil) andLinkToAlbumWithID:albumID success:nil failure:nil];
 
             for(NSInteger i = 1 ; i < urlsNumber ; i++) {
-                uploadQueue = [uploadQueue flattenMap:^RACStream *(ImgurBasicImage *image) {
+                uploadQueue = [uploadQueue flattenMap:^RACStream *(IKBasicImage *image) {
                     [images addObject:image];
                     return [self uploadImageWithURL:urls[i] title:(titles ? titles[i] : nil) description:(descriptions ? descriptions[i] : nil) filename:(filenames ? filenames[i] : nil) andLinkToAlbumWithID:albumID success:nil failure:nil];
                 }];
             }
 
-            [uploadQueue subscribeNext:^(ImgurBasicImage *image) {
+            [uploadQueue subscribeNext:^(IKBasicImage *image) {
                 [images addObject:image]; // Add the final image
 
                 [subscriber sendNext:images];
@@ -231,7 +231,7 @@ NSString * const ImgurUploadedImagesKey = @"ImgurUploadedImages";
                 if(success)
                     success(images);
             } error:^(NSError *error) {
-                NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ ImgurUploadedImagesKey: images }];
+                NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ IKUploadedImagesKey: images }];
 
                 [subscriber sendError:finalError];
                 if(failure)
@@ -306,7 +306,7 @@ NSString * const ImgurUploadedImagesKey = @"ImgurUploadedImages";
 {
     NSString *path = [NSString stringWithFormat:@"image/%@", imageID];
     
-    [[ImgurClient sharedInstance] deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[IKClient sharedInstance] deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success();
     } failure:failure];
 }

@@ -1,5 +1,5 @@
 //
-//  ImgurClient.h
+//  IKClient.h
 //  ImgurKit
 //
 //  Created by Johann Pardanaud on 29/06/13.
@@ -12,12 +12,12 @@
 
 // Not using NS_ENUM for backward compatibility with OS X 10.7
 typedef enum {
-    ImgurAuthTypeToken,
-    ImgurAuthTypePIN,
-    ImgurAuthTypeCode
-} ImgurAuthType;
+    IKAuthTypeToken,
+    IKAuthTypePIN,
+    IKAuthTypeCode
+} IKAuthType;
 
-@interface ImgurClient : AFHTTPClient
+@interface IKClient : AFHTTPClient
 
 @property (nonatomic) NSInteger retryCountOnImgurError; // Default: 3 (= 1 initial request + 3 retries)
 
@@ -35,7 +35,7 @@ typedef enum {
 
 #pragma mark - Authenticate
 
-- (NSURL *)authorizationURLUsing:(ImgurAuthType)authType;
+- (NSURL *)authorizationURLUsing:(IKAuthType)authType;
 - (void)authenticateUsingOAuthWithPIN:(NSString *)pin success:(void (^)(AFOAuthCredential *credentials))success failure:(void (^)(NSError *error))failure;
 - (void)setAuthorizationHeaderWithToken:(NSString *)token;
 

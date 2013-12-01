@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-FOUNDATION_EXPORT NSString * const ImgurUploadedImagesKey;
+FOUNDATION_EXPORT NSString * const IKUploadedImagesKey;
 
 // Not using NS_ENUM for backward compatibility with OS X 10.7
 typedef enum {
@@ -22,7 +22,7 @@ typedef enum {
 
 @class AFHTTPRequestOperation, RACSignal;
 
-@interface ImgurBasicImage : NSObject
+@interface IKBasicImage : NSObject
 
 @property (nonatomic, readonly) NSString *imageID;
 
@@ -31,11 +31,11 @@ typedef enum {
 
 #pragma mark - Upload one image
 
-+ (RACSignal *)uploadImageWithFileURL:(NSURL *)fileURL success:(void (^)(ImgurBasicImage *image))success failure:(void (^)(NSError *error))failure;
-+ (RACSignal *)uploadImageWithFileURL:(NSURL *)fileURL title:(NSString *)title description:(NSString *)description andLinkToAlbumWithID:(NSString *)albumID success:(void (^)(ImgurBasicImage *image))success failure:(void (^)(NSError *error))failure;
++ (RACSignal *)uploadImageWithFileURL:(NSURL *)fileURL success:(void (^)(IKBasicImage *image))success failure:(void (^)(NSError *error))failure;
++ (RACSignal *)uploadImageWithFileURL:(NSURL *)fileURL title:(NSString *)title description:(NSString *)description andLinkToAlbumWithID:(NSString *)albumID success:(void (^)(IKBasicImage *image))success failure:(void (^)(NSError *error))failure;
 
-+ (RACSignal *)uploadImageWithURL:(NSURL *)url success:(void (^)(ImgurBasicImage *image))success failure:(void (^)(NSError *error))failure;
-+ (RACSignal *)uploadImageWithURL:(NSURL *)url title:(NSString *)title description:(NSString *)description filename:(NSString *)filename andLinkToAlbumWithID:(NSString *)albumID success:(void (^)(ImgurBasicImage *image))success failure:(void (^)(NSError *error))failure;
++ (RACSignal *)uploadImageWithURL:(NSURL *)url success:(void (^)(IKBasicImage *image))success failure:(void (^)(NSError *error))failure;
++ (RACSignal *)uploadImageWithURL:(NSURL *)url title:(NSString *)title description:(NSString *)description filename:(NSString *)filename andLinkToAlbumWithID:(NSString *)albumID success:(void (^)(IKBasicImage *image))success failure:(void (^)(NSError *error))failure;
 
 #pragma mark - Upload multiples images
 

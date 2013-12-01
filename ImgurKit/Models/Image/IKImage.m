@@ -1,23 +1,23 @@
 //
-//  ImgurImage.m
+//  IKImage.m
 //  ImgurKit
 //
 //  Created by Johann Pardanaud on 10/07/13.
 //  Distributed under the MIT license.
 //
 
-#import "ImgurImage.h"
-#import "ImgurClient.h"
+#import "IKImage.h"
+#import "IKClient.h"
 
-@implementation ImgurImage;
+@implementation IKImage;
 
 #pragma mark - Load
 
-+ (void)imageWithID:(NSString *)imageID success:(void (^)(ImgurImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (void)imageWithID:(NSString *)imageID success:(void (^)(IKImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
     NSString *path = [NSString stringWithFormat:@"image/%@", imageID];
     
-    [[ImgurClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[IKClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success([[self alloc] initWithJSONObject:responseObject]);
     } failure:failure];
 }

@@ -32,7 +32,7 @@
 
     NSString *accessToken = [[infos objectForKey:@"imgurUser"] objectForKey:@"accessToken"];
     
-    [[ImgurClient sharedInstanceWithClientID:clientID secret:clientSecret] setAuthorizationHeaderWithToken:accessToken];
+    [[IKClient sharedInstanceWithClientID:clientID secret:clientSecret] setAuthorizationHeaderWithToken:accessToken];
 }
 
 #pragma mark - Test utilities methods
@@ -67,7 +67,7 @@
 
 - (void)testAuthorizationURLAsync
 {
-    NSURL *url = [[ImgurClient sharedInstance] authorizationURLUsing:ImgurAuthTypePIN];
+    NSURL *url = [[IKClient sharedInstance] authorizationURLUsing:IKAuthTypePIN];
     AFHTTPRequestOperation *request = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:url]];
     
     [request setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -82,9 +82,9 @@
 
 - (void)testAuthenticateUsingOAuthWithPINAsync
 {
-    ImgurClient *client = [ImgurClient sharedInstance];
+    IKClient *client = [IKClient sharedInstance];
     
-    [[NSWorkspace sharedWorkspace] openURL:[client authorizationURLUsing:ImgurAuthTypePIN]];
+    [[NSWorkspace sharedWorkspace] openURL:[client authorizationURLUsing:IKAuthTypePIN]];
     
     NSLog(@"Enter the code PIN");
     char pin[20];
@@ -103,7 +103,7 @@
 
 - (void)testAccountLoadingAsync
 {
-    [ImgurAccount accountWithUsername:@"me" success:^(ImgurAccount *account) {
+    [IKAccount accountWithUsername:@"me" success:^(IKAccount *account) {
         NSLog(@"%@", account);
         STSuccess();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -119,18 +119,18 @@
     __block WorkBlock upload, submit, load, remove, delete;
     
     upload = ^(NSURL *fileURL) {
-        [ImgurImage uploadImageWithFileURL:fileURL success:^(ImgurBasicImage *image) {
+        [IKImage uploadImageWithFileURL:fileURL success:^(IKBasicImage *image) {
             NSLog(@"%@", image);
             submit(image.imageID);
         } failure:^(NSError *error) {
-            AFHTTPRequestOperation *operation = [[error userInfo] objectForKey:ImgurHTTPRequestOperationKey];
+            AFHTTPRequestOperation *operation = [[error userInfo] objectForKey:IKHTTPRequestOperationKey];
             NSHTTPURLResponse *response = operation.response;
             STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
         }];
     };
     
     submit = ^(NSString *imageID) {
-        [ImgurGalleryImage submitImageWithID:imageID title:[imgurVariousValues objectForKey:@"title"] success:^{
+        [IKGalleryImage submitImageWithID:imageID title:[imgurVariousValues objectForKey:@"title"] success:^{
             load(imageID);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSHTTPURLResponse *response = operation.response;
@@ -139,7 +139,7 @@
     };
     
     load = ^(NSString *imageID) {
-        [ImgurGalleryImage imageWithID:imageID success:^(ImgurGalleryImage *image) {
+        [IKGalleryImage imageWithID:imageID success:^(IKGalleryImage *image) {
             NSLog(@"%@", image);
             remove(imageID);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -149,7 +149,7 @@
     };
     
     remove = ^(NSString *imageID) {
-        [ImgurGalleryImage removeImageWithID:imageID success:^{
+        [IKGalleryImage removeImageWithID:imageID success:^{
             delete(imageID);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSHTTPURLResponse *response = operation.response;
@@ -158,7 +158,7 @@
     };
     
     delete = ^(NSString *imageID) {
-        [ImgurImage deleteImageWithID:imageID success:^{
+        [IKImage deleteImageWithID:imageID success:^{
             STSuccess();
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSHTTPURLResponse *response = operation.response;
@@ -178,7 +178,7 @@
     __block WorkBlock create, submit, load, remove, delete;
     
     create = ^(NSString *imageID) {
-        [ImgurAlbum createAlbumWithTitle:nil description:nil imageIDs:[NSArray arrayWithObjects:imageID, nil] success:^(ImgurBasicAlbum *album) {
+        [IKAlbum createAlbumWithTitle:nil description:nil imageIDs:[NSArray arrayWithObjects:imageID, nil] success:^(IKBasicAlbum *album) {
             NSLog(@"%@", album);
             submit(album.albumID);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -188,7 +188,7 @@
     };
     
     submit = ^(NSString *albumID) {
-        [ImgurGalleryAlbum submitAlbumWithID:albumID title:[imgurVariousValues objectForKey:@"title"] success:^{
+        [IKGalleryAlbum submitAlbumWithID:albumID title:[imgurVariousValues objectForKey:@"title"] success:^{
             load(albumID);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSHTTPURLResponse *response = operation.response;
@@ -197,7 +197,7 @@
     };
     
     load = ^(NSString *albumID) {
-        [ImgurGalleryAlbum albumWithID:albumID success:^(ImgurAlbum *album) {
+        [IKGalleryAlbum albumWithID:albumID success:^(IKAlbum *album) {
             NSLog(@"%@", album);
             remove(albumID);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -207,7 +207,7 @@
     };
     
     remove = ^(NSString *albumID) {
-        [ImgurGalleryAlbum removeAlbumWithID:albumID success:^{
+        [IKGalleryAlbum removeAlbumWithID:albumID success:^{
             delete(albumID);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSHTTPURLResponse *response = operation.response;
@@ -216,7 +216,7 @@
     };
     
     delete = ^(NSString *albumID) {
-        [ImgurAlbum deleteAlbumWithID:albumID success:^{
+        [IKAlbum deleteAlbumWithID:albumID success:^{
             STSuccess();
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSHTTPURLResponse *response = operation.response;

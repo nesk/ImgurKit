@@ -9,16 +9,16 @@
 #import "NSError+ImgurKit.h"
 #import "NSURL+ImgurKit.h"
 
-#import "ImgurVote.h"
+#import "IKVote.h"
 
-#import "ImgurBasicAlbum.h"
-#import "ImgurBasicImage.h"
+#import "IKBasicAlbum.h"
+#import "IKBasicImage.h"
 
-#import "ImgurAccount.h"
-#import "ImgurAlbum.h"
-#import "ImgurImage.h"
+#import "IKAccount.h"
+#import "IKAlbum.h"
+#import "IKImage.h"
 
-#import "ImgurGalleryAlbum.h"
-#import "ImgurGalleryImage.h"
+#import "IKGalleryAlbum.h"
+#import "IKGalleryImage.h"
 
-#import "ImgurClient.h"
+#import "IKClient.h"

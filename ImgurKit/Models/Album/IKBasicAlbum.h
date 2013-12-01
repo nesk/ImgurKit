@@ -10,31 +10,31 @@
 
 // Not using NS_ENUM for backward compatibility with OS X 10.7
 typedef enum {
-    ImgurDefaultPrivacy,
-    ImgurPublicPrivacy,
-    ImgurHiddenPrivacy,
-    ImgurSecretPrivacy
-} ImgurPrivacy;
+    IKDefaultPrivacy,
+    IKPublicPrivacy,
+    IKHiddenPrivacy,
+    IKSecretPrivacy
+} IKPrivacy;
 
 typedef enum {
-    ImgurDefaultLayout,
-    ImgurBlogLayout,
-    ImgurGridLayout,
-    ImgurHorizontalLayout,
-    ImgurVerticalLayout
-} ImgurLayout;
+    IKDefaultLayout,
+    IKBlogLayout,
+    IKGridLayout,
+    IKHorizontalLayout,
+    IKVerticalLayout
+} IKLayout;
 
-@class AFHTTPRequestOperation, ImgurBasicImage;
+@class AFHTTPRequestOperation, IKBasicImage;
 
-@interface ImgurBasicAlbum : NSObject
+@interface IKBasicAlbum : NSObject
 
 @property (nonatomic, readonly) NSString *albumID;
 @property (nonatomic, readonly) NSString *deletehash;
 
 #pragma mark - Create
 
-+ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs success:(void (^)(ImgurBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
-+ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs privacy:(ImgurPrivacy)privacy layout:(ImgurLayout)layout cover:(ImgurBasicImage *)cover success:(void (^)(ImgurBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs success:(void (^)(IKBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs privacy:(IKPrivacy)privacy layout:(IKLayout)layout cover:(IKBasicImage *)cover success:(void (^)(IKBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
 #pragma mark - Load
 

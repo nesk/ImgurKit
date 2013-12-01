@@ -1,21 +1,21 @@
 //
-//  ImgurGalleryAlbum.h
+//  IKGalleryAlbum.h
 //  ImgurKit
 //
 //  Created by Johann Pardanaud on 11/07/13.
 //  Distributed under the MIT license.
 //
 
-#import "ImgurAlbum.h"
-#import "ImgurVote.h"
+#import "IKAlbum.h"
+#import "IKVote.h"
 
-@interface ImgurGalleryAlbum : ImgurAlbum
+@interface IKGalleryAlbum : IKAlbum
 
 @property (nonatomic, readonly) NSInteger ups;
 @property (nonatomic, readonly) NSInteger downs;
 @property (nonatomic, readonly) NSInteger score;
 
-@property (nonatomic) ImgurVote vote;
+@property (nonatomic) IKVote vote;
 
 #pragma mark - Submit
 
@@ -24,7 +24,7 @@
 
 #pragma mark - Load
 
-+ (void)albumWithID:(NSString *)albumID success:(void (^)(ImgurGalleryAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (void)albumWithID:(NSString *)albumID success:(void (^)(IKGalleryAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 - (instancetype)initWithJSONObject:(NSData *)object;
 
 #pragma mark - Remove

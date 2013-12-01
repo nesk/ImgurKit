@@ -1,14 +1,14 @@
 //
-//  ImgurImage.h
+//  IKImage.h
 //  ImgurKit
 //
 //  Created by Johann Pardanaud on 10/07/13.
 //  Distributed under the MIT license.
 //
 
-#import "ImgurBasicImage.h"
+#import "IKBasicImage.h"
 
-@interface ImgurImage : ImgurBasicImage
+@interface IKImage : IKBasicImage
 
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSString *description;
@@ -26,7 +26,7 @@
 
 #pragma mark - Load
 
-+ (void)imageWithID:(NSString *)imageID success:(void (^)(ImgurImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (void)imageWithID:(NSString *)imageID success:(void (^)(IKImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 - (instancetype)initWithJSONObject:(NSData *)object;
 
 @end

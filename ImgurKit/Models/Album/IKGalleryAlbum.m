@@ -1,15 +1,15 @@
 //
-//  ImgurGalleryAlbum.m
+//  IKGalleryAlbum.m
 //  ImgurKit
 //
 //  Created by Johann Pardanaud on 11/07/13.
 //  Distributed under the MIT license.
 //
 
-#import "ImgurGalleryAlbum.h"
-#import "ImgurClient.h"
+#import "IKGalleryAlbum.h"
+#import "IKClient.h"
 
-@implementation ImgurGalleryAlbum;
+@implementation IKGalleryAlbum;
 
 #pragma mark - Submit
 
@@ -25,18 +25,18 @@
     
     NSString *path = [NSString stringWithFormat:@"gallery/album/%@", albumID];
 
-    [[ImgurClient sharedInstance] postPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[IKClient sharedInstance] postPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success();
     } failure:failure];
 }
 
 #pragma mark - Load
 
-+ (void)albumWithID:(NSString *)albumID success:(void (^)(ImgurGalleryAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (void)albumWithID:(NSString *)albumID success:(void (^)(IKGalleryAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
     NSString *path = [NSString stringWithFormat:@"gallery/album/%@", albumID];
     
-    [[ImgurClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[IKClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success([[self alloc] initWithJSONObject:responseObject]);
     } failure:failure];
 }
@@ -69,7 +69,7 @@
 {
     NSString *path = [NSString stringWithFormat:@"gallery/%@", albumID];
     
-    [[ImgurClient sharedInstance] deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[IKClient sharedInstance] deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success();
     } failure:failure];
 }

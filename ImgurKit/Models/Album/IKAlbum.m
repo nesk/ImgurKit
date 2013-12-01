@@ -1,23 +1,23 @@
 //
-//  ImgurAlbum.m
+//  IKAlbum.m
 //  ImgurKit
 //
 //  Created by Johann Pardanaud on 11/07/13.
 //  Distributed under the MIT license.
 //
 
-#import "ImgurAlbum.h"
-#import "ImgurClient.h"
+#import "IKAlbum.h"
+#import "IKClient.h"
 
-@implementation ImgurAlbum;
+@implementation IKAlbum;
 
 #pragma mark - Load
 
-+ (void)albumWithID:(NSString *)albumID success:(void (^)(ImgurAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (void)albumWithID:(NSString *)albumID success:(void (^)(IKAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
     NSString *path = [NSString stringWithFormat:@"album/%@", albumID];
     
-    [[ImgurClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[IKClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success([[self alloc] initWithJSONObject:responseObject]);
     } failure:failure];
 }

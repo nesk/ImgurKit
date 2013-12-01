@@ -1,5 +1,5 @@
 //
-//  ImgurAccount.h
+//  IKAccount.h
 //  ImgurKit
 //
 //  Created by Johann Pardanaud on 10/07/13.
@@ -10,7 +10,7 @@
 
 @class AFHTTPRequestOperation;
 
-@interface ImgurAccount : NSObject
+@interface IKAccount : NSObject
 
 @property (nonatomic, readonly) NSUInteger accountID;
 
@@ -22,7 +22,7 @@
 
 #pragma mark - Load
 
-+ (void)accountWithUsername:(NSString *)username success:(void (^)(ImgurAccount *account))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (void)accountWithUsername:(NSString *)username success:(void (^)(IKAccount *account))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 - (instancetype)initWithJSONObject:(NSData *)data;
 
 @end

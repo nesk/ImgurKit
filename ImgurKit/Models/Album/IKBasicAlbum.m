@@ -6,20 +6,20 @@
 //  Distributed under the MIT license.
 //
 
-#import "ImgurBasicAlbum.h"
-#import "ImgurClient.h"
-#import "ImgurBasicImage.h"
+#import "IKBasicAlbum.h"
+#import "IKClient.h"
+#import "IKBasicImage.h"
 
-@implementation ImgurBasicAlbum;
+@implementation IKBasicAlbum;
 
 #pragma mark - Create
 
-+ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs success:(void (^)(ImgurBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs success:(void (^)(IKBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
-    [self createAlbumWithTitle:title description:description imageIDs:imageIDs privacy:ImgurDefaultPrivacy layout:ImgurDefaultLayout cover:nil success:success failure:failure];
+    [self createAlbumWithTitle:title description:description imageIDs:imageIDs privacy:IKDefaultPrivacy layout:IKDefaultLayout cover:nil success:success failure:failure];
 }
 
-+ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs privacy:(ImgurPrivacy)privacy layout:(ImgurLayout)layout cover:(ImgurBasicImage *)cover success:(void (^)(ImgurBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs privacy:(IKPrivacy)privacy layout:(IKLayout)layout cover:(IKBasicImage *)cover success:(void (^)(IKBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
     NSMutableDictionary *parameters = [NSMutableDictionary new];
     
@@ -35,7 +35,7 @@
     if(imageIDs != nil)
     {
         NSString *idsParameter = @"";
-        for (ImgurBasicImage *imageID in imageIDs) {
+        for (IKBasicImage *imageID in imageIDs) {
             if([imageID isKindOfClass:[NSString class]])
                 idsParameter = [NSString stringWithFormat:@"%@%@,", idsParameter, imageID];
             else
@@ -48,20 +48,20 @@
         [parameters setObject:[idsParameter substringToIndex:[idsParameter length] - 1] forKey:@"ids"];
     }
     
-    if(privacy != ImgurDefaultPrivacy)
+    if(privacy != IKDefaultPrivacy)
     {
         NSString *parameterValue;
         
         switch (privacy) {
-            case ImgurPublicPrivacy:
+            case IKPublicPrivacy:
                 parameterValue = @"public";
                 break;
                 
-            case ImgurHiddenPrivacy:
+            case IKHiddenPrivacy:
                 parameterValue = @"hidden";
                 break;
                 
-            case ImgurSecretPrivacy:
+            case IKSecretPrivacy:
                 parameterValue = @"secret";
                 break;
                 
@@ -73,24 +73,24 @@
             [parameters setObject:parameterValue forKey:@"privacy"];
     }
     
-    if (layout != ImgurDefaultLayout)
+    if (layout != IKDefaultLayout)
     {
         NSString *parameterValue;
         
         switch (layout) {
-            case ImgurBlogLayout:
+            case IKBlogLayout:
                 parameterValue = @"blog";
                 break;
                 
-            case ImgurGridLayout:
+            case IKGridLayout:
                 parameterValue = @"grid";
                 break;
                 
-            case ImgurHorizontalLayout:
+            case IKHorizontalLayout:
                 parameterValue = @"horizontal";
                 break;
                 
-            case ImgurVerticalLayout:
+            case IKVerticalLayout:
                 parameterValue = @"vertical";
                 break;
                 
@@ -104,8 +104,8 @@
     
     // Creating the request:
     
-    [[ImgurClient sharedInstance] postPath:@"album" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        success([[ImgurBasicAlbum alloc] initWithJSONObject:responseObject]);
+    [[IKClient sharedInstance] postPath:@"album" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        success([[IKBasicAlbum alloc] initWithJSONObject:responseObject]);
     } failure:failure];
 }
 
@@ -130,7 +130,7 @@
 {
     NSString *path = [NSString stringWithFormat:@"album/%@", albumID];
     
-    [[ImgurClient sharedInstance] deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[IKClient sharedInstance] deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success();
     } failure:failure];
 }

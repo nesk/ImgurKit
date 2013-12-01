@@ -1,23 +1,23 @@
 //
-//  ImgurAccount.m
+//  IKAccount.m
 //  ImgurKit
 //
 //  Created by Johann Pardanaud on 10/07/13.
 //  Distributed under the MIT license.
 //
 
-#import "ImgurAccount.h"
-#import "ImgurClient.h"
+#import "IKAccount.h"
+#import "IKClient.h"
 
-@implementation ImgurAccount;
+@implementation IKAccount;
 
 #pragma mark - Load
 
-+ (void)accountWithUsername:(NSString *)username success:(void (^)(ImgurAccount *account))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (void)accountWithUsername:(NSString *)username success:(void (^)(IKAccount *account))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
     NSString *path = [NSString stringWithFormat:@"account/%@", username];
     
-    [[ImgurClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[IKClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success([[self alloc] initWithJSONObject:responseObject]);
     } failure:failure];
 }
