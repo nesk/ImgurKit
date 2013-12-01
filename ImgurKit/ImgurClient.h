@@ -1,6 +1,6 @@
 //
-//  JPImgurClient.h
-//  JPImgurKit
+//  ImgurClient.h
+//  ImgurKit
 //
 //  Created by Johann Pardanaud on 29/06/13.
 //  Distributed under the MIT license.
@@ -12,12 +12,12 @@
 
 // Not using NS_ENUM for backward compatibility with OS X 10.7
 typedef enum {
-    JPImgurAuthTypeToken,
-    JPImgurAuthTypePIN,
-    JPImgurAuthTypeCode
-} JPImgurAuthType;
+    ImgurAuthTypeToken,
+    ImgurAuthTypePIN,
+    ImgurAuthTypeCode
+} ImgurAuthType;
 
-@interface JPImgurClient : AFHTTPClient
+@interface ImgurClient : AFHTTPClient
 
 @property (nonatomic) NSInteger retryCountOnImgurError; // Default: 3 (= 1 initial request + 3 retries)
 
@@ -35,7 +35,7 @@ typedef enum {
 
 #pragma mark - Authenticate
 
-- (NSURL *)authorizationURLUsing:(JPImgurAuthType)authType;
+- (NSURL *)authorizationURLUsing:(ImgurAuthType)authType;
 - (void)authenticateUsingOAuthWithPIN:(NSString *)pin success:(void (^)(AFOAuthCredential *credentials))success failure:(void (^)(NSError *error))failure;
 - (void)setAuthorizationHeaderWithToken:(NSString *)token;
 

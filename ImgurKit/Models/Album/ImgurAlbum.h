@@ -1,14 +1,14 @@
 //
-//  JPImgurAlbum.h
-//  JPImgurKit
+//  ImgurAlbum.h
+//  ImgurKit
 //
 //  Created by Johann Pardanaud on 11/07/13.
 //  Distributed under the MIT license.
 //
 
-#import "JPImgurBasicAlbum.h"
+#import "ImgurBasicAlbum.h"
 
-@interface JPImgurAlbum : JPImgurBasicAlbum
+@interface ImgurAlbum : ImgurBasicAlbum
 
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSString *description;
@@ -28,7 +28,7 @@
 
 #pragma mark - Load
 
-+ (void)albumWithID:(NSString *)albumID success:(void (^)(JPImgurAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (void)albumWithID:(NSString *)albumID success:(void (^)(ImgurAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 - (instancetype)initWithJSONObject:(NSData *)object;
 
 @end

@@ -1,14 +1,14 @@
 //
-//  JPImgurImage.h
-//  JPImgurKit
+//  ImgurImage.h
+//  ImgurKit
 //
 //  Created by Johann Pardanaud on 10/07/13.
 //  Distributed under the MIT license.
 //
 
-#import "JPImgurBasicImage.h"
+#import "ImgurBasicImage.h"
 
-@interface JPImgurImage : JPImgurBasicImage
+@interface ImgurImage : ImgurBasicImage
 
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSString *description;
@@ -26,7 +26,7 @@
 
 #pragma mark - Load
 
-+ (void)imageWithID:(NSString *)imageID success:(void (^)(JPImgurImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (void)imageWithID:(NSString *)imageID success:(void (^)(ImgurImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 - (instancetype)initWithJSONObject:(NSData *)object;
 
 @end

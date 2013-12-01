@@ -1,25 +1,25 @@
 //
-//  JPImgurPartialAlbum.m
-//  JPImgurKit
+//  ImgurPartialAlbum.m
+//  ImgurKit
 //
 //  Created by Johann Pardanaud on 24/07/13.
 //  Distributed under the MIT license.
 //
 
-#import "JPImgurBasicAlbum.h"
-#import "JPImgurClient.h"
-#import "JPImgurBasicImage.h"
+#import "ImgurBasicAlbum.h"
+#import "ImgurClient.h"
+#import "ImgurBasicImage.h"
 
-@implementation JPImgurBasicAlbum;
+@implementation ImgurBasicAlbum;
 
 #pragma mark - Create
 
-+ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs success:(void (^)(JPImgurBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs success:(void (^)(ImgurBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
-    [self createAlbumWithTitle:title description:description imageIDs:imageIDs privacy:JPImgurDefaultPrivacy layout:JPImgurDefaultLayout cover:nil success:success failure:failure];
+    [self createAlbumWithTitle:title description:description imageIDs:imageIDs privacy:ImgurDefaultPrivacy layout:ImgurDefaultLayout cover:nil success:success failure:failure];
 }
 
-+ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs privacy:(JPImgurPrivacy)privacy layout:(JPImgurLayout)layout cover:(JPImgurBasicImage *)cover success:(void (^)(JPImgurBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs privacy:(ImgurPrivacy)privacy layout:(ImgurLayout)layout cover:(ImgurBasicImage *)cover success:(void (^)(ImgurBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
     NSMutableDictionary *parameters = [NSMutableDictionary new];
     
@@ -35,11 +35,11 @@
     if(imageIDs != nil)
     {
         NSString *idsParameter = @"";
-        for (JPImgurBasicImage *imageID in imageIDs) {
+        for (ImgurBasicImage *imageID in imageIDs) {
             if([imageID isKindOfClass:[NSString class]])
                 idsParameter = [NSString stringWithFormat:@"%@%@,", idsParameter, imageID];
             else
-                @throw [NSException exceptionWithName:@"JPImgurObjectTypeException"
+                @throw [NSException exceptionWithName:@"ImgurObjectTypeException"
                                                reason:@"Objects contained in this array should be of type NSString"
                                              userInfo:[NSDictionary dictionaryWithObject:imageIDs forKey:@"images"]];
         }
@@ -48,20 +48,20 @@
         [parameters setObject:[idsParameter substringToIndex:[idsParameter length] - 1] forKey:@"ids"];
     }
     
-    if(privacy != JPImgurDefaultPrivacy)
+    if(privacy != ImgurDefaultPrivacy)
     {
         NSString *parameterValue;
         
         switch (privacy) {
-            case JPImgurPublicPrivacy:
+            case ImgurPublicPrivacy:
                 parameterValue = @"public";
                 break;
                 
-            case JPImgurHiddenPrivacy:
+            case ImgurHiddenPrivacy:
                 parameterValue = @"hidden";
                 break;
                 
-            case JPImgurSecretPrivacy:
+            case ImgurSecretPrivacy:
                 parameterValue = @"secret";
                 break;
                 
@@ -73,24 +73,24 @@
             [parameters setObject:parameterValue forKey:@"privacy"];
     }
     
-    if (layout != JPImgurDefaultLayout)
+    if (layout != ImgurDefaultLayout)
     {
         NSString *parameterValue;
         
         switch (layout) {
-            case JPImgurBlogLayout:
+            case ImgurBlogLayout:
                 parameterValue = @"blog";
                 break;
                 
-            case JPImgurGridLayout:
+            case ImgurGridLayout:
                 parameterValue = @"grid";
                 break;
                 
-            case JPImgurHorizontalLayout:
+            case ImgurHorizontalLayout:
                 parameterValue = @"horizontal";
                 break;
                 
-            case JPImgurVerticalLayout:
+            case ImgurVerticalLayout:
                 parameterValue = @"vertical";
                 break;
                 
@@ -104,8 +104,8 @@
     
     // Creating the request:
     
-    [[JPImgurClient sharedInstance] postPath:@"album" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        success([[JPImgurBasicAlbum alloc] initWithJSONObject:responseObject]);
+    [[ImgurClient sharedInstance] postPath:@"album" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        success([[ImgurBasicAlbum alloc] initWithJSONObject:responseObject]);
     } failure:failure];
 }
 
@@ -130,7 +130,7 @@
 {
     NSString *path = [NSString stringWithFormat:@"album/%@", albumID];
     
-    [[JPImgurClient sharedInstance] deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[ImgurClient sharedInstance] deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success();
     } failure:failure];
 }

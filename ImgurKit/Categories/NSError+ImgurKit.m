@@ -1,16 +1,16 @@
 //
-//  NSError+JPImgurKit.m
-//  JPImgurKit
+//  NSError+ImgurKit.m
+//  ImgurKit
 //
 //  Created by Johann Pardanaud on 23/11/13.
 //  Distributed under the MIT license.
 //
 
-#import "NSError+JPImgurKit.h"
+#import "NSError+ImgurKit.h"
 
-NSString * const JPImgurHTTPRequestOperationKey = @"JPImgurHTTPRequestOperation";
+NSString * const ImgurHTTPRequestOperationKey = @"ImgurHTTPRequestOperation";
 
-@implementation NSError (JPImgurKit)
+@implementation NSError (ImgurKit)
 
 + (NSError *)errorWithError:(NSError *)error additionalUserInfo:(NSDictionary *)userInfo
 {

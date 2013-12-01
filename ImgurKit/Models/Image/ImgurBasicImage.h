@@ -1,6 +1,6 @@
 //
-//  JPImgurPartialImage.h
-//  JPImgurKit
+//  ImgurPartialImage.h
+//  ImgurKit
 //
 //  Created by Johann Pardanaud on 24/07/13.
 //  Distributed under the MIT license.
@@ -8,21 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
-FOUNDATION_EXPORT NSString * const JPImgurUploadedImagesKey;
+FOUNDATION_EXPORT NSString * const ImgurUploadedImagesKey;
 
 // Not using NS_ENUM for backward compatibility with OS X 10.7
 typedef enum {
-    JPImgurSmallSquareSize,
-    JPImgurBigSquareSize,
-    JPImgurSmallThumbnailSize,
-    JPImgurMediumThumbnailSize,
-    JPImgurLargeThumbnailSize,
-    JPImgurHugeThumbnailSize
-} JPImgurSize;
+    ImgurSmallSquareSize,
+    ImgurBigSquareSize,
+    ImgurSmallThumbnailSize,
+    ImgurMediumThumbnailSize,
+    ImgurLargeThumbnailSize,
+    ImgurHugeThumbnailSize
+} ImgurSize;
 
 @class AFHTTPRequestOperation, RACSignal;
 
-@interface JPImgurBasicImage : NSObject
+@interface ImgurBasicImage : NSObject
 
 @property (nonatomic, readonly) NSString *imageID;
 
@@ -31,11 +31,11 @@ typedef enum {
 
 #pragma mark - Upload one image
 
-+ (RACSignal *)uploadImageWithFileURL:(NSURL *)fileURL success:(void (^)(JPImgurBasicImage *image))success failure:(void (^)(NSError *error))failure;
-+ (RACSignal *)uploadImageWithFileURL:(NSURL *)fileURL title:(NSString *)title description:(NSString *)description andLinkToAlbumWithID:(NSString *)albumID success:(void (^)(JPImgurBasicImage *image))success failure:(void (^)(NSError *error))failure;
++ (RACSignal *)uploadImageWithFileURL:(NSURL *)fileURL success:(void (^)(ImgurBasicImage *image))success failure:(void (^)(NSError *error))failure;
++ (RACSignal *)uploadImageWithFileURL:(NSURL *)fileURL title:(NSString *)title description:(NSString *)description andLinkToAlbumWithID:(NSString *)albumID success:(void (^)(ImgurBasicImage *image))success failure:(void (^)(NSError *error))failure;
 
-+ (RACSignal *)uploadImageWithURL:(NSURL *)url success:(void (^)(JPImgurBasicImage *image))success failure:(void (^)(NSError *error))failure;
-+ (RACSignal *)uploadImageWithURL:(NSURL *)url title:(NSString *)title description:(NSString *)description filename:(NSString *)filename andLinkToAlbumWithID:(NSString *)albumID success:(void (^)(JPImgurBasicImage *image))success failure:(void (^)(NSError *error))failure;
++ (RACSignal *)uploadImageWithURL:(NSURL *)url success:(void (^)(ImgurBasicImage *image))success failure:(void (^)(NSError *error))failure;
++ (RACSignal *)uploadImageWithURL:(NSURL *)url title:(NSString *)title description:(NSString *)description filename:(NSString *)filename andLinkToAlbumWithID:(NSString *)albumID success:(void (^)(ImgurBasicImage *image))success failure:(void (^)(NSError *error))failure;
 
 #pragma mark - Upload multiples images
 
@@ -51,7 +51,7 @@ typedef enum {
 
 #pragma mark - Display
 
-- (NSURL *)URLWithSize:(JPImgurSize)size;
+- (NSURL *)URLWithSize:(ImgurSize)size;
 
 #pragma mark - Delete
 

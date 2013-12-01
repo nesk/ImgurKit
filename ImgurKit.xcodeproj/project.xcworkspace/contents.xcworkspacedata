@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:JPImgurKit.xcodeproj">
+      location = "self:ImgurKit.xcodeproj">
    </FileRef>
 </Workspace>

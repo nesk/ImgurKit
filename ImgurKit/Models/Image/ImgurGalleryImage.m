@@ -1,15 +1,15 @@
 //
-//  JPImgurGalleryImage.m
-//  JPImgurKit
+//  ImgurGalleryImage.m
+//  ImgurKit
 //
 //  Created by Johann Pardanaud on 11/07/13.
 //  Distributed under the MIT license.
 //
 
-#import "JPImgurGalleryImage.h"
-#import "JPImgurClient.h"
+#import "ImgurGalleryImage.h"
+#import "ImgurClient.h"
 
-@implementation JPImgurGalleryImage;
+@implementation ImgurGalleryImage;
 
 #pragma mark - Submit
 
@@ -25,18 +25,18 @@
     
     NSString *path = [NSString stringWithFormat:@"gallery/image/%@", imageID];
     
-    [[JPImgurClient sharedInstance] postPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[ImgurClient sharedInstance] postPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success();
     } failure:failure];
 }
 
 #pragma mark - Load
 
-+ (void)imageWithID:(NSString *)imageID success:(void (^)(JPImgurGalleryImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (void)imageWithID:(NSString *)imageID success:(void (^)(ImgurGalleryImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
     NSString *path = [NSString stringWithFormat:@"gallery/image/%@", imageID];
     
-    [[JPImgurClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[ImgurClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success([[self alloc] initWithJSONObject:responseObject]);
     } failure:failure];
 }
@@ -70,7 +70,7 @@
 {
     NSString *path = [NSString stringWithFormat:@"gallery/%@", imageID];
     
-    [[JPImgurClient sharedInstance] deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[ImgurClient sharedInstance] deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success();
     } failure:failure];
 }

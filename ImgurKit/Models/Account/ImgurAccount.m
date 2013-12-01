@@ -1,23 +1,23 @@
 //
-//  JPImgurAccount.m
-//  JPImgurKit
+//  ImgurAccount.m
+//  ImgurKit
 //
 //  Created by Johann Pardanaud on 10/07/13.
 //  Distributed under the MIT license.
 //
 
-#import "JPImgurAccount.h"
-#import "JPImgurClient.h"
+#import "ImgurAccount.h"
+#import "ImgurClient.h"
 
-@implementation JPImgurAccount;
+@implementation ImgurAccount;
 
 #pragma mark - Load
 
-+ (void)accountWithUsername:(NSString *)username success:(void (^)(JPImgurAccount *account))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (void)accountWithUsername:(NSString *)username success:(void (^)(ImgurAccount *account))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
     NSString *path = [NSString stringWithFormat:@"account/%@", username];
     
-    [[JPImgurClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[ImgurClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success([[self alloc] initWithJSONObject:responseObject]);
     } failure:failure];
 }

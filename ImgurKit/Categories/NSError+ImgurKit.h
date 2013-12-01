@@ -1,6 +1,6 @@
 //
-//  NSError+JPImgurKit.h
-//  JPImgurKit
+//  NSError+ImgurKit.h
+//  ImgurKit
 //
 //  Created by Johann Pardanaud on 23/11/13.
 //  Distributed under the MIT license.
@@ -13,13 +13,13 @@
  class.
  */
 
-FOUNDATION_EXPORT NSString * const JPImgurHTTPRequestOperationKey;
+FOUNDATION_EXPORT NSString * const ImgurHTTPRequestOperationKey;
 
 /**
- The `JPImgurKit` category for the `NSError` class provides a single method used to copy an error with additional
+ The `ImgurKit` category for the `NSError` class provides a single method used to copy an error with additional
  informations about the request operation.
  */
-@interface NSError (JPImgurKit)
+@interface NSError (ImgurKit)
 
 /**
  Copy an `NSError` instance with same values and adds the provided user infos to it.

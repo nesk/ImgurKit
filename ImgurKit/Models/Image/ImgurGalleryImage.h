@@ -1,15 +1,15 @@
 //
-//  JPImgurGalleryImage.h
-//  JPImgurKit
+//  ImgurGalleryImage.h
+//  ImgurKit
 //
 //  Created by Johann Pardanaud on 11/07/13.
 //  Distributed under the MIT license.
 //
 
-#import "JPImgurImage.h"
-#import "JPImgurVote.h"
+#import "ImgurImage.h"
+#import "ImgurVote.h"
 
-@interface JPImgurGalleryImage : JPImgurImage
+@interface ImgurGalleryImage : ImgurImage
 
 @property (nonatomic, readonly) NSString *accountURL;
 
@@ -17,7 +17,7 @@
 @property (nonatomic, readonly) NSInteger downs;
 @property (nonatomic, readonly) NSInteger score;
 
-@property (nonatomic) JPImgurVote vote;
+@property (nonatomic) ImgurVote vote;
 
 #pragma mark - Submit
 
@@ -26,7 +26,7 @@
 
 #pragma mark - Load
 
-+ (void)imageWithID:(NSString *)imageID success:(void (^)(JPImgurGalleryImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (void)imageWithID:(NSString *)imageID success:(void (^)(ImgurGalleryImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 - (instancetype)initWithJSONObject:(NSData *)object;
 
 #pragma mark - Remove

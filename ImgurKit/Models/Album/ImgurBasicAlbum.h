@@ -1,6 +1,6 @@
 //
-//  JPImgurPartialAlbum.h
-//  JPImgurKit
+//  ImgurPartialAlbum.h
+//  ImgurKit
 //
 //  Created by Johann Pardanaud on 24/07/13.
 //  Distributed under the MIT license.
@@ -10,31 +10,31 @@
 
 // Not using NS_ENUM for backward compatibility with OS X 10.7
 typedef enum {
-    JPImgurDefaultPrivacy,
-    JPImgurPublicPrivacy,
-    JPImgurHiddenPrivacy,
-    JPImgurSecretPrivacy
-} JPImgurPrivacy;
+    ImgurDefaultPrivacy,
+    ImgurPublicPrivacy,
+    ImgurHiddenPrivacy,
+    ImgurSecretPrivacy
+} ImgurPrivacy;
 
 typedef enum {
-    JPImgurDefaultLayout,
-    JPImgurBlogLayout,
-    JPImgurGridLayout,
-    JPImgurHorizontalLayout,
-    JPImgurVerticalLayout
-} JPImgurLayout;
+    ImgurDefaultLayout,
+    ImgurBlogLayout,
+    ImgurGridLayout,
+    ImgurHorizontalLayout,
+    ImgurVerticalLayout
+} ImgurLayout;
 
-@class AFHTTPRequestOperation, JPImgurBasicImage;
+@class AFHTTPRequestOperation, ImgurBasicImage;
 
-@interface JPImgurBasicAlbum : NSObject
+@interface ImgurBasicAlbum : NSObject
 
 @property (nonatomic, readonly) NSString *albumID;
 @property (nonatomic, readonly) NSString *deletehash;
 
 #pragma mark - Create
 
-+ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs success:(void (^)(JPImgurBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
-+ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs privacy:(JPImgurPrivacy)privacy layout:(JPImgurLayout)layout cover:(JPImgurBasicImage *)cover success:(void (^)(JPImgurBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs success:(void (^)(ImgurBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs privacy:(ImgurPrivacy)privacy layout:(ImgurLayout)layout cover:(ImgurBasicImage *)cover success:(void (^)(ImgurBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
 #pragma mark - Load
 

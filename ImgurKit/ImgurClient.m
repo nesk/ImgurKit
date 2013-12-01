@@ -1,17 +1,17 @@
 //
-//  JPImgurClient.m
-//  JPImgurKit
+//  ImgurClient.m
+//  ImgurKit
 //
 //  Created by Johann Pardanaud on 29/06/13.
 //  Distributed under the MIT license.
 //
 
-#import "JPImgurClient.h"
+#import "ImgurClient.h"
 
 static NSString * const JPBaseURL = @"https://api.imgur.com/3/";
 static NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
 
-@implementation JPImgurClient;
+@implementation ImgurClient;
 
 #pragma mark - Get/Set
 
@@ -40,9 +40,9 @@ static NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
 + (instancetype)sharedInstanceWithBaseURL:(NSURL *)url clientID:(NSString *)clientID secret:(NSString *)secret
 {
     static dispatch_once_t onceToken;
-    static JPImgurClient *sharedInstance = nil;
+    static ImgurClient *sharedInstance = nil;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[JPImgurClient alloc] initWithBaseURL:url clientID:clientID secret:secret];
+        sharedInstance = [[ImgurClient alloc] initWithBaseURL:url clientID:clientID secret:secret];
     });
     return sharedInstance;
 }
@@ -62,20 +62,20 @@ static NSString * const JPOAuthBaseURL = @"https://api.imgur.com/oauth2/";
 
 #pragma mark - Authenticate
 
-- (NSURL *)authorizationURLUsing:(JPImgurAuthType)authType
+- (NSURL *)authorizationURLUsing:(ImgurAuthType)authType
 {
     NSString *responseType;
 
     switch (authType) {
-        case JPImgurAuthTypeToken:
+        case ImgurAuthTypeToken:
             responseType = @"token";
             break;
 
-        case JPImgurAuthTypePIN:
+        case ImgurAuthTypePIN:
             responseType = @"pin";
             break;
 
-        case JPImgurAuthTypeCode:
+        case ImgurAuthTypeCode:
             responseType = @"code";
             break;
     }

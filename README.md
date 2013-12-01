@@ -1,6 +1,6 @@
-# JPImgurKit
+# ImgurKit
 
-__JPImgurKit__ is an Objective-C library created to easily handle [Imgur](http://imgur.com) API requests within iOS and OS X apps, it is built on [AFNetworking](http://afnetworking.com/) and its [OAuth extension](https://github.com/AFNetworking/AFOAuth2Client). The project is at an early stage, I'm currently prototyping the classes so __don't use this library__ unless you want to test it.
+__ImgurKit__ is an Objective-C library created to easily handle [Imgur](http://imgur.com) API requests within iOS and OS X apps, it is built on [AFNetworking](http://afnetworking.com/) and its [OAuth extension](https://github.com/AFNetworking/AFOAuth2Client). The project is at an early stage, I'm currently prototyping the classes so __don't use this library__ unless you want to test it.
 
 ## Todo
 
@@ -8,7 +8,7 @@ This todo list currently exists to list specific aspects of the library, not all
 
 ### Whole project
 
-* Must redefine the classes prefix, `JPImgur` is to long, `JPIK` could be a better solution
+* Must redefine the classes prefix, `Imgur` is to long, `JPIK` could be a better solution
 * Rework indentation
 
 ### All models
@@ -21,26 +21,26 @@ This todo list currently exists to list specific aspects of the library, not all
 
 * The non-basic classes should return non-basic images but this requires to make two request to Imgur, the user must be warned about this
 
-### JPImgurClient
+### ImgurClient
 
 * Enable anonymous navigation
 * Add rate limits informations
 * The various `sharedInstance...` class methods are confusing. Those should be removed and two clients must be created with a single `sharedClient` class method for each one. Each client will have a different base URL (one for the commercial endpoints, the other for the free ones). The client ID and secret will be set through a method which could be used only once.
 
-### JPImgurBasicAlbum
+### ImgurBasicAlbum
 
 * Should the `deletehash` property be in read/write access?
 
-### JPImgurAlbum
+### ImgurAlbum
 
 * An album could be incomplete, this must be handled (see the [Album model](http://api.imgur.com/models/album))
 
-### JPImgurImage
+### ImgurImage
 
 * Add a progress callback for file uploads (impossible for URL uploads)
 
 ### Tests
 
 * The `testAuthenticateUsingOAuthWithPIN` method must handle iOS
-* Add a test for the `URLWithSize` method from the `JPImgurBasicImage` class
+* Add a test for the `URLWithSize` method from the `ImgurBasicImage` class
 * Add a library to provide promises, which will simplify the tests. Once the library is added, the `testAuthorizationURLAsync` test should be rewrite to use all the authentication types available.

@@ -1,13 +1,13 @@
 //
-//  NSString+JPImgurKit.m
-//  JPImgurKit
+//  NSString+ImgurKit.m
+//  ImgurKit
 //
 //  Created by Johann Pardanaud on 13/10/13.
 //  Distributed under the MIT license.
 //
-#import "NSURL+JPImgurKit.h"
+#import "NSURL+ImgurKit.h"
 
-@implementation NSURL (JPImgurKit)
+@implementation NSURL (ImgurKit)
 
 - (NSDictionary *)tokenComponents {
     NSCharacterSet * mySet = [NSCharacterSet characterSetWithCharactersInString:@"#&="];

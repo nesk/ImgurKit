@@ -1,24 +1,24 @@
 //
-//  JPImgurKit.h
-//  JPImgurKit
+//  ImgurKit.h
+//  ImgurKit
 //
 //  Created by Johann Pardanaud on 24/06/13.
 //  Distributed under the MIT license.
 //
 
-#import "NSError+JPImgurKit.h"
-#import "NSURL+JPImgurKit.h"
+#import "NSError+ImgurKit.h"
+#import "NSURL+ImgurKit.h"
 
-#import "JPImgurVote.h"
+#import "ImgurVote.h"
 
-#import "JPImgurBasicAlbum.h"
-#import "JPImgurBasicImage.h"
+#import "ImgurBasicAlbum.h"
+#import "ImgurBasicImage.h"
 
-#import "JPImgurAccount.h"
-#import "JPImgurAlbum.h"
-#import "JPImgurImage.h"
+#import "ImgurAccount.h"
+#import "ImgurAlbum.h"
+#import "ImgurImage.h"
 
-#import "JPImgurGalleryAlbum.h"
-#import "JPImgurGalleryImage.h"
+#import "ImgurGalleryAlbum.h"
+#import "ImgurGalleryImage.h"
 
-#import "JPImgurClient.h"
+#import "ImgurClient.h"

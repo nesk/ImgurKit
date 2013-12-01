@@ -1,23 +1,23 @@
 //
-//  JPImgurAlbum.m
-//  JPImgurKit
+//  ImgurAlbum.m
+//  ImgurKit
 //
 //  Created by Johann Pardanaud on 11/07/13.
 //  Distributed under the MIT license.
 //
 
-#import "JPImgurAlbum.h"
-#import "JPImgurClient.h"
+#import "ImgurAlbum.h"
+#import "ImgurClient.h"
 
-@implementation JPImgurAlbum;
+@implementation ImgurAlbum;
 
 #pragma mark - Load
 
-+ (void)albumWithID:(NSString *)albumID success:(void (^)(JPImgurAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (void)albumWithID:(NSString *)albumID success:(void (^)(ImgurAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
     NSString *path = [NSString stringWithFormat:@"album/%@", albumID];
     
-    [[JPImgurClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[ImgurClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success([[self alloc] initWithJSONObject:responseObject]);
     } failure:failure];
 }
