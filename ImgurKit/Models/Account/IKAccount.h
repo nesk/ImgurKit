@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class AFHTTPRequestOperation;
+@class AFHTTPRequestOperation, RACSignal;
 
 @interface IKAccount : NSObject
 
@@ -22,7 +22,7 @@
 
 #pragma mark - Load
 
-+ (void)accountWithUsername:(NSString *)username success:(void (^)(IKAccount *account))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (RACSignal *)accountWithUsername:(NSString *)username success:(void (^)(IKAccount *account))success failure:(void (^)(NSError *error))failure;
 - (instancetype)initWithJSONObject:(NSData *)data;
 
 @end

@@ -302,13 +302,29 @@ NSString * const IKUploadedImagesKey = @"ImgurUploadedImages";
 
 #pragma mark - Delete
 
-+ (void)deleteImageWithID:(NSString *)imageID success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (RACSignal *)deleteImageWithID:(NSString *)imageID success:(void (^)(NSString *))success failure:(void (^)(NSError *))failure
 {
     NSString *path = [NSString stringWithFormat:@"image/%@", imageID];
-    
-    [[IKClient sharedInstance] deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        success();
-    } failure:failure];
+
+    // Return a signal that creates and runs the operation
+
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+
+        [[IKClient sharedInstance] deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [subscriber sendNext:imageID];
+            [subscriber sendCompleted];
+            if(success)
+                success(imageID);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ IKHTTPRequestOperationKey: operation }];
+
+            [subscriber sendError:finalError];
+            if(failure)
+                failure(finalError);
+        }];
+
+        return nil;
+    }] replayLast];
 }
 
 #pragma mark - Describe

@@ -11,6 +11,8 @@
 #import "SenTestingKitAsync.h"
 #import "ImgurKit.h"
 
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
 @implementation ImgurKitTests;
 
 #pragma mark - Setup
@@ -106,7 +108,8 @@
     [IKAccount accountWithUsername:@"me" success:^(IKAccount *account) {
         NSLog(@"%@", account);
         STSuccess();
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSError *error) {
+        AFHTTPRequestOperation *operation = [[error userInfo] objectForKey:IKHTTPRequestOperationKey];
         NSHTTPURLResponse *response = operation.response;
         STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
     }];
@@ -116,117 +119,66 @@
 
 - (void)testImageWorkflowAsync
 {
-    __block WorkBlock upload, submit, load, remove, delete;
-    
-    upload = ^(NSURL *fileURL) {
-        [IKImage uploadImageWithFileURL:fileURL success:^(IKBasicImage *image) {
-            NSLog(@"%@", image);
-            submit(image.imageID);
-        } failure:^(NSError *error) {
-            AFHTTPRequestOperation *operation = [[error userInfo] objectForKey:IKHTTPRequestOperationKey];
-            NSHTTPURLResponse *response = operation.response;
-            STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-        }];
-    };
-    
-    submit = ^(NSString *imageID) {
-        [IKGalleryImage submitImageWithID:imageID title:[imgurVariousValues objectForKey:@"title"] success:^{
-            load(imageID);
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSHTTPURLResponse *response = operation.response;
-            STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-        }];
-    };
-    
-    load = ^(NSString *imageID) {
-        [IKGalleryImage imageWithID:imageID success:^(IKGalleryImage *image) {
-            NSLog(@"%@", image);
-            remove(imageID);
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSHTTPURLResponse *response = operation.response;
-            STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-        }];
-    };
-    
-    remove = ^(NSString *imageID) {
-        [IKGalleryImage removeImageWithID:imageID success:^{
-            delete(imageID);
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSHTTPURLResponse *response = operation.response;
-            STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-        }];
-    };
-    
-    delete = ^(NSString *imageID) {
-        [IKImage deleteImageWithID:imageID success:^{
-            STSuccess();
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSHTTPURLResponse *response = operation.response;
-            STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-        }];
-    };
-    
-    // Initiates the workflow with the URL of the image
-    
-    upload([NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"image-example" ofType:@"jpg"]]);
+    NSURL *fileURL = [NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"image-example" ofType:@"jpg"]];
+
+    [[[[[
+     [IKImage uploadImageWithFileURL:fileURL success:nil failure:nil]
+
+     flattenMap:^RACStream *(IKBasicImage *image) {
+         NSLog(@"%@", image);
+         return [IKGalleryImage submitImageWithID:image.imageID title:[imgurVariousValues objectForKey:@"title"] success:nil failure:nil];
+     }]
+     flattenMap:^RACStream *(NSString *imageID) {
+         return [IKGalleryImage imageWithID:imageID success:nil failure:nil];
+     }]
+     flattenMap:^RACStream *(IKGalleryImage *image) {
+         NSLog(@"%@", image);
+         return [IKGalleryImage removeImageWithID:image.imageID success:nil failure:nil];
+     }]
+     flattenMap:^RACStream *(NSString *imageID) {
+         return [IKImage deleteImageWithID:imageID success:nil failure:nil];
+     }]
+
+     subscribeNext:^(id x) {
+         STSuccess();
+     } error:^(NSError *error) {
+         AFHTTPRequestOperation *operation = [[error userInfo] objectForKey:IKHTTPRequestOperationKey];
+         NSHTTPURLResponse *response = operation.response;
+         STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+     }];
 }
 
 #pragma mark - Test Album endpoints
 
 - (void)testAlbumWorkflowAsync
 {
-    __block WorkBlock create, submit, load, remove, delete;
-    
-    create = ^(NSString *imageID) {
-        [IKAlbum createAlbumWithTitle:nil description:nil imageIDs:[NSArray arrayWithObjects:imageID, nil] success:^(IKBasicAlbum *album) {
-            NSLog(@"%@", album);
-            submit(album.albumID);
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSHTTPURLResponse *response = operation.response;
-            STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-        }];
-    };
-    
-    submit = ^(NSString *albumID) {
-        [IKGalleryAlbum submitAlbumWithID:albumID title:[imgurVariousValues objectForKey:@"title"] success:^{
-            load(albumID);
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSHTTPURLResponse *response = operation.response;
-            STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-        }];
-    };
-    
-    load = ^(NSString *albumID) {
-        [IKGalleryAlbum albumWithID:albumID success:^(IKAlbum *album) {
-            NSLog(@"%@", album);
-            remove(albumID);
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSHTTPURLResponse *response = operation.response;
-            STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-        }];
-    };
-    
-    remove = ^(NSString *albumID) {
-        [IKGalleryAlbum removeAlbumWithID:albumID success:^{
-            delete(albumID);
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSHTTPURLResponse *response = operation.response;
-            STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-        }];
-    };
-    
-    delete = ^(NSString *albumID) {
-        [IKAlbum deleteAlbumWithID:albumID success:^{
-            STSuccess();
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSHTTPURLResponse *response = operation.response;
-            STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
-        }];
-    };
-    
-    // Initiates the workflow with an image ID
-    
-    create([imgurVariousValues objectForKey:@"imageID"]);
+    NSString *imageID = [imgurVariousValues objectForKey:@"imageID"];
+
+    [[[[[
+     [IKAlbum createAlbumWithTitle:nil description:nil imageIDs:@[imageID] success:nil failure:nil]
+
+     flattenMap:^RACStream *(IKBasicAlbum *album) {
+         NSLog(@"%@", album);
+         return [IKGalleryAlbum submitAlbumWithID:album.albumID title:[imgurVariousValues objectForKey:@"title"] success:nil failure:nil];
+     }]
+     flattenMap:^RACStream *(NSString *albumID) {
+         return [IKGalleryAlbum albumWithID:albumID success:nil failure:nil];
+     }]
+     flattenMap:^RACStream *(IKGalleryAlbum *album) {
+         NSLog(@"%@", album);
+         return [IKGalleryAlbum removeAlbumWithID:album.albumID success:nil failure:nil];
+     }]
+     flattenMap:^RACStream *(NSString *albumID) {
+         return [IKAlbum deleteAlbumWithID:albumID success:nil failure:nil];
+     }]
+
+     subscribeNext:^(id x) {
+         STSuccess();
+     } error:^(NSError *error) {
+         AFHTTPRequestOperation *operation = [[error userInfo] objectForKey:IKHTTPRequestOperationKey];
+         NSHTTPURLResponse *response = operation.response;
+         STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+     }];
 }
 
 @end

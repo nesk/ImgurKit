@@ -55,6 +55,6 @@ typedef enum {
 
 #pragma mark - Delete
 
-+ (void)deleteImageWithID:(NSString *)imageID success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (RACSignal *)deleteImageWithID:(NSString *)imageID success:(void (^)(NSString *imageID))success failure:(void (^)(NSError *error))failure;
 
 @end

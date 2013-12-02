@@ -8,6 +8,8 @@
 
 #import "IKBasicImage.h"
 
+@class RACSignal;
+
 @interface IKImage : IKBasicImage
 
 @property (nonatomic) NSString *title;
@@ -26,7 +28,7 @@
 
 #pragma mark - Load
 
-+ (void)imageWithID:(NSString *)imageID success:(void (^)(IKImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (RACSignal *)imageWithID:(NSString *)imageID success:(void (^)(IKImage *image))success failure:(void (^)(NSError *error))failure;
 - (instancetype)initWithJSONObject:(NSData *)object;
 
 @end

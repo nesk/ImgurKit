@@ -7,19 +7,41 @@
 //
 
 #import "IKImage.h"
+
+#import "NSError+ImgurKit.h"
 #import "IKClient.h"
+
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @implementation IKImage;
 
 #pragma mark - Load
 
-+ (void)imageWithID:(NSString *)imageID success:(void (^)(IKImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (RACSignal *)imageWithID:(NSString *)imageID success:(void (^)(IKImage *))success failure:(void (^)(NSError *))failure
 {
     NSString *path = [NSString stringWithFormat:@"image/%@", imageID];
-    
-    [[IKClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        success([[self alloc] initWithJSONObject:responseObject]);
-    } failure:failure];
+
+    // Return a signal that creates and runs the operation
+
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+
+        [[IKClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            IKImage *image = [[self alloc] initWithJSONObject:responseObject];
+
+            [subscriber sendNext:image];
+            [subscriber sendCompleted];
+            if(success)
+                success(image);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ IKHTTPRequestOperationKey: operation }];
+
+            [subscriber sendError:finalError];
+            if(failure)
+                failure(finalError);
+        }];
+
+        return nil;
+    }] replayLast];
 }
 
 - (instancetype)initWithJSONObject:(NSData *)object

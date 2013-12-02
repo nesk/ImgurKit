@@ -9,6 +9,8 @@
 #import "IKAlbum.h"
 #import "IKVote.h"
 
+@class RACSignal;
+
 @interface IKGalleryAlbum : IKAlbum
 
 @property (nonatomic, readonly) NSInteger ups;
@@ -19,16 +21,16 @@
 
 #pragma mark - Submit
 
-+ (void)submitAlbumWithID:(NSString *)albumID title:(NSString *)title success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
-+ (void)submitAlbumWithID:(NSString *)albumID title:(NSString *)title terms:(BOOL)terms success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (RACSignal *)submitAlbumWithID:(NSString *)albumID title:(NSString *)title success:(void (^)(NSString *albumID))success failure:(void (^)(NSError *error))failure;
++ (RACSignal *)submitAlbumWithID:(NSString *)albumID title:(NSString *)title terms:(BOOL)terms success:(void (^)(NSString *albumID))success failure:(void (^)(NSError *error))failure;
 
 #pragma mark - Load
 
-+ (void)albumWithID:(NSString *)albumID success:(void (^)(IKGalleryAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (RACSignal *)albumWithID:(NSString *)albumID success:(void (^)(IKGalleryAlbum *album))success failure:(void (^)(NSError *error))failure;
 - (instancetype)initWithJSONObject:(NSData *)object;
 
 #pragma mark - Remove
 
-+ (void)removeAlbumWithID:(NSString *)albumID success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (RACSignal *)removeAlbumWithID:(NSString *)albumID success:(void (^)(NSString *albumID))success failure:(void (^)(NSError *error))failure;
 
 @end

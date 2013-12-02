@@ -9,6 +9,8 @@
 #import "IKImage.h"
 #import "IKVote.h"
 
+@class RACSignal;
+
 @interface IKGalleryImage : IKImage
 
 @property (nonatomic, readonly) NSString *accountURL;
@@ -21,16 +23,16 @@
 
 #pragma mark - Submit
 
-+ (void)submitImageWithID:(NSString *)imageID title:(NSString *)title success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
-+ (void)submitImageWithID:(NSString *)imageID title:(NSString *)title terms:(BOOL)terms success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (RACSignal *)submitImageWithID:(NSString *)imageID title:(NSString *)title success:(void (^)(NSString *imageID))success failure:(void (^)(NSError *error))failure;
++ (RACSignal *)submitImageWithID:(NSString *)imageID title:(NSString *)title terms:(BOOL)terms success:(void (^)(NSString *imageID))success failure:(void (^)(NSError *error))failure;
 
 #pragma mark - Load
 
-+ (void)imageWithID:(NSString *)imageID success:(void (^)(IKGalleryImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (RACSignal *)imageWithID:(NSString *)imageID success:(void (^)(IKGalleryImage *image))success failure:(void (^)(NSError *error))failure;
 - (instancetype)initWithJSONObject:(NSData *)object;
 
 #pragma mark - Remove
 
-+ (void)removeImageWithID:(NSString *)imageID success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (RACSignal *)removeImageWithID:(NSString *)imageID success:(void (^)(NSString *imageID))success failure:(void (^)(NSError *error))failure;
 
 @end

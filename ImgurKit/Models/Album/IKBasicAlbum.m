@@ -7,19 +7,23 @@
 //
 
 #import "IKBasicAlbum.h"
+
+#import "NSError+ImgurKit.h"
 #import "IKClient.h"
 #import "IKBasicImage.h"
+
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @implementation IKBasicAlbum;
 
 #pragma mark - Create
 
-+ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs success:(void (^)(IKBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (RACSignal *)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs success:(void (^)(IKBasicAlbum *))success failure:(void (^)(NSError *))failure
 {
-    [self createAlbumWithTitle:title description:description imageIDs:imageIDs privacy:IKDefaultPrivacy layout:IKDefaultLayout cover:nil success:success failure:failure];
+    return [self createAlbumWithTitle:title description:description imageIDs:imageIDs privacy:IKDefaultPrivacy layout:IKDefaultLayout cover:nil success:success failure:failure];
 }
 
-+ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs privacy:(IKPrivacy)privacy layout:(IKLayout)layout cover:(IKBasicImage *)cover success:(void (^)(IKBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (RACSignal *)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs privacy:(IKPrivacy)privacy layout:(IKLayout)layout cover:(IKBasicImage *)cover success:(void (^)(IKBasicAlbum *))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary *parameters = [NSMutableDictionary new];
     
@@ -101,12 +105,28 @@
         if(parameterValue)
             [parameters setObject:parameterValue forKey:@"layout"];
     }
-    
-    // Creating the request:
-    
-    [[IKClient sharedInstance] postPath:@"album" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        success([[IKBasicAlbum alloc] initWithJSONObject:responseObject]);
-    } failure:failure];
+
+    // Return a signal that creates and runs the operation
+
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+
+        [[IKClient sharedInstance] postPath:@"album" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            IKBasicAlbum *album = [[self alloc] initWithJSONObject:responseObject];
+
+            [subscriber sendNext:album];
+            [subscriber sendCompleted];
+            if(success)
+                success(album);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ IKHTTPRequestOperationKey: operation }];
+
+            [subscriber sendError:finalError];
+            if(failure)
+                failure(finalError);
+        }];
+
+        return nil;
+    }] replayLast];
 }
 
 #pragma mark - Load
@@ -126,13 +146,29 @@
 
 #pragma mark - Delete
 
-+ (void)deleteAlbumWithID:(NSString *)albumID success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (RACSignal *)deleteAlbumWithID:(NSString *)albumID success:(void (^)(NSString *))success failure:(void (^)(NSError *))failure
 {
     NSString *path = [NSString stringWithFormat:@"album/%@", albumID];
-    
-    [[IKClient sharedInstance] deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        success();
-    } failure:failure];
+
+    // Return a signal that creates and runs the operation
+
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+
+        [[IKClient sharedInstance] deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [subscriber sendNext:albumID];
+            [subscriber sendCompleted];
+            if(success)
+                success(albumID);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ IKHTTPRequestOperationKey: operation }];
+
+            [subscriber sendError:finalError];
+            if(failure)
+                failure(finalError);
+        }];
+
+        return nil;
+    }] replayLast];
 }
 
 #pragma mark - Describe

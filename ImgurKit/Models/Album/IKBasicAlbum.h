@@ -24,7 +24,7 @@ typedef enum {
     IKVerticalLayout
 } IKLayout;
 
-@class AFHTTPRequestOperation, IKBasicImage;
+@class AFHTTPRequestOperation, RACSignal, IKBasicImage;
 
 @interface IKBasicAlbum : NSObject
 
@@ -33,8 +33,8 @@ typedef enum {
 
 #pragma mark - Create
 
-+ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs success:(void (^)(IKBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
-+ (void)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs privacy:(IKPrivacy)privacy layout:(IKLayout)layout cover:(IKBasicImage *)cover success:(void (^)(IKBasicAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (RACSignal *)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs success:(void (^)(IKBasicAlbum *album))success failure:(void (^)(NSError *error))failure;
++ (RACSignal *)createAlbumWithTitle:(NSString *)title description:(NSString *)description imageIDs:(NSArray *)imageIDs privacy:(IKPrivacy)privacy layout:(IKLayout)layout cover:(IKBasicImage *)cover success:(void (^)(IKBasicAlbum *album))success failure:(void (^)(NSError *error))failure;
 
 #pragma mark - Load
 
@@ -42,6 +42,6 @@ typedef enum {
 
 #pragma mark - Delete
 
-+ (void)deleteAlbumWithID:(NSString *)albumID success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (RACSignal *)deleteAlbumWithID:(NSString *)albumID success:(void (^)(NSString *albumID))success failure:(void (^)(NSError *error))failure;
 
 @end

@@ -7,19 +7,41 @@
 //
 
 #import "IKAccount.h"
+
+#import "NSError+ImgurKit.h"
 #import "IKClient.h"
+
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @implementation IKAccount;
 
 #pragma mark - Load
 
-+ (void)accountWithUsername:(NSString *)username success:(void (^)(IKAccount *account))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (RACSignal *)accountWithUsername:(NSString *)username success:(void (^)(IKAccount *))success failure:(void (^)(NSError *))failure
 {
     NSString *path = [NSString stringWithFormat:@"account/%@", username];
-    
-    [[IKClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        success([[self alloc] initWithJSONObject:responseObject]);
-    } failure:failure];
+
+    // Return a signal that creates and runs the operation
+
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+
+        [[IKClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            IKAccount *account = [[self alloc] initWithJSONObject:responseObject];
+
+            [subscriber sendNext:account];
+            [subscriber sendCompleted];
+            if(success)
+                success(account);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ IKHTTPRequestOperationKey: operation }];
+
+            [subscriber sendError:finalError];
+            if(failure)
+                failure(finalError);
+        }];
+        
+        return nil;
+    }] replayLast];
 }
 
 - (instancetype)initWithJSONObject:(NSData *)object

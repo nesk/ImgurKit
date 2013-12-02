@@ -8,6 +8,8 @@
 
 #import "IKBasicAlbum.h"
 
+@class RACSignal;
+
 @interface IKAlbum : IKBasicAlbum
 
 @property (nonatomic) NSString *title;
@@ -28,7 +30,7 @@
 
 #pragma mark - Load
 
-+ (void)albumWithID:(NSString *)albumID success:(void (^)(IKAlbum *album))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (RACSignal *)albumWithID:(NSString *)albumID success:(void (^)(IKAlbum *album))success failure:(void (^)(NSError *error))failure;
 - (instancetype)initWithJSONObject:(NSData *)object;
 
 @end

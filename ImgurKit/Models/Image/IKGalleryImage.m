@@ -7,38 +7,76 @@
 //
 
 #import "IKGalleryImage.h"
+
+#import "NSError+ImgurKit.h"
 #import "IKClient.h"
+
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @implementation IKGalleryImage;
 
 #pragma mark - Submit
 
-+ (void)submitImageWithID:(NSString *)imageID title:(NSString *)title success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
++ (RACSignal *)submitImageWithID:(NSString *)imageID title:(NSString *)title success:(void (^)(NSString *))success failure:(void (^)(NSError *))failure
 {
-    [self submitImageWithID:imageID title:title terms:YES success:success failure:failure];
+    return [self submitImageWithID:imageID title:title terms:YES success:success failure:failure];
 }
 
-+ (void)submitImageWithID:(NSString *)imageID title:(NSString *)title terms:(BOOL)terms success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
++ (RACSignal *)submitImageWithID:(NSString *)imageID title:(NSString *)title terms:(BOOL)terms success:(void (^)(NSString *))success failure:(void (^)(NSError *))failure
 {
     NSDictionary *parameters = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:title, [NSNumber numberWithBool:terms], nil]
                                                            forKeys:[NSArray arrayWithObjects:@"title", @"terms", nil]];
     
     NSString *path = [NSString stringWithFormat:@"gallery/image/%@", imageID];
-    
-    [[IKClient sharedInstance] postPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        success();
-    } failure:failure];
+
+    // Return a signal that creates and runs the operation
+
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+
+        [[IKClient sharedInstance] postPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [subscriber sendNext:imageID];
+            [subscriber sendCompleted];
+            if(success)
+                success(imageID);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ IKHTTPRequestOperationKey: operation }];
+
+            [subscriber sendError:finalError];
+            if(failure)
+                failure(finalError);
+        }];
+
+        return nil;
+    }] replayLast];
 }
 
 #pragma mark - Load
 
-+ (void)imageWithID:(NSString *)imageID success:(void (^)(IKGalleryImage *image))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++(RACSignal *)imageWithID:(NSString *)imageID success:(void (^)(IKGalleryImage *))success failure:(void (^)(NSError *))failure
 {
     NSString *path = [NSString stringWithFormat:@"gallery/image/%@", imageID];
     
-    [[IKClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        success([[self alloc] initWithJSONObject:responseObject]);
-    } failure:failure];
+    // Return a signal that creates and runs the operation
+
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+
+        [[IKClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            IKGalleryImage *image = [[self alloc] initWithJSONObject:responseObject];
+
+            [subscriber sendNext:image];
+            [subscriber sendCompleted];
+            if(success)
+                success(image);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ IKHTTPRequestOperationKey: operation }];
+
+            [subscriber sendError:finalError];
+            if(failure)
+                failure(finalError);
+        }];
+
+        return nil;
+    }] replayLast];
 }
 
 - (instancetype)initWithJSONObject:(NSData *)object
@@ -66,13 +104,29 @@
 
 #pragma mark - Remove
 
-+ (void)removeImageWithID:(NSString *)imageID success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
++ (RACSignal *)removeImageWithID:(NSString *)imageID success:(void (^)(NSString *))success failure:(void (^)(NSError *))failure
 {
     NSString *path = [NSString stringWithFormat:@"gallery/%@", imageID];
-    
-    [[IKClient sharedInstance] deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        success();
-    } failure:failure];
+
+    // Return a signal that creates and runs the operation
+
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+
+        [[IKClient sharedInstance] deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [subscriber sendNext:imageID];
+            [subscriber sendCompleted];
+            if(success)
+                success(imageID);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ IKHTTPRequestOperationKey: operation }];
+
+            [subscriber sendError:finalError];
+            if(failure)
+                failure(finalError);
+        }];
+
+        return nil;
+    }] replayLast];
 }
 
 #pragma mark - Describe
