@@ -1,6 +1,6 @@
 # ImgurKit
 
-__ImgurKit__ is an Objective-C library created to easily handle [Imgur](http://imgur.com) API requests within iOS and OS X apps, it is built on [AFNetworking](http://afnetworking.com/) and its [OAuth extension](https://github.com/AFNetworking/AFOAuth2Client). The project is at an early stage, I'm currently prototyping the classes so __don't use this library__ unless you want to test it.
+__ImgurKit__ is an Objective-C library created to easily handle [Imgur](http://imgur.com) API requests within iOS and OS X apps, it is built on [AFNetworking](http://afnetworking.com/) and its [OAuth extension](https://github.com/AFNetworking/AFOAuth2Client). [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa) is also used to provide some easily chainable asynchronous methods. The project is at an early stage, I'm currently prototyping the classes so __don't use this library__ unless you want to test it.
 
 ## Todo
 
@@ -8,8 +8,8 @@ This todo list currently exists to list specific aspects of the library, not all
 
 ### Whole project
 
-* Must redefine the classes prefix, `Imgur` is to long, `JPIK` could be a better solution
 * Rework indentation
+* Add some source-code documentation for every class/method. Probably based on [appledoc](http://gentlebytes.com/appledoc/) syntax.
 
 ### All models
 
@@ -19,17 +19,13 @@ This todo list currently exists to list specific aspects of the library, not all
 
 ### Album and Image models
 
-* The non-basic classes should return non-basic images but this requires to make two request to Imgur, the user must be warned about this
+* The non-basic classes should return non-basic albums/images but this requires to make two request to Imgur, the user must be warned about this
 
 ### IKClient
 
 * Enable anonymous navigation
 * Add rate limits informations
-* The various `sharedInstance...` class methods are confusing. Those should be removed and two clients must be created with a single `sharedClient` class method for each one. Each client will have a different base URL (one for the commercial endpoints, the other for the free ones). The client ID and secret will be set through a method which could be used only once.
-
-### IKBasicAlbum
-
-* Should the `deletehash` property be in read/write access?
+* The various `sharedInstance...` class methods are confusing. They must be removed and replaced by a single method.
 
 ### IKAlbum
 
