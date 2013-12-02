@@ -67,15 +67,15 @@ static NSString * const IKOAuthBaseURL = @"https://api.imgur.com/oauth2/";
     NSString *responseType;
 
     switch (authType) {
-        case IKAuthTypeToken:
+        case IKTokenAuthType:
             responseType = @"token";
             break;
 
-        case IKAuthTypePIN:
+        case IKPINAuthType:
             responseType = @"pin";
             break;
 
-        case IKAuthTypeCode:
+        case IKCodeAuthType:
             responseType = @"code";
             break;
     }

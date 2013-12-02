@@ -67,7 +67,7 @@
 
 - (void)testAuthorizationURLAsync
 {
-    NSURL *url = [[IKClient sharedInstance] authorizationURLUsing:IKAuthTypePIN];
+    NSURL *url = [[IKClient sharedInstance] authorizationURLUsing:IKPINAuthType];
     AFHTTPRequestOperation *request = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:url]];
     
     [request setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -84,7 +84,7 @@
 {
     IKClient *client = [IKClient sharedInstance];
     
-    [[NSWorkspace sharedWorkspace] openURL:[client authorizationURLUsing:IKAuthTypePIN]];
+    [[NSWorkspace sharedWorkspace] openURL:[client authorizationURLUsing:IKPINAuthType]];
     
     NSLog(@"Enter the code PIN");
     char pin[20];

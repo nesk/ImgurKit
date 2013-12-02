@@ -12,9 +12,9 @@
 
 // Not using NS_ENUM for backward compatibility with OS X 10.7
 typedef enum {
-    IKAuthTypeToken,
-    IKAuthTypePIN,
-    IKAuthTypeCode
+    IKTokenAuthType,
+    IKPINAuthType,
+    IKCodeAuthType
 } IKAuthType;
 
 @interface IKClient : AFHTTPClient
