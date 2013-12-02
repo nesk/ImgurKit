@@ -8,7 +8,7 @@
 
 #import "NSError+ImgurKit.h"
 
-NSString * const IKHTTPRequestOperationKey = @"ImgurHTTPRequestOperation";
+NSString * const IKHTTPRequestOperationKey = @"IKHTTPRequestOperation";
 
 @implementation NSError (ImgurKit)
 

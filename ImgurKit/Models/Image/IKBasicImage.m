@@ -13,7 +13,7 @@
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-NSString * const IKUploadedImagesKey = @"ImgurUploadedImages";
+NSString * const IKUploadedImagesKey = @"IKUploadedImages";
 
 @implementation IKBasicImage;
 
