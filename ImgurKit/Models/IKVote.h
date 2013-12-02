@@ -8,7 +8,7 @@
 
 // Not using NS_ENUM for backward compatibility with OS X 10.7
 typedef enum {
-    IKUpVote,
-    IKDownVote,
-    IKNeutralVote
+    IKDownVote      = -1,
+    IKNeutralVote   = 0,
+    IKUpVote        = 1
 } IKVote;
