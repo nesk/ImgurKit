@@ -76,7 +76,7 @@
         STSuccess();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSHTTPURLResponse *response = operation.response;
-        STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+        STFail(@"Unexpected status code (%ld) returned from URL `%@` with method %@", (long)[response statusCode], [[response URL] absoluteString], [operation.request HTTPMethod]);
     }];
     
     [request start];
@@ -111,7 +111,7 @@
     } failure:^(NSError *error) {
         AFHTTPRequestOperation *operation = [[error userInfo] objectForKey:IKHTTPRequestOperationKey];
         NSHTTPURLResponse *response = operation.response;
-        STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+        STFail(@"Unexpected status code (%ld) returned from URL `%@` with method %@", (long)[response statusCode], [[response URL] absoluteString], [operation.request HTTPMethod]);
     }];
 }
 
@@ -144,7 +144,7 @@
      } error:^(NSError *error) {
          AFHTTPRequestOperation *operation = [[error userInfo] objectForKey:IKHTTPRequestOperationKey];
          NSHTTPURLResponse *response = operation.response;
-         STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+         STFail(@"Unexpected status code (%ld) returned from URL `%@` with method %@", (long)[response statusCode], [[response URL] absoluteString], [operation.request HTTPMethod]);
      }];
 }
 
@@ -177,7 +177,7 @@
      } error:^(NSError *error) {
          AFHTTPRequestOperation *operation = [[error userInfo] objectForKey:IKHTTPRequestOperationKey];
          NSHTTPURLResponse *response = operation.response;
-         STFail(@"Unexpected status code (%ld) returned from URL `%@`", (long)[response statusCode], [[response URL] absoluteString]);
+         STFail(@"Unexpected status code (%ld) returned from URL `%@` with method %@", (long)[response statusCode], [[response URL] absoluteString], [operation.request HTTPMethod]);
      }];
 }
 
