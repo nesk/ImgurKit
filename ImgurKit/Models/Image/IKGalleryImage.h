@@ -29,7 +29,7 @@
 #pragma mark - Load
 
 + (RACSignal *)imageWithID:(NSString *)imageID success:(void (^)(IKGalleryImage *image))success failure:(void (^)(NSError *error))failure;
-- (instancetype)initWithJSONObject:(NSData *)object;
+- (instancetype)initWithJSONObject:(NSData *)object error:(NSError *__autoreleasing *)error;
 
 #pragma mark - Remove
 

@@ -47,7 +47,7 @@ typedef enum {
 
 #pragma mark - Load
 
-- (instancetype)initWithJSONObject:(NSData *)object;
+- (instancetype)initWithJSONObject:(NSData *)object error:(NSError *__autoreleasing *)error;
 
 #pragma mark - Display
 

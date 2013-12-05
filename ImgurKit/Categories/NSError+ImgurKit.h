@@ -14,6 +14,7 @@
  */
 
 FOUNDATION_EXPORT NSString * const IKHTTPRequestOperationKey;
+FOUNDATION_EXPORT NSString * const IKJSONDataKey;
 
 /**
  The `ImgurKit` category for the `NSError` class provides a single method used to copy an error with additional

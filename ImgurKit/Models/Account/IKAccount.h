@@ -23,6 +23,6 @@
 #pragma mark - Load
 
 + (RACSignal *)accountWithUsername:(NSString *)username success:(void (^)(IKAccount *account))success failure:(void (^)(NSError *error))failure;
-- (instancetype)initWithJSONObject:(NSData *)data;
+- (instancetype)initWithJSONObject:(NSData *)object error:(NSError * __autoreleasing *)error;
 
 @end

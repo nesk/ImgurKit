@@ -27,7 +27,7 @@
 #pragma mark - Load
 
 + (RACSignal *)albumWithID:(NSString *)albumID success:(void (^)(IKGalleryAlbum *album))success failure:(void (^)(NSError *error))failure;
-- (instancetype)initWithJSONObject:(NSData *)object;
+- (instancetype)initWithJSONObject:(NSData *)object error:(NSError *__autoreleasing *)error;
 
 #pragma mark - Remove
 

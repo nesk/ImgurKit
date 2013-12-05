@@ -26,12 +26,22 @@
     return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
 
         [[IKClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            IKImage *image = [[self alloc] initWithJSONObject:responseObject];
+            NSError *JSONError = nil;
+            IKImage *image = [[self alloc] initWithJSONObject:responseObject error:&JSONError];
 
-            [subscriber sendNext:image];
-            [subscriber sendCompleted];
-            if(success)
-                success(image);
+            if(!JSONError) {
+                [subscriber sendNext:image];
+                [subscriber sendCompleted];
+                if(success)
+                    success(image);
+            }
+            else {
+                NSError *finalError = [NSError errorWithError:JSONError additionalUserInfo:@{ IKJSONDataKey: responseObject }];
+
+                [subscriber sendError:finalError];
+                if(failure)
+                    failure(finalError);
+            }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ IKHTTPRequestOperationKey: operation }];
 
@@ -44,23 +54,28 @@
     }] replayLast];
 }
 
-- (instancetype)initWithJSONObject:(NSData *)object
+- (instancetype)initWithJSONObject:(NSData *)object error:(NSError *__autoreleasing *)error
 {
-    self = [super initWithJSONObject:object];
+    self = [super initWithJSONObject:object error:error];
     
-    NSDictionary *data = [NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
-    data = [data objectForKey:@"data"];
-    
-    _title = [data objectForKey:@"title"];
-    _description = [data objectForKey:@"description"];
-    _datetime = [NSDate dateWithTimeIntervalSince1970:[[data objectForKey:@"datetime"] integerValue]];
-    _type = [data objectForKey:@"type"];
-    _animated = [[data objectForKey:@"animated"] boolValue];
-    _width = [[data objectForKey:@"width"] integerValue];
-    _height = [[data objectForKey:@"height"] integerValue];
-    _size = [[data objectForKey:@"size"] integerValue];
-    _views = [[data objectForKey:@"views"] integerValue];
-    _bandwidth = [[data objectForKey:@"bandwidth"] integerValue];
+    if(!*error) {
+        NSDictionary *data = [NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
+        data = [data objectForKey:@"data"];
+        
+        _title = [data objectForKey:@"title"];
+        _description = [data objectForKey:@"description"];
+        _datetime = [NSDate dateWithTimeIntervalSince1970:[[data objectForKey:@"datetime"] integerValue]];
+        _type = [data objectForKey:@"type"];
+        _animated = [[data objectForKey:@"animated"] boolValue];
+        _width = [[data objectForKey:@"width"] integerValue];
+        _height = [[data objectForKey:@"height"] integerValue];
+        _size = [[data objectForKey:@"size"] integerValue];
+        _views = [[data objectForKey:@"views"] integerValue];
+        _bandwidth = [[data objectForKey:@"bandwidth"] integerValue];
+    }
+    else {
+        self = nil;
+    }
     
     return self;
 }

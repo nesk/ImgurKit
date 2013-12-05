@@ -9,6 +9,7 @@
 #import "NSError+ImgurKit.h"
 
 NSString * const IKHTTPRequestOperationKey = @"IKHTTPRequestOperation";
+NSString * const IKJSONDataKey = @"IKJSONData";
 
 @implementation NSError (ImgurKit)
 

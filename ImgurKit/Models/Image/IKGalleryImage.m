@@ -61,12 +61,22 @@
     return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
 
         [[IKClient sharedInstance] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            IKGalleryImage *image = [[self alloc] initWithJSONObject:responseObject];
+            NSError *JSONError = nil;
+            IKGalleryImage *image = [[self alloc] initWithJSONObject:responseObject error:&JSONError];
 
-            [subscriber sendNext:image];
-            [subscriber sendCompleted];
-            if(success)
-                success(image);
+            if(!JSONError) {
+                [subscriber sendNext:image];
+                [subscriber sendCompleted];
+                if(success)
+                    success(image);
+            }
+            else {
+                NSError *finalError = [NSError errorWithError:JSONError additionalUserInfo:@{ IKJSONDataKey: responseObject }];
+
+                [subscriber sendError:finalError];
+                if(failure)
+                    failure(finalError);
+            }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ IKHTTPRequestOperationKey: operation }];
 
@@ -79,26 +89,31 @@
     }] replayLast];
 }
 
-- (instancetype)initWithJSONObject:(NSData *)object
+- (instancetype)initWithJSONObject:(NSData *)object error:(NSError *__autoreleasing *)error
 {
-    self = [super initWithJSONObject:object];
-    
-    NSDictionary *data = [NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
-    data = [data objectForKey:@"data"];
-    
-    _accountURL = [data objectForKey:@"account_url"];
-    _ups = [[data objectForKey:@"ups"] integerValue];
-    _downs = [[data objectForKey:@"downs"] integerValue];
-    _score = [[data objectForKey:@"score"] integerValue];
+    self = [super initWithJSONObject:object error:error];
 
-    NSString *vote = [data objectForKey:@"vote"];
-    if([vote isEqualToString: @"up"])
-        _vote = 1;
-    else if ([vote isEqualToString:@"down"])
-        _vote = -1;
-    else
-        _vote = 0;
-    
+    if(!*error) {
+        NSDictionary *data = [NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
+        data = [data objectForKey:@"data"];
+        
+        _accountURL = [data objectForKey:@"account_url"];
+        _ups = [[data objectForKey:@"ups"] integerValue];
+        _downs = [[data objectForKey:@"downs"] integerValue];
+        _score = [[data objectForKey:@"score"] integerValue];
+
+        NSString *vote = [data objectForKey:@"vote"];
+        if([vote isEqualToString: @"up"])
+            _vote = 1;
+        else if ([vote isEqualToString:@"down"])
+            _vote = -1;
+        else
+            _vote = 0;
+    }
+    else {
+        self = nil;
+    }
+
     return self;
 }
 

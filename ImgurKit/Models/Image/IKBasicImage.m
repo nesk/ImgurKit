@@ -69,12 +69,22 @@ NSString * const IKUploadedImagesKey = @"IKUploadedImages";
         // Create the operation
 
         AFHTTPRequestOperation *operation = [client HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            IKBasicImage *image = [[IKBasicImage alloc] initWithJSONObject:responseObject];
+            NSError *JSONError = nil;
+            IKBasicImage *image = [[IKBasicImage alloc] initWithJSONObject:responseObject error:&JSONError];
 
-            [subscriber sendNext:image];
-            [subscriber sendCompleted];
-            if(success)
-                success(image);
+            if(!JSONError) {
+                [subscriber sendNext:image];
+                [subscriber sendCompleted];
+                if(success)
+                    success(image);
+            }
+            else {
+                NSError *finalError = [NSError errorWithError:JSONError additionalUserInfo:@{ IKJSONDataKey: responseObject }];
+
+                [subscriber sendError:finalError];
+                if(failure)
+                    failure(finalError);
+            }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ IKHTTPRequestOperationKey: operation }];
 
@@ -116,12 +126,22 @@ NSString * const IKUploadedImagesKey = @"IKUploadedImages";
 
     return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         [[IKClient sharedInstance] postPath:@"image" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            IKBasicImage *image = [[IKBasicImage alloc] initWithJSONObject:responseObject];
+            NSError *JSONError = nil;
+            IKBasicImage *image = [[IKBasicImage alloc] initWithJSONObject:responseObject error:&JSONError];
 
-            [subscriber sendNext:image];
-            [subscriber sendCompleted];
-            if(success)
-                success(image);
+            if(!JSONError) {
+                [subscriber sendNext:image];
+                [subscriber sendCompleted];
+                if(success)
+                    success(image);
+            }
+            else {
+                NSError *finalError = [NSError errorWithError:JSONError additionalUserInfo:@{ IKJSONDataKey: responseObject }];
+
+                [subscriber sendError:finalError];
+                if(failure)
+                    failure(finalError);
+            }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ IKHTTPRequestOperationKey: operation }];
 
@@ -245,16 +265,22 @@ NSString * const IKUploadedImagesKey = @"IKUploadedImages";
 
 #pragma mark - Load
 
-- (instancetype)initWithJSONObject:(NSData *)object
+- (instancetype)initWithJSONObject:(NSData *)object error:(NSError *__autoreleasing *)error
 {
     self = [super init];
     
-    NSDictionary *data = [NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
-    data = [data objectForKey:@"data"];
-    
-    _imageID = [data objectForKey:@"id"];
-    _deletehash = [data objectForKey:@"deletehash"];
-    _link = [NSURL URLWithString:[data objectForKey:@"link"]];
+    NSDictionary *data = [NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:error];
+
+    if(!*error) {
+        data = [data objectForKey:@"data"];
+        
+        _imageID = [data objectForKey:@"id"];
+        _deletehash = [data objectForKey:@"deletehash"];
+        _link = [NSURL URLWithString:[data objectForKey:@"link"]];
+    }
+    else {
+        self = nil;
+    }
     
     return self;
 }

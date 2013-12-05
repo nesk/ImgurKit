@@ -11,10 +11,6 @@ This todo list currently exists to list specific aspects of the library, not all
 * Rework indentation
 * Add some source-code documentation for every class/method. Probably based on [appledoc](http://gentlebytes.com/appledoc/) syntax.
 
-### All models
-
-* Must use the error parameter of the `JSONObjectWithData:options:error:` from the `NSJSONSerialization` class
-
 ### Album and Image models
 
 * The non-basic classes should return non-basic albums/images but this requires to make two request to Imgur, the user must be warned about this

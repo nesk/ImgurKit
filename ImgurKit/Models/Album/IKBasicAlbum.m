@@ -111,12 +111,22 @@
     return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
 
         [[IKClient sharedInstance] postPath:@"album" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            IKBasicAlbum *album = [[self alloc] initWithJSONObject:responseObject];
+            NSError *JSONError = nil;
+            IKBasicAlbum *album = [[self alloc] initWithJSONObject:responseObject error:&JSONError];
 
-            [subscriber sendNext:album];
-            [subscriber sendCompleted];
-            if(success)
-                success(album);
+            if(!JSONError) {
+                [subscriber sendNext:album];
+                [subscriber sendCompleted];
+                if(success)
+                    success(album);
+            }
+            else {
+                NSError *finalError = [NSError errorWithError:JSONError additionalUserInfo:@{ IKJSONDataKey: responseObject }];
+
+                [subscriber sendError:finalError];
+                if(failure)
+                    failure(finalError);
+            }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSError *finalError = [NSError errorWithError:error additionalUserInfo:@{ IKHTTPRequestOperationKey: operation }];
 
@@ -131,15 +141,21 @@
 
 #pragma mark - Load
 
-- (instancetype)initWithJSONObject:(NSData *)object
+- (instancetype)initWithJSONObject:(NSData *)object error:(NSError *__autoreleasing *)error
 {
     self = [super init];
     
-    NSDictionary *data = [NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:nil];
-    data = [data objectForKey:@"data"];
-    
-    _albumID = [data objectForKey:@"id"];
-    _deletehash = [data objectForKey:@"deletehash"];
+    NSDictionary *data = [NSJSONSerialization JSONObjectWithData:object options:kNilOptions error:error];
+
+    if(!*error) {
+        data = [data objectForKey:@"data"];
+        
+        _albumID = [data objectForKey:@"id"];
+        _deletehash = [data objectForKey:@"deletehash"];
+    }
+    else {
+        self = nil;
+    }
     
     return self;
 }
