@@ -1,3 +1,5 @@
+The development of this project has stopped. However, Geoff MacDonald refactored it into a new project named [ImgurSession](https://github.com/geoffmacd/ImgurSession), go check it out.
+
 # ImgurKit
 
 __ImgurKit__ is an Objective-C library created to easily handle [Imgur](http://imgur.com) API requests within iOS and OS X apps, it is built on [AFNetworking](http://afnetworking.com/) and its [OAuth extension](https://github.com/AFNetworking/AFOAuth2Client). [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa) is also used to provide some easily chainable asynchronous methods. The project is at an early stage, I'm currently prototyping the classes so __don't use this library__ unless you want to test it.
